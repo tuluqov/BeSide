@@ -13,11 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presenter", "Presenter", "{
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeSide.Common.Entities", "BeSide.Common.Entities\BeSide.Common.Entities.csproj", "{640EBBF0-409C-44B2-BBE7-64CFFEF2B441}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeSide.DataAccess.Constract", "BeSide.DataAccess.Constract\BeSide.DataAccess.Constract.csproj", "{8F4566E8-B8F2-41F0-B92E-6D6111086BF6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeSide.DataAccess.Construct", "BeSide.DataAccess.Constract\BeSide.DataAccess.Construct.csproj", "{8F4566E8-B8F2-41F0-B92E-6D6111086BF6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeSide.DataAccess.SqlDataAccess", "BeSide.DataAccess.SqlDataAccess\BeSide.DataAccess.SqlDataAccess.csproj", "{DB309175-1643-4B5F-AF7B-425F9B13CF20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeSide.BusinessLogic.Constract", "BeSide.BusinessLogic.Constract\BeSide.BusinessLogic.Constract.csproj", "{9438762A-F361-4096-BA71-B3DFBDA86546}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeSide.BusinessLogic.Construct", "BeSide.BusinessLogic.Constract\BeSide.BusinessLogic.Construct.csproj", "{9438762A-F361-4096-BA71-B3DFBDA86546}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeSide.BusinessLogic.BusinessComponents", "BeSide.BusinessLogic.BusinessComponents\BeSide.BusinessLogic.BusinessComponents.csproj", "{891C5E71-B431-4966-9C1F-34685403952A}"
 EndProject
