@@ -20,7 +20,7 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
         public UnitOfWork(string connectionString)
         {
             //ДОБАВИТЬ !!!
-            context = new EfDataContext();
+            context = new EfDataContext(connectionString);
         }
 
         #region Implementation of IUnitOfWork

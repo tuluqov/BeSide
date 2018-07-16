@@ -74,5 +74,15 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BeSide.DataAccess.Constract\BeSide.DataAccess.Construct.csproj">
+      <Project>{8f4566e8-b8f2-41f0-b92e-6d6111086bf6}</Project>
+      <Name>BeSide.DataAccess.Construct</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BeSide.DataAccess.SqlDataAccess\BeSide.DataAccess.SqlDataAccess.csproj">
+      <Project>{db309175-1643-4b5f-af7b-425f9b13cf20}</Project>
+      <Name>BeSide.DataAccess.SqlDataAccess</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

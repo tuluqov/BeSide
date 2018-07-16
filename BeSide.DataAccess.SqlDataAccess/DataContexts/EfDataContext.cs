@@ -11,7 +11,7 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
         public DbSet<Service> Services { get; set; }
         public DbSet<User> Users { get; set; }
 
-        public EfDataContext() : base()
+        public EfDataContext(string connectionString) : base(connectionString)
         {
             //добавить строку подключения
         }
