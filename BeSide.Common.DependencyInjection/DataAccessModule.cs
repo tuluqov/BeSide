@@ -4,10 +4,12 @@ using Autofac;
 using Autofac.Core;
 using Autofac.Integration.Mvc;
 using System.Web.Mvc;
-
+using BeSide.Common.Entities;
 using BeSide.DataAccess.SqlDataAccess.DataContexts;
 using BeSide.DataAccess.SqlDataAccess.UnitOfWorks;
 using BeSide.DataAccess.Construct;
+using BeSide.DataAccess.SqlDataAccess.Repositories;
+using Service = BeSide.Common.Entities.Service;
 
 namespace BeSide.Common.DependencyInjection
 {
@@ -29,6 +31,19 @@ namespace BeSide.Common.DependencyInjection
             builder.RegisterType<UnitOfWork>()
                 .As<IUnitOfWork>()
                 .WithParameter("connectionString", connectionString);
+
+
+            //builder.RegisterType<BaseRepository<Category>>()
+            //    .As<IRepository<Category>>().AsSelf().InstancePerRequest();
+
+            //builder.RegisterType<BaseRepository<Order>>()
+            //    .As<IRepository<Order>>().AsSelf().InstancePerRequest();
+
+            //builder.RegisterType<BaseRepository<ProviderServices>>()
+            //    .As<IRepository<ProviderServices>>().AsSelf().InstancePerRequest();
+
+            //builder.RegisterType<BaseRepository<Service>>()
+            //    .As<IRepository<Service>>().AsSelf().InstancePerRequest();
 
             var container = builder.Build();
 

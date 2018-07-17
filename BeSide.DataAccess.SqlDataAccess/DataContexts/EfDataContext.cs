@@ -13,7 +13,6 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
 
         public EfDataContext(string connectionString) : base(connectionString)
         {
-            //добавить строку подключения
         }
     }
 }

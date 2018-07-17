@@ -75,6 +75,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BeSide.Common.Entities\BeSide.Common.Entities.csproj">
+      <Project>{640ebbf0-409c-44b2-bbe7-64cffef2b441}</Project>
+      <Name>BeSide.Common.Entities</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BeSide.DataAccess.Constract\BeSide.DataAccess.Construct.csproj">
       <Project>{8f4566e8-b8f2-41f0-b92e-6d6111086bf6}</Project>
       <Name>BeSide.DataAccess.Construct</Name>

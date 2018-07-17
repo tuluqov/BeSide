@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Data.Entity;
 using BeSide.DataAccess.Construct;
+using System;
 
 namespace BeSide.DataAccess.SqlDataAccess.Repositories
 {
@@ -34,6 +35,12 @@ namespace BeSide.DataAccess.SqlDataAccess.Repositories
             }
 
             return false;
+        }
+
+        public IEnumerable<T> Find(Func<T, bool> predicate)
+        {
+            IEnumerable<T> result = Items.Where(predicate).ToList();
+            return result;
         }
 
         public IEnumerable<T> GetAll()

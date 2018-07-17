@@ -19,7 +19,6 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
 
         public UnitOfWork(string connectionString)
         {
-            //ДОБАВИТЬ !!!
             context = new EfDataContext(connectionString);
         }
 
