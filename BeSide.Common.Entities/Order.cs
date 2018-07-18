@@ -2,14 +2,12 @@
 
 namespace BeSide.Common.Entities
 {
-    public class Order
+    public class Order : BaseEntity
     {
-        public int Id { get; set; }
         public string ShortDescription { get; set; }
         public string FullDescription { get; set; }
         public int Price { get; set; }
         public DateTime Deadline { get; set; }
-        public string Name { get; set; }
         public string PhoneNumber { get; set; }
 
         public int IdService { get; set; }

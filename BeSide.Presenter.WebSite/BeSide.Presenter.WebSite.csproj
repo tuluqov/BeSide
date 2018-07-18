@@ -47,6 +47,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Autofac, Version=4.8.1.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.4.8.1\lib\net45\Autofac.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\packages\Autofac.Mvc5.4.0.2\lib\net45\Autofac.Integration.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -204,6 +210,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AccountDbInitializer.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -329,6 +336,10 @@
     <ProjectReference Include="..\BeSide.Common.DependencyInjection\BeSide.Common.DependencyInjection.csproj">
       <Project>{6b8cfe1b-b0d1-47ff-911e-0daba7312cb7}</Project>
       <Name>BeSide.Common.DependencyInjection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BeSide.Common.Entities\BeSide.Common.Entities.csproj">
+      <Project>{640ebbf0-409c-44b2-bbe7-64cffef2b441}</Project>
+      <Name>BeSide.Common.Entities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -79,6 +79,11 @@ namespace BeSide.Presenter.WebSite.Models
         [Display(Name = "Подтверждение пароля")]
         [Compare("Password", ErrorMessage = "Пароль и его подтверждение не совпадают.")]
         public string ConfirmPassword { get; set; }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Patronymic { get; set; }
+        public string PhoneNumber { get; set; }
     }
 
     public class ResetPasswordViewModel

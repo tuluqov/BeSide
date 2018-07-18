@@ -31,8 +31,15 @@ namespace BeSide.Common.DependencyInjection
             builder.RegisterType<UnitOfWork>()
                 .As<IUnitOfWork>()
                 .WithParameter("connectionString", connectionString);
+            
+            //Универсальный метод для всех обобщенных репозиториев
+            builder.RegisterGeneric(typeof(BaseRepository<>))
+                .As(typeof(IRepository<>))
+                .AsSelf().
+                InstancePerRequest();
 
 
+            #region Для всех репозиториев
             //builder.RegisterType<BaseRepository<Category>>()
             //    .As<IRepository<Category>>().AsSelf().InstancePerRequest();
 
@@ -44,6 +51,7 @@ namespace BeSide.Common.DependencyInjection
 
             //builder.RegisterType<BaseRepository<Service>>()
             //    .As<IRepository<Service>>().AsSelf().InstancePerRequest();
+            #endregion
 
             var container = builder.Build();
 
