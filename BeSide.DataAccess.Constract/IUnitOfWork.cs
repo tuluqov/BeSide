@@ -10,6 +10,7 @@ namespace BeSide.DataAccess.Construct
         IRepository<ProviderServices> ProviderServices { get; }
         IRepository<Service> Services { get; }
         IRepository<User> Users { get; }
+        IRepository<ApplicationUser> ApplicationUsers { get; set; }
 
         void Save();
     }

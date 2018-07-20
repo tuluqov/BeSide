@@ -16,9 +16,9 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
     {
         private ApplicationContext db;
 
-        private ApplicationUserManager userManager;
-        private ApplicationRoleManager roleManager;
-        private IClientManager clientManager;
+        private readonly ApplicationUserManager userManager;
+        private readonly ApplicationRoleManager roleManager;
+        private readonly IClientManager clientManager;
 
         public IdentityUnitOfWork(string connectionString)
         {
