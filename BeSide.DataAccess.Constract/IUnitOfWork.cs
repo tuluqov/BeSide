@@ -1,5 +1,7 @@
 ﻿using System;
 using BeSide.Common.Entities;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BeSide.DataAccess.Construct
 {
@@ -9,7 +11,10 @@ namespace BeSide.DataAccess.Construct
         IRepository<Order> Orders { get; }
         IRepository<ProviderServices> ProviderServices { get; }
         IRepository<Service> Services { get; }
-        IRepository<User> Users { get; }
+        IRepository<UserProfile> UsersProfiles { get; }
+        IdentityDbContext<ApplicationUser> IdentityUsers { get; }
+        UserManager<ApplicationUser> UserManager { get; }
+        RoleManager<ApplicationRole> RoleManager { get; }
 
         void Save();
     }

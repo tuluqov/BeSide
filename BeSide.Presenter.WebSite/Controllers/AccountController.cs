@@ -152,7 +152,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                var userPorile = new User
+                var userPorile = new UserProfile
                 {
                     FirstName = model.FirstName,
                     //ДОПИСАТЬ!

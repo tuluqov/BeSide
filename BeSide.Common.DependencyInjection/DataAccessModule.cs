@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Autofac;
 using Autofac.Core;
@@ -26,12 +27,12 @@ namespace BeSide.Common.DependencyInjection
         {
             var builder = new ContainerBuilder();
 
-            //builder.RegisterControllers(typeof(MvcApplication).Assembly);
+            builder.RegisterControllers(typeof(Assembly).Assembly);
 
             builder.RegisterType<UnitOfWork>()
                 .As<IUnitOfWork>()
                 .WithParameter("connectionString", connectionString);
-            
+
             //Универсальный метод для всех обобщенных репозиториев
             builder.RegisterGeneric(typeof(BaseRepository<>))
                 .As(typeof(IRepository<>))

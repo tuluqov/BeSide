@@ -8,6 +8,10 @@ namespace BeSide.Presenter.WebSite
         {
             DataAccessModule dataAccessModule = new DataAccessModule("DefaultConnection");
             dataAccessModule.Configurate();
+
+            BusinessModule businessModule = new BusinessModule();
+            businessModule.Configurate();
+
         }
     }
 }

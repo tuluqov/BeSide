@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessModule.cs" />
     <Compile Include="DataAccessModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,6 +76,14 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BeSide.BusinessLogic.BusinessComponents\BeSide.BusinessLogic.BusinessComponents.csproj">
+      <Project>{891C5E71-B431-4966-9C1F-34685403952A}</Project>
+      <Name>BeSide.BusinessLogic.BusinessComponents</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BeSide.BusinessLogic.Constract\BeSide.BusinessLogic.Construct.csproj">
+      <Project>{9438762A-F361-4096-BA71-B3DFBDA86546}</Project>
+      <Name>BeSide.BusinessLogic.Construct</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BeSide.Common.Entities\BeSide.Common.Entities.csproj">
       <Project>{640ebbf0-409c-44b2-bbe7-64cffef2b441}</Project>
       <Name>BeSide.Common.Entities</Name>
