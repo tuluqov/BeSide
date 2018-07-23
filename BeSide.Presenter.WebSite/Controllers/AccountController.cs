@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using BeSide.BusinessLogic.BusinessComponents.Infrastructure;
 using BeSide.BusinessLogic.Construct;
-using BeSide.Common.Entities.DTO;
+using BeSide.BusinessLogic.Construct.DTO;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;

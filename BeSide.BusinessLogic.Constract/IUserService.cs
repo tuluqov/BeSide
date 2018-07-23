@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 using BeSide.BusinessLogic.BusinessComponents.Infrastructure;
-using BeSide.Common.Entities.DTO;
+using BeSide.BusinessLogic.Construct.DTO;
 
 namespace BeSide.BusinessLogic.Construct
 {

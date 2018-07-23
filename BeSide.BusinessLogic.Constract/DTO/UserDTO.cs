@@ -1,4 +1,4 @@
-﻿namespace BeSide.Common.Entities.DTO
+﻿namespace BeSide.BusinessLogic.Construct.DTO
 {
     public class UserDto
     {
