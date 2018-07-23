@@ -199,7 +199,6 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\Startup.SetupAutofac.cs" />
@@ -212,7 +211,6 @@
     </Compile>
     <Compile Include="Models\AccountDbInitializer.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -333,6 +331,10 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BeSide.BusinessLogic.Constract\BeSide.BusinessLogic.Construct.csproj">
+      <Project>{9438762a-f361-4096-ba71-b3dfbda86546}</Project>
+      <Name>BeSide.BusinessLogic.Construct</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BeSide.Common.DependencyInjection\BeSide.Common.DependencyInjection.csproj">
       <Project>{6b8cfe1b-b0d1-47ff-911e-0daba7312cb7}</Project>
       <Name>BeSide.Common.DependencyInjection</Name>

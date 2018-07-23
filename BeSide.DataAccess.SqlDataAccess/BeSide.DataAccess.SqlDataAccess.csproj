@@ -54,6 +54,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContexts\EfDataContext.cs" />
+    <Compile Include="Migrations\201807222131480_AddCompanyMigration.cs" />
+    <Compile Include="Migrations\201807222131480_AddCompanyMigration.Designer.cs">
+      <DependentUpon>201807222131480_AddCompanyMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
     <Compile Include="UnitOfWorks\UnitOfWork.cs" />
@@ -68,7 +73,11 @@
       <Name>BeSide.DataAccess.Construct</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201807222131480_AddCompanyMigration.resx">
+      <DependentUpon>201807222131480_AddCompanyMigration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

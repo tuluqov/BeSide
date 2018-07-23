@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
-using System.Text;
 using System.Threading.Tasks;
 using BeSide.BusinessLogic.BusinessComponents.Infrastructure;
-using BeSide.BusinessLogic.Construct.DTO;
-using BeSide.Common.Entities;
+using BeSide.Common.Entities.DTO;
 
 namespace BeSide.BusinessLogic.Construct
 {

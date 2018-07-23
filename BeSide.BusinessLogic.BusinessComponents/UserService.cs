@@ -6,8 +6,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using BeSide.BusinessLogic.BusinessComponents.Infrastructure;
 using BeSide.BusinessLogic.Construct;
-using BeSide.BusinessLogic.Construct.DTO;
 using BeSide.Common.Entities;
+using BeSide.Common.Entities.DTO;
 using BeSide.DataAccess.Construct;
 using Microsoft.AspNet.Identity;
 

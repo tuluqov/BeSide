@@ -15,5 +15,9 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
         public EfDataContext(string connectionString) : base(connectionString)
         {
         }
+
+        public EfDataContext() : base("Data Source=DESKTOP-8T3R9H9;Initial Catalog=Test;Integrated Security=True;Pooling=False")
+        {
+        }
     }
 }

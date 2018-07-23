@@ -1,11 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using BeSide.Common.Entities;
+using BeSide.BusinessLogic.BusinessComponents.Infrastructure;
+using BeSide.BusinessLogic.Construct;
+using BeSide.Common.Entities.DTO;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -16,18 +19,119 @@ namespace BeSide.Presenter.WebSite.Controllers
     [Authorize]
     public class AccountController : Controller
     {
-        private ApplicationSignInManager _signInManager;
-        private ApplicationUserManager _userManager;
+        private IUserService userService;
 
-        public AccountController()
+        private IAuthenticationManager AuthenticationManager
         {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public AccountController(IUserService userService)
         {
-            UserManager = userManager;
-            SignInManager = signInManager;
+            this.userService = userService;
         }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginViewModel model)
+        {
+            await SetInitialDataAsync();
+
+            if (ModelState.IsValid)
+            {
+                UserDto userDto = new UserDto
+                {
+                    Email = model.Email,
+                    Password = model.Password
+                };
+
+                ClaimsIdentity claim = await userService.Authenticate(userDto);
+
+                if (claim == null)
+                {
+                    ModelState.AddModelError("", "Неверный логин или пароль.");
+                }
+                else
+                {
+                    AuthenticationManager.SignOut();
+                    AuthenticationManager.SignIn(new AuthenticationProperties
+                    {
+                        IsPersistent = true
+                    }, claim);
+
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+
+            return View(model);
+        }
+
+        public ActionResult Logout()
+        {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Register(RegisterViewModel model)
+        {
+            await SetInitialDataAsync();
+
+            if (ModelState.IsValid)
+            {
+                UserDto userDto = new UserDto
+                {
+                    Email = model.Email,
+                    Password = model.Password,
+                    Role = model.Role,
+                    UserName = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Patronymic = model.Patronymic
+                };
+
+                OperationDetails operationDetails = await userService.Create(userDto);
+
+                if (operationDetails.Succedeed)
+                    return View();
+                else
+                    ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
+            }
+
+            return View(model);
+        }
+        private async Task SetInitialDataAsync()
+        {
+            await userService.SetInitialData(new UserDto
+            {
+                Email = "admin@gmail.com",
+                UserName = "admin@gmail.com",
+                Password = "123456Qq_",
+                Role = "admin",
+                FirstName = "Admin",
+                LastName = "Admin",
+                Patronymic = "Admin"
+            }, new List<string> { "user", "admin" });
+        }
+
+
+        /*
 
         public ApplicationSignInManager SignInManager
         {
@@ -494,5 +598,11 @@ namespace BeSide.Presenter.WebSite.Controllers
             }
         }
         #endregion
+        */
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }

@@ -80,6 +80,8 @@ namespace BeSide.Presenter.WebSite.Models
         [Compare("Password", ErrorMessage = "Пароль и его подтверждение не совпадают.")]
         public string ConfirmPassword { get; set; }
 
+        public string Role { get; set; }
+
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Patronymic { get; set; }
