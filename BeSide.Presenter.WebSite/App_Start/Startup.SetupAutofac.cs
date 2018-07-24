@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Reflection;
 using System.Web.Mvc;
 using Autofac;
@@ -26,32 +25,28 @@ namespace BeSide.Presenter.WebSite
             var executingAssembly = Assembly.GetExecutingAssembly();
             builder.RegisterControllers(executingAssembly);
 
-            DataAccessModule dataAccessModule = new DataAccessModule("DefaultConnection");
-            dataAccessModule.RegisterComponent(builder);
-
-            BusinessModule businessModule = new BusinessModule();
-            businessModule.RegisterComponent(builder);
+            builder.RegisterModule(new DataAccessModule("DefaultConnection"));
+            builder.RegisterModule(new BusinessModule());
 
             var dataProtectionProvider = app.GetDataProtectionProvider();
             builder.Register<UserManager<ApplicationUser>>((c, p) => BuildUserManager(c, p, dataProtectionProvider));
-
-
-            var container = builder.Build();
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-            
-        }
-
-        private void RegisterComponents(ContainerBuilder builder, IAppBuilder app)
-        {
-            builder.RegisterType<ApplicationSignInManager>().As<SignInManager<ApplicationUser, string>>().InstancePerRequest();
             builder.RegisterType<UserStore<ApplicationUser>>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
             builder.Register<IAuthenticationManager>((c, p) => c.Resolve<IOwinContext>().Authentication).InstancePerRequest();
 
+            var container = builder.Build();
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
+            //app.UseAutofacMvc();
         }
+
+
+        //builder.RegisterType<ApplicationSignInManager>().As<SignInManager<ApplicationUser, string>>().InstancePerRequest();
+
+
 
         private UserManager<ApplicationUser> BuildUserManager(IComponentContext context, IEnumerable<Parameter> parameters, IDataProtectionProvider dataProtectionProvider)
         {
-            var manager = new UserMan(context.Resolve<IUserStore<ApplicationUser>>());
+            var manager = new UserManager<ApplicationUser>(context.Resolve<IUserStore<ApplicationUser>>());
+
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {
@@ -73,8 +68,6 @@ namespace BeSide.Presenter.WebSite
             manager.UserLockoutEnabledByDefault = true;
             manager.DefaultAccountLockoutTimeSpan = TimeSpan.FromMinutes(5);
             manager.MaxFailedAccessAttemptsBeforeLockout = 5;
-
-
 
             if (dataProtectionProvider != null)
             {

@@ -14,9 +14,9 @@ using Owin;
 
 namespace BeSide.Common.DependencyInjection
 {
-    public class BusinessModule
+    public class BusinessModule : Module
     {
-        public void RegisterComponent(ContainerBuilder builder)
+        protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<UserService>()
                 .As<IUserService>();

@@ -11,11 +11,12 @@ using BeSide.DataAccess.SqlDataAccess.DataContexts;
 using BeSide.DataAccess.SqlDataAccess.UnitOfWorks;
 using BeSide.DataAccess.Construct;
 using BeSide.DataAccess.SqlDataAccess.Repositories;
+using Module = Autofac.Module;
 using Service = BeSide.Common.Entities.Service;
 
 namespace BeSide.Common.DependencyInjection
 {
-    public class DataAccessModule
+    public class DataAccessModule : Module
     {
         private readonly string connectionString;
 
@@ -24,7 +25,7 @@ namespace BeSide.Common.DependencyInjection
             this.connectionString = connectionString;
         }
 
-        public void RegisterComponent(ContainerBuilder builder)
+        protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<EfDataContext>()
                 .As<DbContext>()
@@ -39,23 +40,6 @@ namespace BeSide.Common.DependencyInjection
                 .As(typeof(IRepository<>))
                 .AsSelf().
                 InstancePerRequest();
-
-
-            #region Для всех репозиториев
-            //builder.RegisterType<BaseRepository<Category>>()
-            //    .As<IRepository<Category>>().AsSelf().InstancePerRequest();
-
-            //builder.RegisterType<BaseRepository<Order>>()
-            //    .As<IRepository<Order>>().AsSelf().InstancePerRequest();
-
-            //builder.RegisterType<BaseRepository<ProviderServices>>()
-            //    .As<IRepository<ProviderServices>>().AsSelf().InstancePerRequest();
-
-            //builder.RegisterType<BaseRepository<Service>>()
-            //    .As<IRepository<Service>>().AsSelf().InstancePerRequest();
-            #endregion
-
-
         }
     }
 }
