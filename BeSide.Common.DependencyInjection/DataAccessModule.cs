@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Data.Entity;
+using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using Autofac;
@@ -23,11 +24,11 @@ namespace BeSide.Common.DependencyInjection
             this.connectionString = connectionString;
         }
 
-        public void Configurate()
+        public void RegisterComponent(ContainerBuilder builder)
         {
-            var builder = new ContainerBuilder();
-
-            builder.RegisterControllers(typeof(Assembly).Assembly);
+            builder.RegisterType<EfDataContext>()
+                .As<DbContext>()
+                .InstancePerRequest();
 
             builder.RegisterType<UnitOfWork>()
                 .As<IUnitOfWork>()
@@ -54,9 +55,7 @@ namespace BeSide.Common.DependencyInjection
             //    .As<IRepository<Service>>().AsSelf().InstancePerRequest();
             #endregion
 
-            var container = builder.Build();
 
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }
 }

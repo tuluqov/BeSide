@@ -8,24 +8,18 @@ using Autofac;
 using Autofac.Integration.Mvc;
 using BeSide.BusinessLogic.BusinessComponents;
 using BeSide.BusinessLogic.Construct;
+using BeSide.Common.Entities;
 using BeSide.DataAccess.Construct;
+using Owin;
 
 namespace BeSide.Common.DependencyInjection
 {
     public class BusinessModule
     {
-        public void Configurate()
+        public void RegisterComponent(ContainerBuilder builder)
         {
-            var builder = new ContainerBuilder();
-
             builder.RegisterType<UserService>()
                 .As<IUserService>();
-
-
-
-            var container = builder.Build();
-
-            DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
     }
 }
