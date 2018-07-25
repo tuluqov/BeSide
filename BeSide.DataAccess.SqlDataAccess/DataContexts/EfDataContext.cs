@@ -1,4 +1,6 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Infrastructure.Design;
+using System.Web.Configuration;
 using BeSide.Common.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -16,7 +18,7 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
         {
         }
 
-        public EfDataContext() : base("Data Source=SC0486;Initial Catalog=Test;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False")
+        public EfDataContext() : base("DefaultConnection")
         {
         }
     }

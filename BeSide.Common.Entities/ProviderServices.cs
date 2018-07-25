@@ -1,10 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeSide.Common.Entities
 {
     public class ProviderServices : BaseEntity
     {
-        public int ProviderId { get; set; }
+        [Required]
+        public string ProviderId { get; set; }
         [ForeignKey(nameof(ProviderId))]
         public virtual UserProfile Provider { get; set; }
 

@@ -20,12 +20,13 @@ namespace BeSide.Common.Entities
         public virtual Service Service { get; set; }
 
         //Предоставляет услугу
-        public int IdProvider { get; set; }
+        [Required]
+        public string IdProvider { get; set; }
         [ForeignKey(nameof(IdProvider))]
         public virtual UserProfile Provider { get; set; }
 
         //Выполняет услугу
-        public int? IdClient { get; set; }
+        public string IdClient { get; set; }
         [ForeignKey(nameof(IdClient))]
         public virtual UserProfile Client { get; set; }
     }
