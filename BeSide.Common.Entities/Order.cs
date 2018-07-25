@@ -1,13 +1,19 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeSide.Common.Entities
 {
     public class Order : BaseEntity
     {
+        [Required]
+        [MaxLength(100)]
         public string ShortDescription { get; set; }
+        [Required]
+        [MaxLength(1000)]
         public string FullDescription { get; set; }
-        public int Price { get; set; }
-        public DateTime Deadline { get; set; }
+        public int? Price { get; set; }
+        public DateTime? Deadline { get; set; }
         public string PhoneNumber { get; set; }
 
         public int IdService { get; set; }
@@ -15,10 +21,12 @@ namespace BeSide.Common.Entities
 
         //Предоставляет услугу
         public int IdProvider { get; set; }
+        [ForeignKey(nameof(IdProvider))]
         public virtual UserProfile Provider { get; set; }
 
         //Выполняет услугу
         public int? IdClient { get; set; }
+        [ForeignKey(nameof(IdClient))]
         public virtual UserProfile Client { get; set; }
     }
 }
