@@ -62,7 +62,7 @@ namespace BeSide.BusinessLogic.BusinessComponents
                 await uow.UserManager.AddToRoleAsync(applicationUser.Id, userDto.Role);
 
                 // создаем профиль клиента
-                UserProfile userProfile = new UserProfile()
+                BaseProfile userProfile = new BaseProfile()
                 {
                     Id = applicationUser.Id,
                     FirstName = userDto.FirstName,

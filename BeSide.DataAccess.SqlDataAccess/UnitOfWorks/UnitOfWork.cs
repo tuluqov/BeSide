@@ -16,7 +16,7 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
         private IRepository<Order> orders;
         private IRepository<ProviderServices> providerServices;
         private IRepository<Service> services;
-        private IRepository<UserProfile> usersProfiles;
+        private IRepository<BaseProfile> usersProfiles;
 
         private UserManager<ApplicationUser> userManager;
         private RoleManager<ApplicationRole> roleManager;
@@ -56,9 +56,9 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
             get { return services ?? (services = new BaseRepository<Service>(context)); }
         }
 
-        public IRepository<UserProfile> UsersProfiles
+        public IRepository<BaseProfile> UsersProfiles
         {
-            get { return usersProfiles ?? (usersProfiles = new BaseRepository<UserProfile>(context)); }
+            get { return usersProfiles ?? (usersProfiles = new BaseRepository<BaseProfile>(context)); }
         }
 
         public UserManager<ApplicationUser> UserManager

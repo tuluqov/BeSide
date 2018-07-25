@@ -4,18 +4,22 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeSide.Common.Entities
 {
-    public class UserProfile
+    public class BaseProfile
     {
         [Key]
         [ForeignKey("ApplicationUser")]
         public string Id { get; set; }
 
+        [Required]
+        [MaxLength(50)]
         public string FirstName { get; set; }
+        [Required]
+        [MaxLength(50)]
         public string LastName { get; set; }
+        [Required]
+        [MaxLength(50)]
         public string Patronymic { get; set; }
-
-        public ICollection<Order> Orders { get; set; }
-
+        
         public int ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }

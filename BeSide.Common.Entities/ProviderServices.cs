@@ -6,12 +6,12 @@ namespace BeSide.Common.Entities
     public class ProviderServices : BaseEntity
     {
         [Required]
-        public string ProviderId { get; set; }
-        [ForeignKey(nameof(ProviderId))]
-        public virtual UserProfile Provider { get; set; }
+        public string ProviderProfileId { get; set; }
+        [ForeignKey(nameof(ProviderProfileId))]
+        public virtual ProviderProfile ProviderProfile { get; set; }
 
-        public int OrderId { get; set; }
-        [ForeignKey(nameof(OrderId))]
-        public virtual Order Order { get; set; }
+        public int ServiceId { get; set; }
+        [ForeignKey(nameof(ServiceId))]
+        public virtual Service Service { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,22 +13,31 @@ namespace BeSide.Common.Entities
         [Required]
         [MaxLength(1000)]
         public string FullDescription { get; set; }
+
+        [MaxLength(40)]
+        public string NameProvider { get; set; }
+
         public int? Price { get; set; }
+
+        public bool ContractPrice { get; set; }
+
         public DateTime? Deadline { get; set; }
+
+        [MaxLength(15)]
         public string PhoneNumber { get; set; }
 
-        public int IdService { get; set; }
-        public virtual Service Service { get; set; }
+        [MaxLength(40)]
+        public string City { get; set; }
 
-        //Предоставляет услугу
-        [Required]
-        public string IdProvider { get; set; }
-        [ForeignKey(nameof(IdProvider))]
-        public virtual UserProfile Provider { get; set; }
+        public int ProviderServicesId { get; set; }
+        [ForeignKey(nameof(ProviderServicesId))]
+        public virtual ProviderServices ProviderServices { get; set; }
 
-        //Выполняет услугу
-        public string IdClient { get; set; }
-        [ForeignKey(nameof(IdClient))]
-        public virtual UserProfile Client { get; set; }
+        //Разместил заказ
+        public string ClientProfileId { get; set; }
+        [ForeignKey(nameof(ClientProfileId))]
+        public virtual ClientProfile ClientProfile { get; set; }
+
+        public virtual ICollection<Feedback> Feedbacks { get; set; }
     }
 }
