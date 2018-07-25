@@ -58,19 +58,17 @@ namespace BeSide.BusinessLogic.BusinessComponents
                     return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
                 }
 
-                // добавляем роль
-                await uow.UserManager.AddToRoleAsync(applicationUser.Id, userDto.Role);
-
-                // создаем профиль клиента
-                BaseProfile userProfile = new BaseProfile()
+                switch (userDto.Role)
                 {
-                    Id = applicationUser.Id,
-                    FirstName = userDto.FirstName,
-                    LastName = userDto.LastName,
-                    Patronymic = userDto.Patronymic
-                };
+                    case "provider":
+                        await CreateProviderProfile(userDto, applicationUser);
+                        break;
 
-                uow.UsersProfiles.Create(userProfile);
+                    case "client":
+                        await CreateClientProfile(userDto, applicationUser);
+                        break;
+                }
+
                 uow.Save();
 
                 return new OperationDetails(true, "Регистрация успешно пройдена", "");
@@ -79,6 +77,36 @@ namespace BeSide.BusinessLogic.BusinessComponents
             {
                 return new OperationDetails(false, "Пользователь с таким логином уже существует", "Email");
             }
+        }
+
+        private async Task CreateClientProfile(UserDto userDto, ApplicationUser applicationUser)
+        {
+            ClientProfile profile = new ClientProfile
+            {
+                Id = applicationUser.Id,
+                FirstName = userDto.FirstName,
+                LastName = userDto.LastName,
+                Patronymic = userDto.Patronymic
+            };
+
+            // add role
+            await uow.UserManager.AddToRoleAsync(applicationUser.Id, userDto.Role);
+            uow.ClientProfiles.Create(profile);
+        }
+
+        private async Task CreateProviderProfile(UserDto userDto, ApplicationUser applicationUser)
+        {
+            ProviderProfile profile = new ProviderProfile
+            {
+                Id = applicationUser.Id,
+                FirstName = userDto.FirstName,
+                LastName = userDto.LastName,
+                Patronymic = userDto.Patronymic
+            };
+
+            // add role
+            await uow.UserManager.AddToRoleAsync(applicationUser.Id, userDto.Role);
+            uow.ProviderProfiles.Create(profile);
         }
 
         public async Task SetInitialData(UserDto admin, List<string> roles)

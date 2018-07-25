@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Data.Entity;
 using BeSide.Common.Entities;
 using BeSide.DataAccess.Construct;
 using BeSide.DataAccess.SqlDataAccess.DataContexts;
-using BeSide.DataAccess.SqlDataAccess.Repositories;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -11,80 +11,55 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
     public class UnitOfWork : IUnitOfWork
     {
         private readonly EfDataContext context;
-
-        private IRepository<Category> categories;
-        private IRepository<Order> orders;
-        private IRepository<ProviderServices> providerServices;
-        private IRepository<Service> services;
-        private IRepository<BaseProfile> usersProfiles;
-
-        private UserManager<ApplicationUser> userManager;
-        private RoleManager<ApplicationRole> roleManager;
-
         private bool disposed;
 
-
-        public UnitOfWork(string connectionString)
+        public UnitOfWork(EfDataContext context,
+            IRepository<Category> categories,
+            IRepository<Order> orders,
+            IRepository<ProviderServices> providerServices,
+            IRepository<Service> services,
+            IRepository<ProviderProfile> providerProfiles,
+            IRepository<ClientProfile> clientProfiles,
+            IRepository<Feedback> feedbacks,
+            UserManager<ApplicationUser> userManager,
+            RoleManager<ApplicationRole> roleManager)
         {
-            context = new EfDataContext(connectionString);
+            this.context = context;
+            Categories = categories;
+            Orders = orders;
+            ProviderServices = providerServices;
+            Services = services;
+            ProviderProfiles = providerProfiles;
+            ClientProfiles = clientProfiles;
+            Feedbacks = feedbacks;
+            UserManager = userManager;
+            RoleManager = roleManager;
         }
 
-        #region Implementation of IUnitOfWork
+        public DbContext EfContext => context;
 
-        public IdentityDbContext<ApplicationUser> IdentityUsers
-        {
-            get { return context; }
-        }
+        public IRepository<Category> Categories { get; }
 
-        public IRepository<Category> Categories
-        {
-            get { return categories ?? (categories = new BaseRepository<Category>(context)); }
-        }
+        public IRepository<Order> Orders { get; }
 
-        public IRepository<Order> Orders
-        {
-            get { return orders ?? (orders = new BaseRepository<Order>(context)); }
-        }
+        public IRepository<ProviderServices> ProviderServices { get; }
 
-        public IRepository<ProviderServices> ProviderServices
-        {
-            get { return providerServices ?? (providerServices = new BaseRepository<ProviderServices>(context)); }
-        }
+        public IRepository<Service> Services { get; }
 
-        public IRepository<Service> Services
-        {
-            get { return services ?? (services = new BaseRepository<Service>(context)); }
-        }
+        public IRepository<ProviderProfile> ProviderProfiles { get; }
 
-        public IRepository<BaseProfile> UsersProfiles
-        {
-            get { return usersProfiles ?? (usersProfiles = new BaseRepository<BaseProfile>(context)); }
-        }
+        public IRepository<ClientProfile> ClientProfiles { get; }
 
-        public UserManager<ApplicationUser> UserManager
-        {
-            get
-            {
-                return userManager ??
-                       (userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context)));
-            }
-        }
+        public IRepository<Feedback> Feedbacks { get; }
+        
+        public UserManager<ApplicationUser> UserManager { get; }
 
-        public RoleManager<ApplicationRole> RoleManager
-        {
-            get
-            {
-                return roleManager ??
-                       (roleManager = new RoleManager<ApplicationRole>(new RoleStore<ApplicationRole>(context)));
-            }
-        }
+        public RoleManager<ApplicationRole> RoleManager { get; }
 
         public void Save()
         {
             context.SaveChanges();
         }
-
-        #endregion
 
         public virtual void Dispose(bool disposing)
         {

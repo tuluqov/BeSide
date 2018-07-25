@@ -22,8 +22,12 @@ namespace BeSide.Presenter.WebSite
         public void ConfigureAutufac(IAppBuilder app)
         {
             var builder = new ContainerBuilder();
-            var executingAssembly = Assembly.GetExecutingAssembly();
-            builder.RegisterControllers(executingAssembly);
+
+            //var executingAssembly = Assembly.GetExecutingAssembly();
+            //builder.RegisterControllers(executingAssembly);
+
+            builder.RegisterControllers(typeof(MvcApplication).Assembly)
+                .InstancePerRequest();
 
             builder.RegisterModule(new DataAccessModule("DefaultConnection"));
             builder.RegisterModule(new BusinessModule());
@@ -35,7 +39,6 @@ namespace BeSide.Presenter.WebSite
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
-            //app.UseAutofacMvc();
         }
 
 

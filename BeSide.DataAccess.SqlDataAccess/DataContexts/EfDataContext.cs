@@ -12,7 +12,9 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
         public DbSet<Order> Orders { get; set; }
         public DbSet<ProviderServices> ProviderServiceses { get; set; }
         public DbSet<Service> Services { get; set; }
-        public DbSet<BaseProfile> UsersProfiles { get; set; }
+        public DbSet<ProviderProfile> ProviderProfiles { get; set; }
+        public DbSet<ClientProfile> ClientProfiles { get; set; }
+        public DbSet<Feedback> Feedbacks { get; set; }
 
         public EfDataContext(string connectionString) : base(connectionString)
         {

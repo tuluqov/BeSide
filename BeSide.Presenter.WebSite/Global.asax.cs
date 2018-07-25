@@ -15,9 +15,6 @@ namespace BeSide.Presenter.WebSite
     {
         protected void Application_Start()
         {
-            //инициализация ролей и одного админа
-            //Database.SetInitializer(new AccountDbInitializer());
-
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
