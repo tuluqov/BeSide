@@ -3,7 +3,7 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Migration : DbMigration
+    public partial class AddCompanyMigration : DbMigration
     {
         public override void Up()
         {

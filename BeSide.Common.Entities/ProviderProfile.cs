@@ -8,6 +8,6 @@ namespace BeSide.Common.Entities
 {
     public class ProviderProfile : BaseProfile
     {
-        public ICollection<Service> Services { get; set; }
+        public virtual ICollection<Service> Services { get; set; }
     }
 }
