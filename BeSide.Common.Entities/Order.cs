@@ -28,15 +28,17 @@ namespace BeSide.Common.Entities
 
         [MaxLength(40)]
         public string City { get; set; }
-
-        public int ProviderServicesId { get; set; }
-        [ForeignKey(nameof(ProviderServicesId))]
-        public virtual ProviderServices ProviderServices { get; set; }
+        
 
         //Разместил заказ
         public string ClientProfileId { get; set; }
         [ForeignKey(nameof(ClientProfileId))]
         public virtual ClientProfile ClientProfile { get; set; }
+
+        //Исполняет
+        public string ProviderProfileId { get; set; }
+        [ForeignKey(nameof(ProviderProfileId))]
+        public virtual ProviderProfile ProviderProfile { get; set; }
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
     }

@@ -25,17 +25,16 @@ namespace BeSide.Presenter.WebSite
 
             //var executingAssembly = Assembly.GetExecutingAssembly();
             //builder.RegisterControllers(executingAssembly);
+            
+            builder.RegisterModule(new DataAccessModule("DefaultConnection"));
+            builder.RegisterModule(new BusinessModule());
 
             builder.RegisterControllers(typeof(MvcApplication).Assembly)
                 .InstancePerRequest();
 
-            builder.RegisterModule(new DataAccessModule("DefaultConnection"));
-            builder.RegisterModule(new BusinessModule());
-
             var dataProtectionProvider = app.GetDataProtectionProvider();
             builder.Register<UserManager<ApplicationUser>>((c, p) => BuildUserManager(c, p, dataProtectionProvider));
             builder.RegisterType<UserStore<ApplicationUser>>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
-            builder.Register<IAuthenticationManager>((c, p) => c.Resolve<IOwinContext>().Authentication).InstancePerRequest();
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));

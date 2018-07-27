@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Infrastructure.Design;
 using System.Web.Configuration;
 using BeSide.Common.Entities;
@@ -20,8 +21,33 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
         {
         }
 
-        public EfDataContext() : base("DefaultConnection2")
+        public EfDataContext() : base("DefaultConnection")
         {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<ProviderProfile>().HasMany(c => c.Services)
+                .WithMany(s => s.ProviderProfiles)
+                .Map(t => t.MapLeftKey("ProviderProfileId")
+                    .MapRightKey("ServiceId")
+                    .ToTable("ProviderServiceses"));
+
+            modelBuilder.Entity<ProviderProfile>()
+                .Map(m =>
+                {
+                    m.MapInheritedProperties();
+                    m.ToTable("ProviderProfiles");
+                });
+
+            modelBuilder.Entity<ClientProfile>()
+                .Map(m =>
+                {
+                    m.MapInheritedProperties();
+                    m.ToTable("ClientProfiles");
+                });
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

@@ -76,9 +76,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContexts\EfDataContext.cs" />
-    <Compile Include="Migrations\201807261341051_AddCompanyMigration.cs" />
-    <Compile Include="Migrations\201807261341051_AddCompanyMigration.Designer.cs">
-      <DependentUpon>201807261341051_AddCompanyMigration.cs</DependentUpon>
+    <Compile Include="Migrations\201807270751130_Migration.cs" />
+    <Compile Include="Migrations\201807270751130_Migration.Designer.cs">
+      <DependentUpon>201807270751130_Migration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,8 +100,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807261341051_AddCompanyMigration.resx">
-      <DependentUpon>201807261341051_AddCompanyMigration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807270751130_Migration.resx">
+      <DependentUpon>201807270751130_Migration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
