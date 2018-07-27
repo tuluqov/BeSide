@@ -1,45 +1,131 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title – приложение ASP.NET</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-
+    <title>Free Education Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href="../../Content/css/bootstrap.css">
+    <link rel="stylesheet" href="../../Content/css/animate.css">
+    <link rel="stylesheet" href="../../Content/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../../Content/fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="../../Content/fonts/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../Content/fonts/flaticon/font/flaticon.css">
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="../../Content/css/style.css">
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+    <header role="banner">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand absolute" href="../Home/Index.cshtml">BeSide</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
                 </button>
-                @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/Views/Home/Index.cshtml">Домой</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="courses.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown04">
+                                <a class="dropdown-item" href="courses.html">Заказы</a>
+                                <a class="dropdown-item" href="courses.html">Исполнители</a>
+                            </div>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdown05">
+                                <a class="dropdown-item" href="#">HTML</a>
+                                <a class="dropdown-item" href="#">WordPress</a>
+                                <a class="dropdown-item" href="#">Laravel</a>
+                                <a class="dropdown-item" href="#">JavaScript</a>
+                                <a class="dropdown-item" href="#">Python</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="blog.html">Блог</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">О нас</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">Контакты</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav absolute-right">
+                        <li>
+                            <a href="../Account/Login.cshtml">Войти</a> / <a href="../Account/Register.cshtml">Регистрация</a>
+                        </li>
+                    </ul>
+
+                </div>
             </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-                    <li>@Html.ActionLink("О программе", "About", "Home")</li>
-                    <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
+        </nav>
+    </header>
+
+    @RenderBody()
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                    <h3>BeSide</h3>
+                    <p>Выполняй и находи исполнителей.</p>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                    <h3 class="heading">Прямая ссылка</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Домой</a></li>
+                                <li><a href="#">О нас</a></li>
+                                <li><a href="#">Заказы</a></li>
+                                <li><a href="#">Исполнители</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Новости</a></li>
+                                <li><a href="#">Поддержка</a></li>
+                                <li><a href="#">Контакты</a></li>
+                                <li><a href="#">Секретно</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
+                    <h3 class="heading">Contact Information</h3>
+                    <div class="block-23">
+                        <ul>
+                            <li><span class="icon ion-android-pin"></span><span class="text">ул. Филимонова 15, Минск, Беларусь</span></li>
+                            <li><a href="#"><span class="icon ion-ios-telephone"></span><span class="text">+375(25) 636-86-10</span></a></li>
+                            <li><a href="#"><span class="icon ion-android-mail"></span><span class="text">usup1999@gmail.com</span></a></li>
+                            <li><span class="icon ion-android-time"></span><span class="text">Понедельник &mdash; Пятница 8:00 - 17:00</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-5">
+                <div class="col-md-12 text-center copyright">
+
+                    <p class="float-md-left">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Sam Solutions &copy;
+                        <script>document.write(new Date().getFullYear());</script> Сделано с душою <i class="fa fa-heart" aria-hidden="true"></i></a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                    <p class="float-md-right">
+                        <a href="#" class="fa fa-facebook p-2"></a>
+                        <a href="#" class="fa fa-twitter p-2"></a>
+                        <a href="https://www.linkedin.com/in/yusup-tulukov-17981a14a/" class="fa fa-linkedin p-2"></a>
+                        <a href="https://www.instagram.com/yusup_95_05/" class="fa fa-instagram p-2"></a>
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
-        </footer>
-    </div>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    </footer>
 </body>
 </html>
