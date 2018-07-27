@@ -9,7 +9,8 @@ namespace BeSide.Common.DependencyInjection
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<UserService>()
-                .As<IUserService>();
+                .As<IUserService>()
+                .InstancePerRequest();
         }
     }
 }

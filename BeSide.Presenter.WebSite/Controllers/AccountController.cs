@@ -29,20 +29,23 @@ namespace BeSide.Presenter.WebSite.Controllers
             }
         }
 
-        [AllowAnonymous]
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         public AccountController(IUserService userService)
         {
             this.userService = userService;
         }
 
         [AllowAnonymous]
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
         public ActionResult Login()
         {
+            if (User.Identity.IsAuthenticated)
+                return RedirectToAction("Index", "Home");
             return View();
         }
 
@@ -82,11 +85,7 @@ namespace BeSide.Presenter.WebSite.Controllers
             return View(model);
         }
 
-        public ActionResult Logout()
-        {
-            AuthenticationManager.SignOut();
-            return RedirectToAction("Index", "Home");
-        }
+        
 
         [HttpGet]
         public ActionResult Register()
@@ -123,6 +122,7 @@ namespace BeSide.Presenter.WebSite.Controllers
 
             return View(model);
         }
+
         private async Task SetInitialDataAsync()
         {
             await userService.SetInitialData(new UserDto
@@ -130,11 +130,8 @@ namespace BeSide.Presenter.WebSite.Controllers
                 Email = "admin@gmail.com",
                 UserName = "admin@gmail.com",
                 Password = "123456Qq_",
-                Role = "admin",
-                FirstName = "Admin",
-                LastName = "Admin",
-                Patronymic = "Admin"
-            }, new List<string> { "user", "admin" });
+                Role = "admin"
+            }, new List<string> { "client", "provider", "admin" });
         }
 
         

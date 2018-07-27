@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Reflection;
 using System.Web.Mvc;
 using Autofac;
 using Autofac.Core;
@@ -10,8 +9,6 @@ using BeSide.Common.Entities;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin;
-using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.DataProtection;
 using Owin;
 
@@ -23,28 +20,34 @@ namespace BeSide.Presenter.WebSite
         {
             var builder = new ContainerBuilder();
 
-            //var executingAssembly = Assembly.GetExecutingAssembly();
-            //builder.RegisterControllers(executingAssembly);
-            
-            builder.RegisterModule(new DataAccessModule("DefaultConnection"));
+            builder.RegisterControllers(typeof(MvcApplication).Assembly);
+
+            builder.RegisterModule(new DataAccessModule());
             builder.RegisterModule(new BusinessModule());
 
-            builder.RegisterControllers(typeof(MvcApplication).Assembly)
+
+            builder.RegisterType<UserStore<ApplicationUser>>().
+                As<IUserStore<ApplicationUser>>()
                 .InstancePerRequest();
 
-            var dataProtectionProvider = app.GetDataProtectionProvider();
-            builder.Register<UserManager<ApplicationUser>>((c, p) => BuildUserManager(c, p, dataProtectionProvider));
-            builder.RegisterType<UserStore<ApplicationUser>>().As<IUserStore<ApplicationUser>>().InstancePerRequest();
+            builder.RegisterType<RoleStore<ApplicationRole>>().
+                As<IRoleStore<ApplicationRole, string>>()
+                .InstancePerRequest();
+
+            builder.RegisterType<ApplicationRoleManager>()
+                .As<RoleManager<ApplicationRole>>()
+                .InstancePerRequest();
+
+            builder.RegisterType<ApplicationUserManager>()
+                .As<UserManager<ApplicationUser>>()
+                .InstancePerRequest();
+
 
             var container = builder.Build();
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
-
-        //builder.RegisterType<ApplicationSignInManager>().As<SignInManager<ApplicationUser, string>>().InstancePerRequest();
-
-
-
+        
         private UserManager<ApplicationUser> BuildUserManager(IComponentContext context, IEnumerable<Parameter> parameters, IDataProtectionProvider dataProtectionProvider)
         {
             var manager = new UserManager<ApplicationUser>(context.Resolve<IUserStore<ApplicationUser>>());

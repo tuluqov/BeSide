@@ -10,10 +10,10 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private readonly EfDataContext context;
+        private readonly DbContext context;
         private bool disposed;
 
-        public UnitOfWork(EfDataContext context,
+        public UnitOfWork(DbContext context,
             IRepository<Category> categories,
             IRepository<Order> orders,
             IRepository<ProviderServices> providerServices,

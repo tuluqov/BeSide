@@ -55,7 +55,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationRole.cs" />
+    <Compile Include="ApplicationRoleManager.cs" />
     <Compile Include="ApplicationUser.cs" />
+    <Compile Include="ApplicationUserManager.cs" />
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="ClientProfile.cs" />

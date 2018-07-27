@@ -18,28 +18,18 @@ namespace BeSide.Common.DependencyInjection
 {
     public class DataAccessModule : Module
     {
-        private readonly string connectionString;
-
-        public DataAccessModule(string connectionString)
-        {
-            this.connectionString = connectionString;
-        }
-
         protected override void Load(ContainerBuilder builder)
         {
             builder.RegisterType<EfDataContext>()
-                .As<DbContext>()
-                .InstancePerRequest();
+                .As<DbContext>();
 
             builder.RegisterType<UnitOfWork>()
-                .As<IUnitOfWork>()
-                .WithParameter("connectionString", connectionString);
+                .As<IUnitOfWork>();
 
             //Универсальный метод для всех обобщенных репозиториев
             builder.RegisterGeneric(typeof(BaseRepository<>))
                 .As(typeof(IRepository<>))
-                .AsSelf().
-                InstancePerRequest();
+                .AsSelf();
         }
     }
 }

@@ -67,6 +67,9 @@ namespace BeSide.BusinessLogic.BusinessComponents
                     case "client":
                         await CreateClientProfile(userDto, applicationUser);
                         break;
+
+                    case "admin":
+                        break;
                 }
 
                 uow.Save();
