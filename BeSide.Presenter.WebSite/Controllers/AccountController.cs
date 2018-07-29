@@ -6,9 +6,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using BeSide.BusinessLogic.BusinessComponents.Infrastructure;
 using BeSide.BusinessLogic.Construct;
 using BeSide.BusinessLogic.Construct.DTO;
+using BeSide.BusinessLogic.Construct.Infrastructure;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
@@ -51,7 +51,6 @@ namespace BeSide.Presenter.WebSite.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
             await SetInitialDataAsync();
@@ -96,7 +95,6 @@ namespace BeSide.Presenter.WebSite.Controllers
 
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
             await SetInitialDataAsync();

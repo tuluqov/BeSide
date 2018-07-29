@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using BeSide.BusinessLogic.BusinessComponents.Infrastructure;
 using BeSide.BusinessLogic.Construct.DTO;
+using BeSide.BusinessLogic.Construct.Infrastructure;
 
 namespace BeSide.BusinessLogic.Construct
 {
