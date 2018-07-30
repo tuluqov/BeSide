@@ -72,13 +72,18 @@
                     <ul class="navbar-nav absolute-right">
                         @if (Request.IsAuthenticated)
                         {
-                            <li>
-                                @Html.RouteLink("Выйти", new
-                                {
-                                    controller = "Account",
-                                    action = "LogOff"
-                                })
-                            </li>
+                        <li>
+                            @Html.RouteLink(@User.Identity.Name, new
+                            {
+                                controller = "Account",
+                                action = "LogOff"
+                            }) / 
+                            @Html.RouteLink("Выйти", new
+                            {
+                                controller = "Account",
+                                action = "LogOff"
+                            })
+                        </li>
                         }
                         else
                         {

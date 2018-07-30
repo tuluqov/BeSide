@@ -8,7 +8,7 @@ namespace BeSide.BusinessLogic.Construct
 {
     public interface IUserService
     {
-        Task<OperationDetails> Create(UserDto user);
+        OperationDetails Create(UserDto user);
         Task<ClaimsIdentity> Authenticate(UserDto user);
         Task SetInitialData(UserDto admin, List<string> roles);
     }

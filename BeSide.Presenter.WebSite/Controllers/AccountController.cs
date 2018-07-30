@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -9,8 +6,6 @@ using System.Web.Mvc;
 using BeSide.BusinessLogic.Construct;
 using BeSide.BusinessLogic.Construct.DTO;
 using BeSide.BusinessLogic.Construct.Infrastructure;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using BeSide.Presenter.WebSite.Models;
 
@@ -53,7 +48,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
-            await SetInitialDataAsync();
+            //await SetInitialDataAsync();
 
             if (ModelState.IsValid)
             {
@@ -97,7 +92,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            await SetInitialDataAsync();
+            //await SetInitialDataAsync();
 
             if (ModelState.IsValid)
             {
@@ -112,12 +107,22 @@ namespace BeSide.Presenter.WebSite.Controllers
                     Patronymic = model.Patronymic
                 };
 
-                OperationDetails operationDetails = await userService.Create(userDto);
+                OperationDetails operationDetails = userService.Create(userDto);
 
                 if (operationDetails.Succedeed)
-                    return View();
+                {
+                    await Login(new LoginViewModel
+                    {
+                        Email = model.Email,
+                        Password = model.Password
+                    });
+
+                    return RedirectToAction("Index", "Home");
+                }
                 else
+                {
                     ModelState.AddModelError(operationDetails.Property, operationDetails.Message);
+                }
             }
 
             return View(model);

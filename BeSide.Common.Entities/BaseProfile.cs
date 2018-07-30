@@ -20,7 +20,6 @@ namespace BeSide.Common.Entities
         [MaxLength(50)]
         public string Patronymic { get; set; }
         
-        public int ApplicationUserId { get; set; }
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

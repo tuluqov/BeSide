@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -39,11 +37,11 @@ namespace BeSide.BusinessLogic.BusinessComponents
             return claim;
         }
 
-        public async Task<OperationDetails> Create(UserDto userDto)
+        public OperationDetails Create(UserDto userDto)
         {
-            ApplicationUser applicationUser = await uow.UserManager.FindByEmailAsync(userDto.Email);
+            ApplicationUser applicationUser = uow.UserManager.FindByEmail(userDto.Email);
 
-            if (applicationUser != null)
+            if (applicationUser == null)
             {
                 applicationUser = new ApplicationUser
                 {
@@ -51,7 +49,9 @@ namespace BeSide.BusinessLogic.BusinessComponents
                     UserName = userDto.UserName
                 };
 
-                var result = await uow.UserManager.CreateAsync(applicationUser, userDto.Password);
+                var result = uow.UserManager.Create(applicationUser, userDto.Password);
+
+                
 
                 if (result.Errors.Any())
                 {
@@ -61,11 +61,11 @@ namespace BeSide.BusinessLogic.BusinessComponents
                 switch (userDto.Role)
                 {
                     case "provider":
-                        await CreateProviderProfile(userDto, applicationUser);
+                        CreateProviderProfile(userDto, applicationUser);
                         break;
 
                     case "client":
-                        await CreateClientProfile(userDto, applicationUser);
+                        CreateClientProfile(userDto, applicationUser);
                         break;
 
                     case "admin":
@@ -82,7 +82,7 @@ namespace BeSide.BusinessLogic.BusinessComponents
             }
         }
 
-        private async Task CreateClientProfile(UserDto userDto, ApplicationUser applicationUser)
+        private void CreateClientProfile(UserDto userDto, ApplicationUser applicationUser)
         {
             ClientProfile profile = new ClientProfile
             {
@@ -93,11 +93,11 @@ namespace BeSide.BusinessLogic.BusinessComponents
             };
 
             // add role
-            await uow.UserManager.AddToRoleAsync(applicationUser.Id, userDto.Role);
+            uow.UserManager.AddToRole(applicationUser.Id, userDto.Role);
             uow.ClientProfiles.Create(profile);
         }
 
-        private async Task CreateProviderProfile(UserDto userDto, ApplicationUser applicationUser)
+        private void CreateProviderProfile(UserDto userDto, ApplicationUser applicationUser)
         {
             ProviderProfile profile = new ProviderProfile
             {
@@ -108,7 +108,7 @@ namespace BeSide.BusinessLogic.BusinessComponents
             };
 
             // add role
-            await uow.UserManager.AddToRoleAsync(applicationUser.Id, userDto.Role);
+            uow.UserManager.AddToRole(applicationUser.Id, userDto.Role);
             uow.ProviderProfiles.Create(profile);
         }
 
@@ -125,7 +125,7 @@ namespace BeSide.BusinessLogic.BusinessComponents
                 }
             }
 
-            await Create(admin);
+            Create(admin);
         }
     }
 }

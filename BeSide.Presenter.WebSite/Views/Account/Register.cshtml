@@ -58,37 +58,37 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.FirstName, "Имя")
-                                @Html.PasswordFor(m => m.FirstName, new { @class = "form-control py-2" })
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control py-2" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.LastName, "Фамилия")
-                                @Html.PasswordFor(m => m.LastName, new { @class = "form-control py-2" })
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control py-2" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Patronymic, "Отчество")
-                                @Html.PasswordFor(m => m.Patronymic, new { @class = "form-control py-2" })
+                                @Html.TextBoxFor(m => m.Patronymic, new { @class = "form-control py-2" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.PhoneNumber, "Номер телефона")
-                                @Html.PasswordFor(m => m.PhoneNumber, new { @class = "form-control py-2" })
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control py-2" })
                             </div>
                         </div>
                         <div class="row mb-5">
                             <div class="col-md-12 form-group">
                                 <div class="custom-control custom-radio">
-                                    @Html.RadioButtonFor(m => m.Role, "provider", new { @class = "custom-control-input" })
-                                    @Html.LabelFor(m => m.Role, "Провайдер", new { @class = "custom-control-label" })
+                                    @Html.RadioButtonFor(m => m.Role, "provider", new { @class = "custom-control-input", id="Role1" })
+                                    @Html.LabelFor(m => m.Role, "Провайдер", new { @class = "custom-control-label", @for="Role1" })
                                 </div>
 
                                 <div class="custom-control custom-radio">
-                                    @Html.RadioButtonFor(m => m.Role, "client", new { @class = "custom-control-input" })
-                                    @Html.LabelFor(m => m.Role, "Клиент", new { @class = "custom-control-label" })
+                                    @Html.RadioButtonFor(m => m.Role, "client", new { @class = "custom-control-input", id = "Role2" })
+                                    @Html.LabelFor(m => m.Role, "Клиент", new { @class = "custom-control-label", @for = "Role2" })
                                 </div>
                             </div>
                         </div>

@@ -21,7 +21,8 @@ namespace BeSide.DataAccess.SqlDataAccess.Repositories
 
         public T Create(T item)
         {
-            Items.Add(item);
+            //Items.Add(item);
+            Items.Attach(item);
             return item;
         }
 

@@ -2,9 +2,7 @@
 using System.Data.Entity;
 using BeSide.Common.Entities;
 using BeSide.DataAccess.Construct;
-using BeSide.DataAccess.SqlDataAccess.DataContexts;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
 {
