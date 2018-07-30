@@ -1,7 +1,4 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity.Infrastructure.Design;
-using System.Web.Configuration;
 using BeSide.Common.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -11,9 +8,7 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
     {
         public DbSet<Category> Categories { get; set; }
         public DbSet<Order> Orders { get; set; }
-        public DbSet<ProviderServices> ProviderServiceses { get; set; }
         public DbSet<Service> Services { get; set; }
-        public DbSet<ProviderProfile> ProviderProfiles { get; set; }
         public DbSet<ClientProfile> ClientProfiles { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
 
@@ -21,7 +16,7 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
         {
         }
 
-        public EfDataContext() : base("DefaultConnection2")
+        public EfDataContext() : base("DefaultConnection")
         {
         }
 
@@ -33,19 +28,19 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
                     .MapRightKey("ServiceId")
                     .ToTable("ProviderServiceses"));
 
-            modelBuilder.Entity<ProviderProfile>()
-                .Map(m =>
-                {
-                    m.MapInheritedProperties();
-                    m.ToTable("ProviderProfiles");
-                });
+            //modelBuilder.Entity<ProviderProfile>()
+            //    .Map(m =>
+            //    {
+            //        m.MapInheritedProperties();
+            //        m.ToTable("ProviderProfiles");
+            //    });
 
-            modelBuilder.Entity<ClientProfile>()
-                .Map(m =>
-                {
-                    m.MapInheritedProperties();
-                    m.ToTable("ClientProfiles");
-                });
+            //modelBuilder.Entity<ClientProfile>()
+            //    .Map(m =>
+            //    {
+            //        m.MapInheritedProperties();
+            //        m.ToTable("ClientProfiles");
+            //    });
 
             base.OnModelCreating(modelBuilder);
         }

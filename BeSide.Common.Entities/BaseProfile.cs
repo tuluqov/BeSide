@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeSide.Common.Entities
 {
-    public abstract class BaseProfile
+    public class BaseProfile
     {
         [Key]
         [ForeignKey("ApplicationUser")]

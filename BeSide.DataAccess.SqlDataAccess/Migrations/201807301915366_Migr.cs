@@ -3,7 +3,7 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Migration : DbMigration
+    public partial class Migr : DbMigration
     {
         public override void Up()
         {
@@ -123,20 +123,6 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
                 .Index(t => t.OrderId);
             
             CreateTable(
-                "dbo.ProviderServices",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        ProviderProfileId = c.String(nullable: false, maxLength: 128),
-                        ServiceId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ProviderProfiles", t => t.ProviderProfileId)
-                .ForeignKey("dbo.Services", t => t.ServiceId, cascadeDelete: true)
-                .Index(t => t.ProviderProfileId)
-                .Index(t => t.ServiceId);
-            
-            CreateTable(
                 "dbo.AspNetRoles",
                 c => new
                     {
@@ -168,7 +154,6 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
                         FirstName = c.String(nullable: false, maxLength: 50),
                         LastName = c.String(nullable: false, maxLength: 50),
                         Patronymic = c.String(nullable: false, maxLength: 50),
-                        ApplicationUserId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.Id)
@@ -182,7 +167,6 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
                         FirstName = c.String(nullable: false, maxLength: 50),
                         LastName = c.String(nullable: false, maxLength: 50),
                         Patronymic = c.String(nullable: false, maxLength: 50),
-                        ApplicationUserId = c.Int(nullable: false),
                         CompanyName = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
@@ -196,8 +180,6 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
             DropForeignKey("dbo.ProviderProfiles", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.ClientProfiles", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.ProviderServices", "ServiceId", "dbo.Services");
-            DropForeignKey("dbo.ProviderServices", "ProviderProfileId", "dbo.ProviderProfiles");
             DropForeignKey("dbo.ProviderServiceses", "ServiceId", "dbo.Services");
             DropForeignKey("dbo.ProviderServiceses", "ProviderProfileId", "dbo.ProviderProfiles");
             DropForeignKey("dbo.Orders", "ProviderProfileId", "dbo.ProviderProfiles");
@@ -213,8 +195,6 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
             DropIndex("dbo.ProviderServiceses", new[] { "ServiceId" });
             DropIndex("dbo.ProviderServiceses", new[] { "ProviderProfileId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropIndex("dbo.ProviderServices", new[] { "ServiceId" });
-            DropIndex("dbo.ProviderServices", new[] { "ProviderProfileId" });
             DropIndex("dbo.Feedbacks", new[] { "OrderId" });
             DropIndex("dbo.Feedbacks", new[] { "ProviderProfileId" });
             DropIndex("dbo.Orders", new[] { "ProviderProfileId" });
@@ -229,7 +209,6 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
             DropTable("dbo.ClientProfiles");
             DropTable("dbo.ProviderServiceses");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.ProviderServices");
             DropTable("dbo.Feedbacks");
             DropTable("dbo.Orders");
             DropTable("dbo.AspNetUserRoles");

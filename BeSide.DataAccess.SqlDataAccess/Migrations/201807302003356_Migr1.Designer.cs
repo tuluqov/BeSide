@@ -7,13 +7,13 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class Migration1 : IMigrationMetadata
+    public sealed partial class Migr1 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(Migration1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Migr1));
         
         string IMigrationMetadata.Id
         {
-            get { return "201807301351227_Migration1"; }
+            get { return "201807302003356_Migr1"; }
         }
         
         string IMigrationMetadata.Source

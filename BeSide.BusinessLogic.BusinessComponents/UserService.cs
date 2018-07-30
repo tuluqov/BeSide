@@ -51,7 +51,7 @@ namespace BeSide.BusinessLogic.BusinessComponents
 
                 var result = uow.UserManager.Create(applicationUser, userDto.Password);
 
-                
+
 
                 if (result.Errors.Any())
                 {

@@ -76,13 +76,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContexts\EfDataContext.cs" />
-    <Compile Include="Migrations\201807270751130_Migration.cs" />
-    <Compile Include="Migrations\201807270751130_Migration.Designer.cs">
-      <DependentUpon>201807270751130_Migration.cs</DependentUpon>
+    <Compile Include="Migrations\201807301915366_Migr.cs" />
+    <Compile Include="Migrations\201807301915366_Migr.Designer.cs">
+      <DependentUpon>201807301915366_Migr.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807301351227_Migration1.cs" />
-    <Compile Include="Migrations\201807301351227_Migration1.Designer.cs">
-      <DependentUpon>201807301351227_Migration1.cs</DependentUpon>
+    <Compile Include="Migrations\201807302003356_Migr1.cs" />
+    <Compile Include="Migrations\201807302003356_Migr1.Designer.cs">
+      <DependentUpon>201807302003356_Migr1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -104,11 +104,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807270751130_Migration.resx">
-      <DependentUpon>201807270751130_Migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807301915366_Migr.resx">
+      <DependentUpon>201807301915366_Migr.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807301351227_Migration1.resx">
-      <DependentUpon>201807301351227_Migration1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807302003356_Migr1.resx">
+      <DependentUpon>201807302003356_Migr1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
