@@ -28,19 +28,19 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
                     .MapRightKey("ServiceId")
                     .ToTable("ProviderServiceses"));
 
-            //modelBuilder.Entity<ProviderProfile>()
-            //    .Map(m =>
-            //    {
-            //        m.MapInheritedProperties();
-            //        m.ToTable("ProviderProfiles");
-            //    });
+            modelBuilder.Entity<ProviderProfile>()
+                .Map(m =>
+                {
+                    m.MapInheritedProperties();
+                    m.ToTable("ProviderProfiles");
+                });
 
-            //modelBuilder.Entity<ClientProfile>()
-            //    .Map(m =>
-            //    {
-            //        m.MapInheritedProperties();
-            //        m.ToTable("ClientProfiles");
-            //    });
+            modelBuilder.Entity<ClientProfile>()
+                .Map(m =>
+                {
+                    m.MapInheritedProperties();
+                    m.ToTable("ClientProfiles");
+                });
 
             base.OnModelCreating(modelBuilder);
         }
