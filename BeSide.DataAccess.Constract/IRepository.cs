@@ -6,11 +6,12 @@ namespace BeSide.DataAccess.Construct
     public interface IRepository<T>
         where T : class
     {
-        T Create(T item);
-        T Update(T item);
-        T Delete(int id);
-        T GetById(int id);
+        void Create(T item);
+        void Update(T item);
+        void Delete(object id);
+        T GetById(object id);
         IEnumerable<T> GetAll();
         IEnumerable<T> Find(Func<T, Boolean> predicate);
+        void Save();
     }
 }

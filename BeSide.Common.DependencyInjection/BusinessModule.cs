@@ -11,6 +11,18 @@ namespace BeSide.Common.DependencyInjection
             builder.RegisterType<UserService>()
                 .As<IUserService>()
                 .InstancePerRequest();
+
+            builder.RegisterType<AdminService>()
+                .As<IAdminService>()
+                .InstancePerRequest();
+
+            builder.RegisterType<CategoryService>()
+                .As<ICategoryService>()
+                .InstancePerRequest();
+
+            builder.RegisterType<ServiceService>()
+                .As<ISeviceService>()
+                .InstancePerRequest();
         }
     }
 }

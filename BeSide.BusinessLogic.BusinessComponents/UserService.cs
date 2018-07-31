@@ -69,6 +69,7 @@ namespace BeSide.BusinessLogic.BusinessComponents
                         break;
 
                     case "admin":
+                        uow.UserManager.AddToRole(applicationUser.Id, userDto.Role);
                         break;
                 }
 

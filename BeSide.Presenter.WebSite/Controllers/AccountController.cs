@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using BeSide.BusinessLogic.Construct;
+using BeSide.BusinessLogic.Construct.DTO;
+using BeSide.BusinessLogic.Construct.Infrastructure;
+using BeSide.Presenter.WebSite.Models;
+using Microsoft.Owin.Security;
+using System.Collections.Generic;
 using System.Security.Claims;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using BeSide.BusinessLogic.Construct;
-using BeSide.BusinessLogic.Construct.DTO;
-using BeSide.BusinessLogic.Construct.Infrastructure;
-using Microsoft.Owin.Security;
-using BeSide.Presenter.WebSite.Models;
 
 namespace BeSide.Presenter.WebSite.Controllers
 {
@@ -28,12 +27,6 @@ namespace BeSide.Presenter.WebSite.Controllers
         public AccountController(IUserService userService)
         {
             this.userService = userService;
-        }
-
-        [AllowAnonymous]
-        public ActionResult Index()
-        {
-            return View();
         }
 
         [HttpGet]
@@ -128,7 +121,7 @@ namespace BeSide.Presenter.WebSite.Controllers
 
             return View(model);
         }
-
+        
         private async Task SetInitialDataAsync()
         {
             await userService.SetInitialData(new UserDto

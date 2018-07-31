@@ -1,0 +1,38 @@
+﻿@using BeSide.Common.Entities
+@model IEnumerable<BeSide.Common.Entities.ApplicationUser>
+
+@{
+    Layout = "../Shared/AdminPanel.cshtml";
+    ViewBag.Title = "Пользователи";
+}
+
+<div class="col-md-12 text-center">
+    <h2>Пользователи</h2>
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Email</th>
+                <th scope="col">Имя</th>
+                <th scope="col">Фамилия</th>
+                <th scope="col">Отчество</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (ApplicationUser user in Model)
+            {
+                if (user.Email == "admin@gmail.com")
+                {
+                    continue;
+                }
+                <tr>
+                    <td>@user.Email</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+

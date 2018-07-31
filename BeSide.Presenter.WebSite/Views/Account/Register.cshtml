@@ -5,6 +5,11 @@
     Layout = "../Shared/_Layout.cshtml";
 }
 
+@if (Request.IsAuthenticated)
+{
+    Response.Redirect("~/Home/Index");
+}
+
 <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(../../Content/images/big_image_2.jpg);">
     <div class="container">
         <div class="row align-items-center justify-content-center site-hero-sm-inner">
@@ -36,6 +41,8 @@
                     <h2 class="mb-5">Зарегистрировать новый аккаунт</h2>
                     @using (Html.BeginForm("Register", "Account", FormMethod.Post))
                     {
+                        @*@Html.AntiForgeryToken();*@
+                        @Html.ValidationSummary("", new {@class = "text-danger"})
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Email, "Email")
@@ -82,8 +89,8 @@
                         <div class="row mb-5">
                             <div class="col-md-12 form-group">
                                 <div class="custom-control custom-radio">
-                                    @Html.RadioButtonFor(m => m.Role, "provider", new { @class = "custom-control-input", id="Role1" })
-                                    @Html.LabelFor(m => m.Role, "Провайдер", new { @class = "custom-control-label", @for="Role1" })
+                                    @Html.RadioButtonFor(m => m.Role, "provider", new { @class = "custom-control-input", id = "Role1" })
+                                    @Html.LabelFor(m => m.Role, "Провайдер", new { @class = "custom-control-label", @for = "Role1" })
                                 </div>
 
                                 <div class="custom-control custom-radio">

@@ -3,7 +3,7 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Migr : DbMigration
+    public partial class A : DbMigration
     {
         public override void Up()
         {
@@ -27,6 +27,19 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
                 .Index(t => t.CategoryId);
+            
+            CreateTable(
+                "dbo.BaseProfiles",
+                c => new
+                    {
+                        Id = c.String(nullable: false, maxLength: 128),
+                        FirstName = c.String(nullable: false, maxLength: 50),
+                        LastName = c.String(nullable: false, maxLength: 50),
+                        Patronymic = c.String(nullable: false, maxLength: 50),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.AspNetUsers", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -134,7 +147,7 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
                 .Index(t => t.Name, unique: true, name: "RoleNameIndex");
             
             CreateTable(
-                "dbo.ProviderServiceses",
+                "dbo.ProviderServices",
                 c => new
                     {
                         ProviderProfileId = c.String(nullable: false, maxLength: 128),
@@ -180,20 +193,21 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
             DropForeignKey("dbo.ProviderProfiles", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.ClientProfiles", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropForeignKey("dbo.ProviderServiceses", "ServiceId", "dbo.Services");
-            DropForeignKey("dbo.ProviderServiceses", "ProviderProfileId", "dbo.ProviderProfiles");
+            DropForeignKey("dbo.ProviderServices", "ServiceId", "dbo.Services");
+            DropForeignKey("dbo.ProviderServices", "ProviderProfileId", "dbo.ProviderProfiles");
             DropForeignKey("dbo.Orders", "ProviderProfileId", "dbo.ProviderProfiles");
             DropForeignKey("dbo.Feedbacks", "ProviderProfileId", "dbo.ProviderProfiles");
             DropForeignKey("dbo.Feedbacks", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.Orders", "ClientProfileId", "dbo.ClientProfiles");
+            DropForeignKey("dbo.BaseProfiles", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Services", "CategoryId", "dbo.Categories");
             DropIndex("dbo.ProviderProfiles", new[] { "Id" });
             DropIndex("dbo.ClientProfiles", new[] { "Id" });
-            DropIndex("dbo.ProviderServiceses", new[] { "ServiceId" });
-            DropIndex("dbo.ProviderServiceses", new[] { "ProviderProfileId" });
+            DropIndex("dbo.ProviderServices", new[] { "ServiceId" });
+            DropIndex("dbo.ProviderServices", new[] { "ProviderProfileId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Feedbacks", new[] { "OrderId" });
             DropIndex("dbo.Feedbacks", new[] { "ProviderProfileId" });
@@ -204,10 +218,11 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
+            DropIndex("dbo.BaseProfiles", new[] { "Id" });
             DropIndex("dbo.Services", new[] { "CategoryId" });
             DropTable("dbo.ProviderProfiles");
             DropTable("dbo.ClientProfiles");
-            DropTable("dbo.ProviderServiceses");
+            DropTable("dbo.ProviderServices");
             DropTable("dbo.AspNetRoles");
             DropTable("dbo.Feedbacks");
             DropTable("dbo.Orders");
@@ -215,6 +230,7 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
+            DropTable("dbo.BaseProfiles");
             DropTable("dbo.Services");
             DropTable("dbo.Categories");
         }

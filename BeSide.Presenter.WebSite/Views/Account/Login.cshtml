@@ -1,8 +1,13 @@
 ﻿@using BeSide.Presenter.WebSite.Models
 @model LoginViewModel
 @{
-    ViewBag.Title = "Выполнить вход";
+    ViewBag.Title = "Авторизация";
     Layout = "../Shared/_Layout.cshtml";
+}
+
+@if (Request.IsAuthenticated)
+{
+    Response.Redirect("~/Home/Index");
 }
 
 <section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(../../Content/images/big_image_2.jpg);">
@@ -41,12 +46,14 @@
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Email, "Email")
                                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control py-2"})
+                                @Html.ValidationMessageFor(m  => m.Email, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row mb-5">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Password, "Пароль")
                                 @Html.PasswordFor(m => m.Password, new{ @class = "form-control py-2" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger"})
                             </div>
                         </div>
                         <div class="row">

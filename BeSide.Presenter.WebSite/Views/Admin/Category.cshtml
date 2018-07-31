@@ -1,0 +1,17 @@
+﻿@using BeSide.Common.Entities
+@model IEnumerable<Category>
+@{
+    ViewBag.Title = "Category";
+    Layout = "~/Views/Shared/AdminPanel.cshtml";
+}
+
+<h2>Категории</h2>
+@foreach (Category category in Model)
+{
+    <div class="row">
+        <p>@category.Name</p>
+        @Html.RouteLink("Удалить", new{controller = "Admin", action = "DeleteCategory"}, new { @class = "btn btn-primary"})
+        @Html.RouteLink("Изменить", new { controller = "Admin", action = "Category" }, new { @class = "btn btn-primary" })
+        
+    </div>
+}

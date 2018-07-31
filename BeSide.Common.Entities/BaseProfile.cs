@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeSide.Common.Entities
 {
-    public class BaseProfile
+    public abstract class BaseProfile
     {
         [Key]
         [ForeignKey("ApplicationUser")]
@@ -19,7 +19,7 @@ namespace BeSide.Common.Entities
         [Required]
         [MaxLength(50)]
         public string Patronymic { get; set; }
-        
+
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }

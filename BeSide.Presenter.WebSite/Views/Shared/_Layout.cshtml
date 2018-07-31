@@ -83,6 +83,13 @@
                                 controller = "Account",
                                 action = "LogOff"
                             })
+                            
+                            @if (User.IsInRole("admin"))
+                            {
+                                <div class="nav-item text-center">
+                                    @Html.RouteLink("Панель админа", new { controller = "Admin", action = "Index"})
+                                </div>
+                            }
                         </li>
                         }
                         else

@@ -19,14 +19,13 @@ namespace BeSide.DataAccess.SqlDataAccess.Repositories
 
         #region Implementation of Repository<T> 
 
-        public T Create(T item)
+        public void Create(T item)
         {
-            //Items.Add(item);
-            Items.Attach(item);
-            return item;
+            Items.Add(item);
+            Save();
         }
 
-        public T Delete(int id)
+        public void Delete(object id)
         {
             T resault = Items.Find(id);
 
@@ -35,7 +34,7 @@ namespace BeSide.DataAccess.SqlDataAccess.Repositories
                 Items.Remove(resault);
             }
 
-            return resault;
+            Save();
         }
 
         public IEnumerable<T> Find(Func<T, bool> predicate)
@@ -49,17 +48,23 @@ namespace BeSide.DataAccess.SqlDataAccess.Repositories
             return Items.ToList();
         }
 
-        public T GetById(int id)
+        public T GetById(object id)
         {
             T resault = Items.Find(id);
             return resault;
 
         }
 
-        public T Update(T item)
+        public void Update(T item)
         {
             Context.Entry(item).State = EntityState.Modified;
-            return item;
+
+            Save();
+        }
+
+        public void Save()
+        {
+            Context.SaveChanges();
         }
 
         #endregion

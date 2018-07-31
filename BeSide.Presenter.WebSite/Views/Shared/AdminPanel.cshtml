@@ -1,0 +1,23 @@
+﻿
+@{
+    Layout = "_Layout.cshtml";
+    ViewBag.Title = "Панель администратора";
+}
+
+<section class="site-section">
+    <div class="container-fluid">
+        <div class="row align-items-center site-hero-sm-inner">
+            <div class="col-2 btn-group-vertical">
+                @Html.RouteLink("Пользователи", new { controller = "Admin", action = "Users" }, new { @class = "btn btn-primary py-2 px-4" })
+                @Html.RouteLink("Категории", new { controller = "Admin", action = "Category" }, new { @class = "btn btn-primary py-2 px-4" })
+                @Html.RouteLink("Сервисы", new { controller = "Admin", action = "Users" }, new { @class = "btn btn-primary py-2 px-4" })  
+                @Html.RouteLink("Добавить категорию", new { controller = "Admin", action = "Category" }, new { @class = "btn btn-primary py-2 px-4" })  
+                @Html.RouteLink("Добавить сервис", new { controller = "Admin", action = "Category" }, new { @class = "btn btn-primary py-2 px-4" })  
+            </div>
+            <div class="col-md-8 text-center">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+</section>
+
