@@ -36,9 +36,9 @@ namespace BeSide.Common.Entities
         public virtual ClientProfile ClientProfile { get; set; }
 
         //Исполняет
-        public string ProviderProfileId { get; set; }
-        [ForeignKey(nameof(ProviderProfileId))]
-        public virtual ProviderProfile ProviderProfile { get; set; }
+        public string ExecutorProfileId { get; set; }
+        [ForeignKey(nameof(ExecutorProfileId))]
+        public virtual ClientProfile ExecutorProfile { get; set; }
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
     }

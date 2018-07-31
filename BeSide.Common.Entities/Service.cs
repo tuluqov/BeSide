@@ -11,6 +11,6 @@ namespace BeSide.Common.Entities
         [ForeignKey(nameof(CategoryId))]
         public virtual Category Category { get; set; }
 
-        public virtual ICollection<ProviderProfile> ProviderProfiles { get; set; }
+        public virtual ICollection<ClientProfile> ClientProfiles { get; set; }
     }
 }

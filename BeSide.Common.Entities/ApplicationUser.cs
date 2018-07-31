@@ -4,6 +4,6 @@ namespace BeSide.Common.Entities
 {
     public class ApplicationUser : IdentityUser
     {
-        public virtual BaseProfile UserProfile { get; set; }
+        public virtual ClientProfile ClientProfile { get; set; }
     }
 }

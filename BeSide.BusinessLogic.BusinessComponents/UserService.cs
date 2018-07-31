@@ -50,27 +50,39 @@ namespace BeSide.BusinessLogic.BusinessComponents
                 };
 
                 var result = uow.UserManager.Create(applicationUser, userDto.Password);
-
-
+                
 
                 if (result.Errors.Any())
                 {
                     return new OperationDetails(false, result.Errors.FirstOrDefault(), "");
                 }
 
-                switch (userDto.Role)
+                //switch (userDto.Role)
+                //{
+                //    case "provider":
+                //        break;
+
+                //    case "client":
+                //        CreateClientProfile(userDto, applicationUser);
+                //        break;
+
+                //    case "admin":
+                //        break;
+                //}
+
+
+
+                ClientProfile profile = new ClientProfile
                 {
-                    case "provider":
-                        CreateProviderProfile(userDto, applicationUser);
-                        break;
+                    Id = applicationUser.Id,
+                    FirstName = userDto.FirstName,
+                    LastName = userDto.LastName,
+                    Patronymic = userDto.Patronymic
+                };
 
-                    case "client":
-                        CreateClientProfile(userDto, applicationUser);
-                        break;
-
-                    case "admin":
-                        break;
-                }
+                // add role
+                uow.UserManager.AddToRole(applicationUser.Id, userDto.Role);
+                uow.ClientProfiles.Create(profile);
 
                 uow.Save();
 
@@ -97,20 +109,20 @@ namespace BeSide.BusinessLogic.BusinessComponents
             uow.ClientProfiles.Create(profile);
         }
 
-        private void CreateProviderProfile(UserDto userDto, ApplicationUser applicationUser)
-        {
-            ProviderProfile profile = new ProviderProfile
-            {
-                Id = applicationUser.Id,
-                FirstName = userDto.FirstName,
-                LastName = userDto.LastName,
-                Patronymic = userDto.Patronymic
-            };
+        //private void CreateProviderProfile(UserDto userDto, ApplicationUser applicationUser)
+        //{
+        //    ProviderProfile profile = new ProviderProfile
+        //    {
+        //        Id = applicationUser.Id,
+        //        FirstName = userDto.FirstName,
+        //        LastName = userDto.LastName,
+        //        Patronymic = userDto.Patronymic
+        //    };
 
-            // add role
-            uow.UserManager.AddToRole(applicationUser.Id, userDto.Role);
-            uow.ProviderProfiles.Create(profile);
-        }
+        //    // add role
+        //    uow.UserManager.AddToRole(applicationUser.Id, userDto.Role);
+        //    uow.ProviderProfiles.Create(profile);
+        //}
 
         public async Task SetInitialData(UserDto admin, List<string> roles)
         {

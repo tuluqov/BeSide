@@ -22,25 +22,11 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<ProviderProfile>().HasMany(c => c.Services)
-                .WithMany(s => s.ProviderProfiles)
-                .Map(t => t.MapLeftKey("ProviderProfileId")
+            modelBuilder.Entity<ClientProfile>().HasMany(c => c.Services)
+                .WithMany(s => s.ClientProfiles)
+                .Map(t => t.MapLeftKey("ClientProfileId")
                     .MapRightKey("ServiceId")
-                    .ToTable("ProviderServiceses"));
-
-            modelBuilder.Entity<ProviderProfile>()
-                .Map(m =>
-                {
-                    m.MapInheritedProperties();
-                    m.ToTable("ProviderProfiles");
-                });
-
-            modelBuilder.Entity<ClientProfile>()
-                .Map(m =>
-                {
-                    m.MapInheritedProperties();
-                    m.ToTable("ClientProfiles");
-                });
+                    .ToTable("ProviderServices"));
 
             base.OnModelCreating(modelBuilder);
         }

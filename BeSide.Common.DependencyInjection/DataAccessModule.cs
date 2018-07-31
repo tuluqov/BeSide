@@ -26,6 +26,9 @@ namespace BeSide.Common.DependencyInjection
             builder.RegisterType<UnitOfWork>()
                 .As<IUnitOfWork>();
 
+            builder.RegisterType<ClientProfileRepository>()
+                .As<IClientProfileRepository>();
+
             //Универсальный метод для всех обобщенных репозиториев
             builder.RegisterGeneric(typeof(BaseRepository<>))
                 .As(typeof(IRepository<>))

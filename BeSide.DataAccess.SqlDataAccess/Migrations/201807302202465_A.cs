@@ -3,30 +3,24 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Migr : DbMigration
+    public partial class A : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Categories",
+                "dbo.BaseProfiles",
                 c => new
                     {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                    })
-                .PrimaryKey(t => t.Id);
-            
-            CreateTable(
-                "dbo.Services",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        CategoryId = c.Int(nullable: false),
+                        Id = c.String(nullable: false, maxLength: 128),
+                        FirstName = c.String(nullable: false, maxLength: 50),
+                        LastName = c.String(nullable: false, maxLength: 50),
+                        Patronymic = c.String(nullable: false, maxLength: 50),
+                        CompanyName = c.String(),
+                        Discriminator = c.String(nullable: false, maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
-                .Index(t => t.CategoryId);
+                .ForeignKey("dbo.AspNetUsers", t => t.Id)
+                .Index(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetUsers",
@@ -103,8 +97,8 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
                         ProviderProfileId = c.String(maxLength: 128),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.ClientProfiles", t => t.ClientProfileId)
-                .ForeignKey("dbo.ProviderProfiles", t => t.ProviderProfileId)
+                .ForeignKey("dbo.BaseProfiles", t => t.ClientProfileId)
+                .ForeignKey("dbo.BaseProfiles", t => t.ProviderProfileId)
                 .Index(t => t.ClientProfileId)
                 .Index(t => t.ProviderProfileId);
             
@@ -118,9 +112,30 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Orders", t => t.OrderId, cascadeDelete: true)
-                .ForeignKey("dbo.ProviderProfiles", t => t.ProviderProfileId)
+                .ForeignKey("dbo.BaseProfiles", t => t.ProviderProfileId, cascadeDelete: true)
                 .Index(t => t.ProviderProfileId)
                 .Index(t => t.OrderId);
+            
+            CreateTable(
+                "dbo.Services",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                        CategoryId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Categories", t => t.CategoryId, cascadeDelete: true)
+                .Index(t => t.CategoryId);
+            
+            CreateTable(
+                "dbo.Categories",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -141,60 +156,31 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
                         ServiceId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.ProviderProfileId, t.ServiceId })
-                .ForeignKey("dbo.ProviderProfiles", t => t.ProviderProfileId, cascadeDelete: true)
+                .ForeignKey("dbo.BaseProfiles", t => t.ProviderProfileId, cascadeDelete: true)
                 .ForeignKey("dbo.Services", t => t.ServiceId, cascadeDelete: true)
                 .Index(t => t.ProviderProfileId)
                 .Index(t => t.ServiceId);
-            
-            CreateTable(
-                "dbo.ClientProfiles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        FirstName = c.String(nullable: false, maxLength: 50),
-                        LastName = c.String(nullable: false, maxLength: 50),
-                        Patronymic = c.String(nullable: false, maxLength: 50),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.Id)
-                .Index(t => t.Id);
-            
-            CreateTable(
-                "dbo.ProviderProfiles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        FirstName = c.String(nullable: false, maxLength: 50),
-                        LastName = c.String(nullable: false, maxLength: 50),
-                        Patronymic = c.String(nullable: false, maxLength: 50),
-                        CompanyName = c.String(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.Id)
-                .Index(t => t.Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.ProviderProfiles", "Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.ClientProfiles", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
+            DropForeignKey("dbo.Orders", "ProviderProfileId", "dbo.BaseProfiles");
             DropForeignKey("dbo.ProviderServiceses", "ServiceId", "dbo.Services");
-            DropForeignKey("dbo.ProviderServiceses", "ProviderProfileId", "dbo.ProviderProfiles");
-            DropForeignKey("dbo.Orders", "ProviderProfileId", "dbo.ProviderProfiles");
-            DropForeignKey("dbo.Feedbacks", "ProviderProfileId", "dbo.ProviderProfiles");
+            DropForeignKey("dbo.ProviderServiceses", "ProviderProfileId", "dbo.BaseProfiles");
+            DropForeignKey("dbo.Services", "CategoryId", "dbo.Categories");
+            DropForeignKey("dbo.Feedbacks", "ProviderProfileId", "dbo.BaseProfiles");
             DropForeignKey("dbo.Feedbacks", "OrderId", "dbo.Orders");
-            DropForeignKey("dbo.Orders", "ClientProfileId", "dbo.ClientProfiles");
+            DropForeignKey("dbo.Orders", "ClientProfileId", "dbo.BaseProfiles");
+            DropForeignKey("dbo.BaseProfiles", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.Services", "CategoryId", "dbo.Categories");
-            DropIndex("dbo.ProviderProfiles", new[] { "Id" });
-            DropIndex("dbo.ClientProfiles", new[] { "Id" });
             DropIndex("dbo.ProviderServiceses", new[] { "ServiceId" });
             DropIndex("dbo.ProviderServiceses", new[] { "ProviderProfileId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
+            DropIndex("dbo.Services", new[] { "CategoryId" });
             DropIndex("dbo.Feedbacks", new[] { "OrderId" });
             DropIndex("dbo.Feedbacks", new[] { "ProviderProfileId" });
             DropIndex("dbo.Orders", new[] { "ProviderProfileId" });
@@ -204,19 +190,18 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.Services", new[] { "CategoryId" });
-            DropTable("dbo.ProviderProfiles");
-            DropTable("dbo.ClientProfiles");
+            DropIndex("dbo.BaseProfiles", new[] { "Id" });
             DropTable("dbo.ProviderServiceses");
             DropTable("dbo.AspNetRoles");
+            DropTable("dbo.Categories");
+            DropTable("dbo.Services");
             DropTable("dbo.Feedbacks");
             DropTable("dbo.Orders");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.Services");
-            DropTable("dbo.Categories");
+            DropTable("dbo.BaseProfiles");
         }
     }
 }

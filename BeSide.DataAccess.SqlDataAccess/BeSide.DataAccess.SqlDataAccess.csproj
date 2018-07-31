@@ -76,17 +76,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataContexts\EfDataContext.cs" />
-    <Compile Include="Migrations\201807301915366_Migr.cs" />
-    <Compile Include="Migrations\201807301915366_Migr.Designer.cs">
-      <DependentUpon>201807301915366_Migr.cs</DependentUpon>
+    <Compile Include="Migrations\201807302202465_A.cs" />
+    <Compile Include="Migrations\201807302202465_A.Designer.cs">
+      <DependentUpon>201807302202465_A.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807302003356_Migr1.cs" />
-    <Compile Include="Migrations\201807302003356_Migr1.Designer.cs">
-      <DependentUpon>201807302003356_Migr1.cs</DependentUpon>
+    <Compile Include="Migrations\201807311108521_A1.cs" />
+    <Compile Include="Migrations\201807311108521_A1.Designer.cs">
+      <DependentUpon>201807311108521_A1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807311110511_A2.cs" />
+    <Compile Include="Migrations\201807311110511_A2.Designer.cs">
+      <DependentUpon>201807311110511_A2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807311151299_A3.cs" />
+    <Compile Include="Migrations\201807311151299_A3.Designer.cs">
+      <DependentUpon>201807311151299_A3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\ClientProfileRepository.cs" />
     <Compile Include="UnitOfWorks\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,11 +113,17 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807301915366_Migr.resx">
-      <DependentUpon>201807301915366_Migr.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807302202465_A.resx">
+      <DependentUpon>201807302202465_A.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807302003356_Migr1.resx">
-      <DependentUpon>201807302003356_Migr1.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807311108521_A1.resx">
+      <DependentUpon>201807311108521_A1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807311110511_A2.resx">
+      <DependentUpon>201807311110511_A2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807311151299_A3.resx">
+      <DependentUpon>201807311151299_A3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

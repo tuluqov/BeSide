@@ -11,8 +11,7 @@ namespace BeSide.DataAccess.Construct
         IRepository<Order> Orders { get; }
         IRepository<ProviderServices> ProviderServices { get; }
         IRepository<Service> Services { get; }
-        IRepository<ProviderProfile> ProviderProfiles { get; }
-        IRepository<ClientProfile> ClientProfiles { get; }
+        IClientProfileRepository ClientProfiles { get; }
         IRepository<Feedback> Feedbacks { get; }
         UserManager<ApplicationUser> UserManager { get; }
         RoleManager<ApplicationRole> RoleManager { get; }

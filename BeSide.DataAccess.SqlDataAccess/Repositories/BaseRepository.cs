@@ -21,8 +21,7 @@ namespace BeSide.DataAccess.SqlDataAccess.Repositories
 
         public T Create(T item)
         {
-            //Items.Add(item);
-            Items.Attach(item);
+            Items.Add(item);
             return item;
         }
 
@@ -53,7 +52,6 @@ namespace BeSide.DataAccess.SqlDataAccess.Repositories
         {
             T resault = Items.Find(id);
             return resault;
-
         }
 
         public T Update(T item)
