@@ -9,7 +9,6 @@ namespace BeSide.DataAccess.Construct
     {
         IRepository<Category> Categories { get; }
         IRepository<Order> Orders { get; }
-        IRepository<ProviderServices> ProviderServices { get; }
         IRepository<Service> Services { get; }
         IRepository<ProviderProfile> ProviderProfiles { get; }
         IRepository<ClientProfile> ClientProfiles { get; }

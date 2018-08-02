@@ -13,7 +13,7 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201807311233443_A"; }
+            get { return "201808021105011_A"; }
         }
         
         string IMigrationMetadata.Source

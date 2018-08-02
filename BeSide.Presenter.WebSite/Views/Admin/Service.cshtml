@@ -1,19 +1,19 @@
 ﻿@using BeSide.Common.Entities
-@model IEnumerable<Category>
+@model IEnumerable<Service>
+
 @{
-    ViewBag.Title = "Category";
+    ViewBag.Title = "Service";
     Layout = "~/Views/Shared/AdminPanel.cshtml";
 }
 
 <h2>Категории</h2>
-@foreach (Category category in Model)
+@foreach (Service service in Model)
 {
     <div class="row ml-5">
-        <p class="col-9 text-left">@category.Name</p>
+        <p class="col-9 text-left">@service.Name</p>
         <div class="form-check-inline">
-            @using (Html.BeginForm("DeleteCategory", "Admin", FormMethod.Post))
+            @using (Html.BeginForm("", "Admin", FormMethod.Post))
             {
-                @Html.Hidden("id" , category.Id)
                 <input type="submit" value="Удалить" class="btn btn-primary ml-3">
             }
 

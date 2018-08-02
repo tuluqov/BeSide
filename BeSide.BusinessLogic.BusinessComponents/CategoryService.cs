@@ -30,6 +30,12 @@ namespace BeSide.BusinessLogic.BusinessComponents
             }
         }
 
+        public void DeleteById(int id)
+        {
+            uow.Categories.Delete(id);
+            uow.Save();
+        }
+
         public void DeleteCategory(Category category)
         {
             uow.Categories.Delete(category.Id);

@@ -42,7 +42,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> Login(LoginViewModel model)
         {
-            //await SetInitialDataAsync();
+            await SetInitialDataAsync();
 
             if (ModelState.IsValid)
             {

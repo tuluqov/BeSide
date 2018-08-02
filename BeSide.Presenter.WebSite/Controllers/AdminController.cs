@@ -31,6 +31,8 @@ namespace BeSide.Presenter.WebSite.Controllers
             return View();
         }
 
+        #region Users
+
         [HttpGet]
         public ActionResult Users()
         {
@@ -38,6 +40,11 @@ namespace BeSide.Presenter.WebSite.Controllers
 
             return View(allUsers);
         }
+
+        #endregion
+
+        #region Category
+
 
         [HttpGet]
         public ActionResult AddCategory()
@@ -73,11 +80,11 @@ namespace BeSide.Presenter.WebSite.Controllers
         }
 
         [HttpPost]
-        public ActionResult DeleteCategory(Category category)
+        public ActionResult DeleteCategory(int id)
         {
             if (ModelState.IsValid)
             {
-                categoryService.DeleteCategory(category);
+                categoryService.DeleteById(id);
 
                 return RedirectToAction("Category");
             }
@@ -98,16 +105,39 @@ namespace BeSide.Presenter.WebSite.Controllers
             return RedirectToAction("Category");
         }
 
+        #endregion
+
+        #region Service
+
+        [HttpGet]
+        public ActionResult Service()
+        {
+            var allService = seviceService.GetAllService();
+
+            return View(allService);
+        }
+
         [HttpGet]
         public ActionResult AddService()
         {
-            return View();
+            var allCategory = categoryService.GetAllCategory();
+
+            return View(allCategory);
         }
 
         [HttpPost]
         public ActionResult AddService(Service service)
         {
+            if (ModelState.IsValid)
+            {
+                seviceService.AddService(service);
+
+                return RedirectToAction("Service", "Admin");
+            }
+
             return View();
         }
+
+        #endregion
     }
 }

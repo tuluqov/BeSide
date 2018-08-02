@@ -11,6 +11,7 @@ namespace BeSide.BusinessLogic.Construct
     {
         void AddCategory(Category category);
         void DeleteCategory(Category category);
+        void DeleteById(int id);
         void UpdateCategory(Category category);
         IEnumerable<Category> GetAllCategory();
         IEnumerable<Category> Find(Func<Category, bool> predicate);

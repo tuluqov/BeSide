@@ -1,4 +1,5 @@
-﻿@model BeSide.Common.Entities.Service
+﻿@using BeSide.Common.Entities
+@model IEnumerable<Category>
 
 @{
     ViewBag.Title = "Добавление сервиса";
@@ -17,16 +18,18 @@
                             <div class="col-md-12 form-group">
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">Категория</label>
                                 <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                    <option selected>Категория1</option>
-                                    <option>Категория2</option>
+                                    @foreach (var caregoty in Model)
+                                    {
+                                        <option>@caregoty.Name</option>
+                                    }
                                 </select>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12 form-group">
-                                @Html.LabelFor(m => m.Name, "Название сервиса")
-                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control py-2" })
+                                @Html.LabelFor(m => m, "Название сервиса")
+                                @Html.TextBoxFor(m => m., new { @class = "form-control py-2" })
                                 @*@Html.ValidationMessageFor(m => m.Name, "Такая категория уже существует", new { @class = "text-danger" })*@
                             </div>
                         </div>

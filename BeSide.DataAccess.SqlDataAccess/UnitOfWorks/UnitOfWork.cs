@@ -14,7 +14,6 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
         public UnitOfWork(DbContext context,
             IRepository<Category> categories,
             IRepository<Order> orders,
-            IRepository<ProviderServices> providerServices,
             IRepository<Service> services,
             IRepository<ProviderProfile> providerProfiles,
             IRepository<ClientProfile> clientProfiles,
@@ -25,7 +24,6 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
             this.context = context;
             Categories = categories;
             Orders = orders;
-            ProviderServices = providerServices;
             Services = services;
             ProviderProfiles = providerProfiles;
             ClientProfiles = clientProfiles;
@@ -39,8 +37,7 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
         public IRepository<Category> Categories { get; }
 
         public IRepository<Order> Orders { get; }
-
-        public IRepository<ProviderServices> ProviderServices { get; }
+        
 
         public IRepository<Service> Services { get; }
 

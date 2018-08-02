@@ -29,19 +29,6 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
                 .Index(t => t.CategoryId);
             
             CreateTable(
-                "dbo.BaseProfiles",
-                c => new
-                    {
-                        Id = c.String(nullable: false, maxLength: 128),
-                        FirstName = c.String(nullable: false, maxLength: 50),
-                        LastName = c.String(nullable: false, maxLength: 50),
-                        Patronymic = c.String(nullable: false, maxLength: 50),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.AspNetUsers", t => t.Id)
-                .Index(t => t.Id);
-            
-            CreateTable(
                 "dbo.AspNetUsers",
                 c => new
                     {
@@ -199,7 +186,6 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
             DropForeignKey("dbo.Feedbacks", "ProviderProfileId", "dbo.ProviderProfiles");
             DropForeignKey("dbo.Feedbacks", "OrderId", "dbo.Orders");
             DropForeignKey("dbo.Orders", "ClientProfileId", "dbo.ClientProfiles");
-            DropForeignKey("dbo.BaseProfiles", "Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
@@ -218,7 +204,6 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
-            DropIndex("dbo.BaseProfiles", new[] { "Id" });
             DropIndex("dbo.Services", new[] { "CategoryId" });
             DropTable("dbo.ProviderProfiles");
             DropTable("dbo.ClientProfiles");
@@ -230,7 +215,6 @@ namespace BeSide.DataAccess.SqlDataAccess.Migrations
             DropTable("dbo.AspNetUserLogins");
             DropTable("dbo.AspNetUserClaims");
             DropTable("dbo.AspNetUsers");
-            DropTable("dbo.BaseProfiles");
             DropTable("dbo.Services");
             DropTable("dbo.Categories");
         }
