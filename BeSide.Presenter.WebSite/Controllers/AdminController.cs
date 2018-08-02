@@ -97,5 +97,17 @@ namespace BeSide.Presenter.WebSite.Controllers
 
             return RedirectToAction("Category");
         }
+
+        [HttpGet]
+        public ActionResult AddService()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddService(Service service)
+        {
+            return View();
+        }
     }
 }
