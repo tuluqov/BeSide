@@ -40,6 +40,25 @@ namespace BeSide.Presenter.WebSite.Controllers
         }
 
         [HttpGet]
+        public ActionResult AddCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult AddCategory(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                categoryService.AddCategory(category);
+
+                return RedirectToAction("Category", "Admin");
+            }
+
+            return View(category);
+        }
+
+        [HttpGet]
         public ActionResult Category()
         {
             var allCategory = categoryService.GetAllCategory();
@@ -47,12 +66,36 @@ namespace BeSide.Presenter.WebSite.Controllers
             return View(allCategory);
         }
 
-        [HttpPost]
-        public void DeleteCategory(Category category)
+        [HttpGet]
+        public ActionResult DeleteCategory()
         {
-            categoryService.DeleteCategory(category);
+            return View();
+        }
 
-            RedirectToAction("Category");
+        [HttpPost]
+        public ActionResult DeleteCategory(Category category)
+        {
+            if (ModelState.IsValid)
+            {
+                categoryService.DeleteCategory(category);
+
+                return RedirectToAction("Category");
+            }
+
+            return RedirectToAction("NotFound", "Error");
+        }
+
+        [HttpGet]
+        public ActionResult EditCategory()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EditCategory(Category category)
+        {
+
+            return RedirectToAction("Category");
         }
     }
 }

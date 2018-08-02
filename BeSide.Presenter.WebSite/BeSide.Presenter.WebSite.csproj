@@ -212,6 +212,7 @@
     </Compile>
     <Compile Include="Models\AccountDbInitializer.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CatalogViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -454,6 +455,7 @@
     <Content Include="Views\Admin\Users.cshtml" />
     <Content Include="Views\Shared\AdminPanel.cshtml" />
     <Content Include="Views\Admin\Category.cshtml" />
+    <Content Include="Views\Admin\AddCategory.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

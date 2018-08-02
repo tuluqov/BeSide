@@ -8,10 +8,19 @@
 <h2>Категории</h2>
 @foreach (Category category in Model)
 {
-    <div class="row">
-        <p>@category.Name</p>
-        @Html.RouteLink("Удалить", new{controller = "Admin", action = "DeleteCategory"}, new { @class = "btn btn-primary"})
-        @Html.RouteLink("Изменить", new { controller = "Admin", action = "Category" }, new { @class = "btn btn-primary" })
-        
+    <div class="row ml-5">
+        <p class="col-9 text-left">@category.Name</p>
+        <div class="form-check-inline">
+            @using (Html.BeginForm("DeleteCategory", "Admin", FormMethod.Post))
+            {
+                <input type="submit" value="Удалить" class="btn btn-primary ml-3">
+            }
+
+            @using (Html.BeginForm("DeleteCategory", "Admin", FormMethod.Post))
+            {
+                <input type="submit" value="Изменить" class="btn btn-primary ml-1">
+            }
+        </div>
     </div>
+    <hr />
 }

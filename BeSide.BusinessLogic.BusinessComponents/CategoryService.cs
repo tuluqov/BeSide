@@ -20,7 +20,7 @@ namespace BeSide.BusinessLogic.BusinessComponents
 
         public void AddCategory(Category category)
         {
-            var newCategory = uow.Categories.Find(m => m.Name == category.Name);
+            var newCategory = uow.Categories.Find(m => m.Name == category.Name).FirstOrDefault();
 
             if (newCategory == null)
             {
@@ -34,6 +34,18 @@ namespace BeSide.BusinessLogic.BusinessComponents
         {
             uow.Categories.Delete(category.Id);
             uow.Save();
+        }
+
+        public IEnumerable<Category> Find(Func<Category, bool> predicate)
+        {
+            var findCategories = uow.Categories.Find(predicate);
+            return findCategories;
+        }
+
+        public Category FindByName(Category category)
+        {
+            var findOrder = uow.Categories.Find(m => m.Name == category.Name).FirstOrDefault();
+            return findOrder;
         }
 
         public IEnumerable<Category> GetAllCategory()
