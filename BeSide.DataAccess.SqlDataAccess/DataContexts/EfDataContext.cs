@@ -17,7 +17,7 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
         {
         }
 
-        public EfDataContext() : base("DefaultConnection2")
+        public EfDataContext() : base("DefaultConnection")
         {
         }
 

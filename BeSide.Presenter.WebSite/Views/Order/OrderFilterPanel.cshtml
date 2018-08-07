@@ -1,0 +1,22 @@
+﻿@model IEnumerable<BeSide.Presenter.WebSite.Models.Service.ServiceViewModel>
+
+@{
+    ViewBag.Title = "OrderFilterPanel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="site-section">
+    <div class="container-fluid">
+        <div class="row flex-xl-nowrap">
+            <div class="col-12 col-md-3 col-xl-2 bd-sidebar">
+                <form class="bd-search d-flex align-items-center">
+                    <input type="search" class="form-control" id="search-input" placeholder="Поиск..." aria-label="Поиск для..." autocomplete="off">
+                    <button class="btn btn-link bd-search-docs-toggle d-md-none p-0 ml-3" type="button" data-toggle="collapse" data-target="#bd-docs-nav" aria-controls="bd-docs-nav" aria-expanded="false" aria-label="Toggle docs avigation">
+                    </button>
+                </form>
+                
+            </div>
+            @*@RenderBody()*@
+        </div>
+    </div>
+</section>

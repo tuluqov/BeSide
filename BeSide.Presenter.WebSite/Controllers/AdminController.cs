@@ -1,10 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BeSide.BusinessLogic.Construct;
 using BeSide.Common.Entities;
+using BeSide.Presenter.WebSite.Models;
+using BeSide.Presenter.WebSite.Models.Category;
+using BeSide.Presenter.WebSite.Models.Order;
+using BeSide.Presenter.WebSite.Models.Service;
 
 namespace BeSide.Presenter.WebSite.Controllers
 {
@@ -93,16 +98,40 @@ namespace BeSide.Presenter.WebSite.Controllers
         }
 
         [HttpGet]
-        public ActionResult EditCategory()
+        public ActionResult EditCategory(int id)
         {
-            return View();
+            var category = categoryService.Find(m => m.Id == id).FirstOrDefault();
+
+            if (category != null)
+            {
+                CategoryViewModel model = new CategoryViewModel
+                {
+                    Id = category.Id,
+                    Name = category.Name
+                };
+
+                return View(model);
+            }
+
+            return RedirectToAction("Category", "Admin");
         }
 
         [HttpPost]
-        public ActionResult EditCategory(Category category)
+        public ActionResult EditCategory(CategoryViewModel model)
         {
+            if (ModelState.IsValid)
+            {
+                Category category = categoryService.GetById(model.Id);
 
-            return RedirectToAction("Category");
+                category.Name = model.Name;
+
+                categoryService.UpdateCategory(category);
+
+                return RedirectToAction("Category", "Admin");
+
+            }
+
+            return View(model);
         }
 
         #endregion
@@ -112,30 +141,70 @@ namespace BeSide.Presenter.WebSite.Controllers
         [HttpGet]
         public ActionResult Service()
         {
-            var allService = seviceService.GetAllService();
-
-            return View(allService);
-        }
-
-        [HttpGet]
-        public ActionResult AddService()
-        {
             var allCategory = categoryService.GetAllCategory();
 
             return View(allCategory);
         }
 
+        [HttpGet]
+        public ActionResult AddService()
+        {
+            ViewBag.Categoryes = new SelectList(categoryService.GetAllCategory(), "Id", "Name");
+
+            return View();
+        }
+
         [HttpPost]
-        public ActionResult AddService(Service service)
+        public ActionResult AddService(AddServiceViewModel addServiceView)
         {
             if (ModelState.IsValid)
             {
+                Common.Entities.Service service = new Service
+                {
+                    CategoryId = addServiceView.CategoryId,
+                    Name = addServiceView.ServiceName
+                };
+
                 seviceService.AddService(service);
 
                 return RedirectToAction("Service", "Admin");
             }
 
-            return View();
+            return View(addServiceView);
+        }
+
+        [HttpGet]
+        public ActionResult EditService(int id)
+        {
+            Common.Entities.Service service = seviceService.GetById(id);
+
+            ServiceViewModel model = new ServiceViewModel(service);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult EditService(ServiceViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var service = seviceService.GetById(model.Id);
+
+                service.Name = model.Name;
+
+                seviceService.UpdateService(service);
+
+                return RedirectToAction("Service", "Admin");
+            }
+
+            return View(model);
+        }
+
+        public ActionResult DeleteService(int id)
+        {
+            seviceService.DeleteById(id);
+
+            return RedirectToAction("Service", "Admin");
         }
 
         #endregion

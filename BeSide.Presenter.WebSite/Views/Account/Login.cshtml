@@ -42,6 +42,9 @@
                     <h2 class="mb-4">Войдите в ваш профиль</h2>
                     @using (Html.BeginForm("Login", "Account", FormMethod.Post))
                     {
+                        @Html.AntiForgeryToken()
+
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Email, "Email")

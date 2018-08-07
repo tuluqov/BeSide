@@ -8,7 +8,8 @@ namespace BeSide.Presenter.WebSite.Models
 {
     public class AddServiceViewModel
     {
-        public ICollection<Category> Categoryes { get; set; }
-        public string NameService { get; set; }
+        public string ServiceName { get; set; }
+
+        public int CategoryId { get; set; }
     }
 }

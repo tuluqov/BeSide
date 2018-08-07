@@ -128,5 +128,12 @@ namespace BeSide.BusinessLogic.BusinessComponents
 
             Create(admin);
         }
+
+        public ApplicationUser GetById(string id)
+        {
+            ApplicationUser user = uow.UserManager.Users.FirstOrDefault(m => m.Id == id);
+
+            return user;
+        }
     }
 }

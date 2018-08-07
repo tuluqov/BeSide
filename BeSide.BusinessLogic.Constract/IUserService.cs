@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using BeSide.BusinessLogic.Construct.DTO;
 using BeSide.BusinessLogic.Construct.Infrastructure;
+using BeSide.Common.Entities;
 
 namespace BeSide.BusinessLogic.Construct
 {
@@ -11,5 +12,7 @@ namespace BeSide.BusinessLogic.Construct
         OperationDetails Create(UserDto user);
         Task<ClaimsIdentity> Authenticate(UserDto user);
         Task SetInitialData(UserDto admin, List<string> roles);
+
+        ApplicationUser GetById(string id);
     }
 }

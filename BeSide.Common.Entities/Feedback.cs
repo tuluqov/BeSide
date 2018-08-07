@@ -18,5 +18,11 @@ namespace BeSide.Common.Entities
         public int OrderId { get; set; }
         [ForeignKey(nameof(OrderId))]
         public virtual Order Order { get; set; }
+
+        [Required]
+        public string Text { get; set; }
+
+        [Required]
+        public float Price { get; set; }
     }
 }

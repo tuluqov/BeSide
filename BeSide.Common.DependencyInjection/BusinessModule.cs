@@ -23,6 +23,14 @@ namespace BeSide.Common.DependencyInjection
             builder.RegisterType<ServiceService>()
                 .As<ISeviceService>()
                 .InstancePerRequest();
+
+            builder.RegisterType<OrderService>()
+                .As<IOrderService>()
+                .InstancePerRequest();
+
+            builder.RegisterType<FeedbackService>()
+                .As<IFeedbackService>()
+                .InstancePerRequest();
         }
     }
 }

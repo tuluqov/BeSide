@@ -1,17 +1,70 @@
 ﻿@{
     ViewBag.Title = "Contact";
+    Layout = "../Shared/_Layout.cshtml";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
 
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-    <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-</address>
+<section class="site-hero site-sm-hero overlay" data-stellar-background-ratio="0.5" style="background-image: url(../../Content/images/big_image_2.jpg);">
+    <div class="container">
+        <div class="row align-items-center justify-content-center site-hero-sm-inner">
+            <div class="col-md-7 text-center">
+
+                <div class="mb-5 element-animate">
+                    <h1 class="mb-2">Контакты</h1>
+                    <p class="bcrumb"><a href="Index.cshtml">Домой</a> <span class="sep ion-android-arrow-dropright px-2"></span>  <span class="current">Контакты</span></p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- END section -->
+<section class="site-section element-animate">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 pr-md-5">
+                <form action="#" method="post">
+                    <div class="row">
+                        <div class="col-md-4 form-group">
+                            <label for="name">Имя</label>
+                            <input type="text" id="name" class="form-control py-2">
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="text" id="phone" class="form-control py-2">
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control py-2">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 form-group">
+                            <label for="message">Напишите письмо</label>
+                            <textarea name="message" id="message" class="form-control py-2" cols="30" rows="8"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="submit" value="Отправить сообщение" class="btn btn-primary">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4">
+
+                <div class="block-23">
+                    <h3 class="heading mb-5">Контактная информация</h3>
+                    <ul>
+                        <li><span class="icon ion-android-pin"></span><span class="text">ул. Филимонова 15, Минск, Беларусь</span></li>
+                        <li><span class="icon ion-ios-telephone"></span><span class="text text-primary">+375(25) 636-86-10</span></li>
+                        <li><span class="icon ion-android-mail"></span><span class="text text-primary">usup1999@gmail.com</span></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- END section -->
+@*<div id="map"></div>*@

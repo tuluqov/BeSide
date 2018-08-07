@@ -17,18 +17,23 @@ namespace BeSide.Common.Entities
         [MaxLength(40)]
         public string NameProvider { get; set; }
 
-        public int? Price { get; set; }
+        public float? Price { get; set; }
 
         public bool ContractPrice { get; set; }
 
-        public DateTime? Deadline { get; set; }
+        public DateTime Deadline { get; set; }
+
+        public DateTime CreateDate { get; set; }
 
         [MaxLength(15)]
         public string PhoneNumber { get; set; }
 
         [MaxLength(40)]
         public string City { get; set; }
-        
+
+        public int ServiceId { get; set; }
+        [ForeignKey(nameof(ServiceId))]
+        public virtual Service Service { get; set; }
 
         //Разместил заказ
         public string ClientProfileId { get; set; }

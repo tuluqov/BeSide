@@ -1,0 +1,107 @@
+﻿@using BeSide.Presenter.WebSite.Models.Category
+@using BeSide.Presenter.WebSite.Models.Order
+@using BeSide.Presenter.WebSite.Models.Service
+@model BeSide.Presenter.WebSite.Models.Order.OrderCollectionViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<section class="site-section">
+    <div class="container-fluid">
+
+        <!-- Search bar -->
+        <div class="row">
+            <div class="mb-4 col-md-8 container-fluid">
+                <input class="form-control py-2" type="text" placeholder="Поиск в каталоге..." aria-label="Search">
+            </div>
+        </div>
+
+        <div class="row align-items-baseline border-top">
+
+            <!-- Category sidebar -->
+            <div class="col-md-2 wrapper">
+                <nav id="sidebar">
+                    <div class="my-2 text-center">
+                        <h3>Категории</h3>
+                    </div>
+
+                    @foreach (CategoryViewModel category in ViewBag.Categoryes)
+                    {
+                        if (!category.ServiceViewModels.Any())
+                        {
+                            continue;
+                        }
+
+                        <ul class="list-unstyled components">
+                            <li class="active">
+                                <a href="#@category.Id" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dropdown-item">@category.Name</a>
+                                <ul class="collapse list-unstyled" id="@category.Id">
+                                    @foreach (ServiceViewModel service in category.ServiceViewModels)
+                                    {
+                                        <li>
+                                            <a href="Index/@service.Id" class="dropdown-item">@service.Name</a>
+                                        </li>
+
+                                    }
+                                </ul>
+                            </li>
+                        </ul>
+                    }
+                </nav>
+            </div>
+
+            <!-- Order view section -->
+            <div class="col-md-10 border-left">
+                @foreach (OrderViewModel order in Model)
+                {
+                    <div class="col-md-10 ml-2 border-bottom border-primary my-2">
+                        <a href="Order/Details/@order.Id">
+                            <div class="row">
+                                <div class="col">
+                                    @Html.HiddenFor(m => order.Id)
+                                    <h4>@order.ShortDescription</h4>
+                                </div>
+
+                                <div class="col">
+                                    @if (order.ContractPrice)
+                                    {
+                                        <h5 class="float-right">Договорная</h5>
+                                    }
+                                    else
+                                    {
+                                        <h5 class="float-right">@order.Price р.</h5>
+                                    }
+                                </div>
+                            </div>
+                        </a>
+
+                        <div class="row">
+                            <div class="col">
+                                <p>
+                                    @order.FullDescription
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col">
+                                <span class="mx-1 icon ion-android-list">
+                                    @order.ServiceModel.Name
+                                </span>
+                                <span class="mx-1 icon ion-android-pin">
+                                    @order.City
+                                </span>
+                                <span class="mx-1 icon ion-android-time">
+                                    @order.Deadline.ToShortDateString()
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+</section>

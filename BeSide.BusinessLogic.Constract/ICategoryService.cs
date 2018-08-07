@@ -15,6 +15,7 @@ namespace BeSide.BusinessLogic.Construct
         void UpdateCategory(Category category);
         IEnumerable<Category> GetAllCategory();
         IEnumerable<Category> Find(Func<Category, bool> predicate);
-        Category FindByName(Category category);
+        Category FindByName(string name);
+        Category GetById(int id);
     }
 }

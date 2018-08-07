@@ -32,65 +32,51 @@
                 </button>
                 <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item">
-                            @Html.RouteLink("Домой", new
-                            {
-                                controller = "Home",
-                                action = "Index"
-                            }, new
-                            {
-                                @class = "nav-link active"
-                            })
-                        </li>
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="courses.html" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Courses</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown04">
-                                <a class="dropdown-item" href="courses.html">Заказы</a>
-                                <a class="dropdown-item" href="courses.html">Исполнители</a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
-                            <div class="dropdown-menu" aria-labelledby="dropdown05">
-                                <a class="dropdown-item" href="#">HTML</a>
-                                <a class="dropdown-item" href="#">WordPress</a>
-                                <a class="dropdown-item" href="#">Laravel</a>
-                                <a class="dropdown-item" href="#">JavaScript</a>
-                                <a class="dropdown-item" href="#">Python</a>
+                            @Html.RouteLink("Заказы", new {controller = "Order", action = "Index"},
+                                new { @class="nav-link dropdown-toggle"})
+                            <div class="dropdown-menu" aria-labelledby="dropdown">
+                                @Html.RouteLink("Все заказы", new { controller = "Order", action = "Index" }, new { @class = "dropdown-item" })
+                                @if (User.IsInRole("client"))
+                                {
+                                    @Html.RouteLink("Добавить заказ", new { controller = "Order", action = "Create" }, new { @class = "dropdown-item" })
+                                }
                             </div>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="blog.html">Блог</a>
+                            @Html.RouteLink("Исполнители", new {controller = "Home", action = "Index"},
+                                new { @class="nav-link"})
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="about.html">О нас</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="contact.html">Контакты</a>
+                            @Html.RouteLink("Контакты", new { controller = "Home", action = "Contact"},
+                                new { @class = "nav-link" })
                         </li>
                     </ul>
                     <ul class="navbar-nav absolute-right">
                         @if (Request.IsAuthenticated)
                         {
-                        <li>
-                            @Html.RouteLink(@User.Identity.Name, new
-                            {
-                                controller = "Account",
-                                action = "LogOff"
-                            }) / 
-                            @Html.RouteLink("Выйти", new
-                            {
-                                controller = "Account",
-                                action = "LogOff"
-                            })
-                            
-                            @if (User.IsInRole("admin"))
-                            {
-                                <div class="nav-item text-center">
-                                    @Html.RouteLink("Панель админа", new { controller = "Admin", action = "Index"})
-                                </div>
-                            }
-                        </li>
+                            <li>
+                                @Html.RouteLink(@User.Identity.Name, new
+                                {
+                                    controller = "Account",
+                                    action = "LogOff"
+                                }) /
+                                @Html.RouteLink("Выйти", new
+                                {
+                                    controller = "Account",
+                                    action = "LogOff"
+                                })
+
+                                @if (User.IsInRole("admin"))
+                                {
+                                    <div class="nav-item text-center">
+                                        @Html.RouteLink("Панель админа", new { controller = "Admin", action = "Index" })
+                                    </div>
+                                }
+                            </li>
                         }
                         else
                         {
@@ -118,7 +104,7 @@
 
     <footer class="site-footer border-top">
         <div class="container">
-            <div class="row mb-5">
+            <div class="row mb-3">
                 <div class="col-md-6 col-lg-3 mb-5 mb-lg-0">
                     <h3>BeSide</h3>
                     <p>Выполняй и находи исполнителей.</p>
@@ -128,17 +114,21 @@
                     <div class="row">
                         <div class="col-md-6">
                             <ul class="list-unstyled">
-                                <li><a href="#">Домой</a></li>
-                                <li><a href="#">О нас</a></li>
-                                <li><a href="#">Заказы</a></li>
+                                <li>
+                                    @Html.RouteLink("Домой", new { controller = "Home", action = "Index" })
+                                </li>
+                                <li>
+                                    @Html.RouteLink("Заказы", new { controller = "Order", action = "Index" })
+                                </li>
                                 <li><a href="#">Исполнители</a></li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <ul class="list-unstyled">
-                                <li><a href="#">Новости</a></li>
-                                <li><a href="#">Поддержка</a></li>
-                                <li><a href="#">Контакты</a></li>
+                                <li><a href="#">О нас</a></li>
+                                <li>
+                                    @Html.RouteLink("Контакты", new { controller = "Home", action = "Contact" })
+                                </li>
                                 <li><a href="#">Секретно</a></li>
                             </ul>
                         </div>
@@ -151,12 +141,11 @@
                             <li><span class="icon ion-android-pin"></span><span class="text">ул. Филимонова 15, Минск, Беларусь</span></li>
                             <li><a href="#"><span class="icon ion-ios-telephone"></span><span class="text">+375(25) 636-86-10</span></a></li>
                             <li><a href="#"><span class="icon ion-android-mail"></span><span class="text">usup1999@gmail.com</span></a></li>
-                            <li><span class="icon ion-android-time"></span><span class="text">Понедельник &mdash; Пятница 8:00 - 17:00</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="row pt-5">
+            <div class="row pt-3">
                 <div class="col-md-12 text-center copyright">
 
                     <p class="float-md-left">
@@ -189,7 +178,6 @@
     <script src="~/Content/js/jquery.stellar.min.js"></script>
     <script src="~/Content/js/jquery.animateNumber.min.js"></script>
     <script src="~/Content/js/main.js"></script>
-
 </body>
 </html>
 

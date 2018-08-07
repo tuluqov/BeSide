@@ -54,10 +54,22 @@ namespace BeSide.BusinessLogic.BusinessComponents
             return findOrder;
         }
 
+        public Category FindByName(string name)
+        {
+            var result = uow.Categories.Find(m => m.Name == name).FirstOrDefault();
+            return result;
+        }
+
         public IEnumerable<Category> GetAllCategory()
         {
             var allCategoty = uow.Categories.GetAll().ToList();
             return allCategoty;
+        }
+
+        public Category GetById(int id)
+        {
+            Category category = uow.Categories.GetById(id);
+            return category;
         }
 
         public void UpdateCategory(Category category)

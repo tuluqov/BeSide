@@ -1,27 +1,31 @@
 ﻿@using BeSide.Common.Entities
-@model IEnumerable<Service>
+@model IEnumerable<Category>
 
 @{
     ViewBag.Title = "Service";
     Layout = "~/Views/Shared/AdminPanel.cshtml";
 }
 
-<h2>Категории</h2>
-@foreach (Service service in Model)
+<h2>Сервисы</h2>
+@foreach (Category category in Model)
 {
-    <div class="row ml-5">
-        <p class="col-9 text-left">@service.Name</p>
-        <div class="form-check-inline">
-            @using (Html.BeginForm("", "Admin", FormMethod.Post))
-            {
-                <input type="submit" value="Удалить" class="btn btn-primary ml-3">
-            }
+    if (category.Services.Count == 0)
+    {
+        continue;
+    }
 
-            @using (Html.BeginForm("DeleteCategory", "Admin", FormMethod.Post))
-            {
-                <input type="submit" value="Изменить" class="btn btn-primary ml-1">
-            }
+    <h4 class="text-left ml-3">@category.Name</h4>
+
+    foreach (Service service in category.Services)
+    {
+        <div class="row ml-1">
+            <p class="col-9 text-left">@service.Name</p>
+            <div class="form-check-inline">
+                @Html.Hidden("id", service.Id)
+                @Html.ActionLink("Изменить", "EditService", "Admin", new{id = "id"}, new {@class = "btn btn-primary ml-3"})
+                @Html.ActionLink("Удалить", "DeleteService", "Admin", new {@class = "btn btn-primary ml-1"})
+            </div>
         </div>
-    </div>
-    <hr />
+        <hr />
+    }
 }

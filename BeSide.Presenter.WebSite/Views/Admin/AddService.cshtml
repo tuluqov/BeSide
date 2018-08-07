@@ -1,5 +1,5 @@
-﻿@using BeSide.Common.Entities
-@model IEnumerable<Category>
+﻿@using BeSide.Presenter.WebSite.Models
+@model AddServiceViewModel
 
 @{
     ViewBag.Title = "Добавление сервиса";
@@ -17,19 +17,15 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">Категория</label>
-                                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                                    @foreach (var caregoty in Model)
-                                    {
-                                        <option>@caregoty.Name</option>
-                                    }
-                                </select>
+                                @Html.DropDownList("CategoryId", ViewBag.Categoryes as SelectList, 
+                                    new {@class= "custom-select mr-sm-2", id = "inlineFormCustomSelect" })
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-md-12 form-group">
-                                @Html.LabelFor(m => m, "Название сервиса")
-                                @Html.TextBoxFor(m => m., new { @class = "form-control py-2" })
+                                @Html.LabelFor(m => m.ServiceName, "Название сервиса")
+                                @Html.TextBoxFor(m => m.ServiceName, new { @class = "form-control py-2" })
                                 @*@Html.ValidationMessageFor(m => m.Name, "Такая категория уже существует", new { @class = "text-danger" })*@
                             </div>
                         </div>

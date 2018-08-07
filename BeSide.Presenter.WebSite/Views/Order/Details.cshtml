@@ -1,0 +1,94 @@
+﻿@using BeSide.Common.Entities
+@using BeSide.Presenter.WebSite.Models.Feedback
+@using Microsoft.AspNet.Identity
+@model BeSide.Presenter.WebSite.Models.Order.OrderViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="site-section">
+    <div class="container col-md-10 form-wrap justify-content-center">
+        <div class="row justify-content-center mb-2">
+            <h2 class="text-center">@Model.ShortDescription</h2>
+        </div>
+
+        <div class="row border-bottom">
+            <div class="col-md-7">
+                <div class="block-25">
+                    <h3>@ViewBag.User.UserProfile.FirstName</h3>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="block-25">
+                    @if (Model.ContractPrice)
+                    {
+                        <h3>цена договорная</h3>
+                    }
+                    else
+                    {
+                        <h3>@Model.Price</h3>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-md-7">
+                <div class="text">
+                    @Model.FullDescription
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3 mb-5 mb-lg-0">
+                <div class="block-25">
+                    <ul>
+                        <li>
+                            <span class="icon ion-android-list"></span>
+                            <span class="text">@Model.ServiceModel.Name</span>
+                        </li>
+                        <li>
+                            <span class="icon ion-android-pin"></span>
+                            <span class="text">@Model.City</span>
+                        </li>
+                        <li>
+                            <span class="icon ion-android-time"></span>
+                            <span class="text">Выполнить до @Model.Deadline.ToShortDateString()</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Feedbacks -->
+        <div class="row border-top mt-2 mb-2">
+            <div class="col-md-7">
+                @if (!Model.Feedbacks.Any())
+                {
+                    <h2>Нет откликов</h2>
+                }
+                else
+                {
+                    <h2>Отклики</h2>
+                }
+            </div>
+
+            @if (User.IsInRole("provider") && User.Identity.GetUserId() != Model.ClientProfileId)
+            {
+                <div class="col-md-5 container float-right mt-2">
+                    @Html.ActionLink("Откликнуться", "AddFeedback",
+                        new { OrderId = Model.Id }, new { @class = "btn btn-primary px-5 py-2" })
+                </div>
+            }
+        </div>
+    </div>
+    <!-- Feedbacks list -->
+    @foreach (FeedbackViewModel feedback in Model.Feedbacks)
+    {
+        <div class="container form-wrap col-md-10 border-bottom">
+            <h3>Name</h3>
+            <p>@feedback.Text</p>
+        </div>
+    }
+
+</section>

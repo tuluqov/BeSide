@@ -56,6 +56,7 @@
     <Compile Include="DTO\UserDTO.cs" />
     <Compile Include="IAdminService.cs" />
     <Compile Include="ICategoryService.cs" />
+    <Compile Include="IFeedbackService.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="IOrderService.cs" />
     <Compile Include="ISeviceService.cs" />

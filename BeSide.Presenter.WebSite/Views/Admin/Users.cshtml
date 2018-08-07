@@ -24,12 +24,17 @@
                 {
                     continue;
                 }
-                <tr>
-                    <td>@user.Email</td>
-                    <td>@user.UserProfile.FirstName</td>
-                    <td>@user.UserProfile.LastName</td>
-                    <td>@user.UserProfile.Patronymic</td>
-                </tr>
+
+                if (user.UserProfile != null)
+                {
+                    <tr>
+                        <td>@user.Email</td>
+                        <td>@user.UserProfile.FirstName</td>
+                        <td>@user.UserProfile.LastName</td>
+                        <td>@user.UserProfile.Patronymic</td>
+                    </tr>
+                }
+                
             }
         </tbody>
     </table>
