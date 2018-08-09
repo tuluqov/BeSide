@@ -29,26 +29,27 @@ namespace BeSide.Presenter.WebSite.Controllers
 
         // GET: Order
         [HttpGet]
-        public ActionResult Index()
+        public ActionResult Index(int? ServiceId)
         {
-            var allOrders = orderService.GetAll();
-            OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(allOrders);
+            if (ServiceId == null)
+            {
+                var allOrders = orderService.GetAll();
+                OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(allOrders);
 
-            ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
+                ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
 
-            return View(collectionOrders);
+                return View(collectionOrders);
+            }
+            else
+            {
+                var searchOrders = orderService.Find(m => m.ServiceId == ServiceId);
+                OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(searchOrders);
+
+                ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
+
+                return View(collectionOrders);
+            }
         }
-
-        //[HttpGet]
-        //public ActionResult Index(int ServiceId)
-        //{
-        //    var searchOrders = orderService.Find(m => m.ServiceId == ServiceId);
-        //    OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(searchOrders);
-
-        //    ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
-
-        //    return View(collectionOrders);
-        //}
 
         #region Feedbacks
 
@@ -77,6 +78,7 @@ namespace BeSide.Presenter.WebSite.Controllers
             Common.Entities.Feedback feedback = model.GetFeedback();
 
             feedback.ProviderProfileId = User.Identity.GetUserId();
+            feedback.CreateDate = DateTime.Now;
 
             feedbackService.Add(feedback);
 
@@ -124,11 +126,13 @@ namespace BeSide.Presenter.WebSite.Controllers
                 return RedirectToAction("Index", "Order");
             }
 
-            return View();
+            ViewBag.Category = categoryService.GetAllCategory();
+
+            return View(model);
         }
 
         #endregion
-        
+
 
         // GET: Order/Edit/5
         [HttpGet]

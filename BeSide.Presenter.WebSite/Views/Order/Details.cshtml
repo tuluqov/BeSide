@@ -1,4 +1,5 @@
-﻿@using BeSide.Common.Entities
+﻿@using System.Globalization
+@using BeSide.Common.Entities
 @using BeSide.Presenter.WebSite.Models.Feedback
 @using Microsoft.AspNet.Identity
 @model BeSide.Presenter.WebSite.Models.Order.OrderViewModel
@@ -10,25 +11,22 @@
 
 <section class="site-section">
     <div class="container col-md-10 form-wrap justify-content-center">
-        <div class="row justify-content-center mb-2">
-            <h2 class="text-center">@Model.ShortDescription</h2>
-        </div>
 
         <div class="row border-bottom">
             <div class="col-md-7">
-                <div class="block-25">
-                    <h3>@ViewBag.User.UserProfile.FirstName</h3>
-                </div>
+                @*<h3>@ViewBag.User.UserProfile.FirstName</h3>*@
+                <h3>@Model.ShortDescription</h3>
+
             </div>
-            <div class="col-md-3 mb-3">
-                <div class="block-25">
+            <div class="col-md-3">
+                <div class="align-content-center">
                     @if (Model.ContractPrice)
                     {
-                        <h3>цена договорная</h3>
+                        <h5>цена договорная</h5>
                     }
                     else
                     {
-                        <h3>@Model.Price</h3>
+                        <h5>@Model.Price</h5>
                     }
                 </div>
             </div>
@@ -65,11 +63,28 @@
             <div class="col-md-7">
                 @if (!Model.Feedbacks.Any())
                 {
-                    <h2>Нет откликов</h2>
+                    <h3 class="mb-5">Нет откликов</h3>
                 }
                 else
                 {
-                    <h2>Отклики</h2>
+                    <h3 class="mb-5">Отклики</h3>
+                    <!-- Feedbacks list -->
+                    <ul class="comment-list">
+                        @foreach (FeedbackViewModel feedback in Model.Feedbacks)
+                        {
+                            <li class="comment">
+                                <div class="vcard bio">
+                                    <img src="../../Content/images/person_1.jpg" alt="Image placeholder" />
+                                </div>
+                                <div class="comment-body">
+                                    <h3>@feedback.ProviderProfile.LastName @feedback.ProviderProfile.FirstName</h3>
+                                    <div class="meta">@feedback.CreateDate.ToString(CultureInfo.InvariantCulture)</div>
+                                    <p>@feedback.Text</p>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+
                 }
             </div>
 
@@ -82,13 +97,6 @@
             }
         </div>
     </div>
-    <!-- Feedbacks list -->
-    @foreach (FeedbackViewModel feedback in Model.Feedbacks)
-    {
-        <div class="container form-wrap col-md-10 border-bottom">
-            <h3>Name</h3>
-            <p>@feedback.Text</p>
-        </div>
-    }
+
 
 </section>

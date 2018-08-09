@@ -11,13 +11,15 @@ namespace BeSide.Presenter.WebSite.Models.Feedback
         public int Id { get; set; }
 
         public string ProviderProfileId { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        public ProviderProfile ProviderProfile { get; set; }
 
         public int OrderId { get; set; }
 
         public string Text { get; set; }
 
         public float Price { get; set; }
+
+        public DateTime CreateDate { get; set; }
 
 
         public FeedbackViewModel()
@@ -32,6 +34,8 @@ namespace BeSide.Presenter.WebSite.Models.Feedback
             OrderId = feedback.OrderId;
             Text = feedback.Text;
             Price = feedback.Price;
+            ProviderProfile = feedback.ProviderProfile;
+            CreateDate = feedback.CreateDate;
         }
 
         public Common.Entities.Feedback GetFeedback()
@@ -42,7 +46,8 @@ namespace BeSide.Presenter.WebSite.Models.Feedback
                 OrderId = OrderId,
                 ProviderProfileId = ProviderProfileId,
                 Text = Text,
-                Price = Price
+                Price = Price,
+                CreateDate = CreateDate
             };
         }
     }

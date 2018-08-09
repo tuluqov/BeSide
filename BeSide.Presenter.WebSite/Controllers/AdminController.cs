@@ -33,7 +33,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         [Authorize(Roles = "admin")]
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Users");
         }
 
         #region Users

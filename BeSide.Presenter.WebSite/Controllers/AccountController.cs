@@ -8,13 +8,17 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using BeSide.Common.Entities;
+using BeSide.Presenter.WebSite.Models.Order;
+using Microsoft.AspNet.Identity;
 
 namespace BeSide.Presenter.WebSite.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        private IUserService userService;
+        private readonly IUserService userService;
+        private readonly IOrderService orderService;
 
         private IAuthenticationManager AuthenticationManager
         {
@@ -24,10 +28,14 @@ namespace BeSide.Presenter.WebSite.Controllers
             }
         }
 
-        public AccountController(IUserService userService)
+        public AccountController(IUserService userService, 
+            IOrderService orderService)
         {
             this.userService = userService;
+            this.orderService = orderService;
         }
+
+        #region LoginRigester
 
         [HttpGet]
         [AllowAnonymous]
@@ -67,6 +75,11 @@ namespace BeSide.Presenter.WebSite.Controllers
                         IsPersistent = true
                     }, claim);
 
+                    if (User.IsInRole("admin"))
+                    {
+                        return RedirectToAction("Index", "Admin");
+                    }
+
                     return RedirectToAction("Index", "Home");
                 }
             }
@@ -100,7 +113,8 @@ namespace BeSide.Presenter.WebSite.Controllers
                     UserName = model.Email,
                     FirstName = model.FirstName,
                     LastName = model.LastName,
-                    Patronymic = model.Patronymic
+                    Patronymic = model.Patronymic,
+                    PhoneNumber = model.PhoneNumber
                 };
 
                 OperationDetails operationDetails = userService.Create(userDto);
@@ -141,5 +155,33 @@ namespace BeSide.Presenter.WebSite.Controllers
             AuthenticationManager.SignOut();
             return RedirectToAction("Index", "Home");
         }
+
+        #endregion
+
+        #region Profile
+
+        [HttpGet]
+        [Authorize(Roles = "provider, client")]
+        public ActionResult UserProfile()
+        {
+            string userId = User.Identity.GetUserId();
+
+            ApplicationUser user = userService.GetById(userId);
+            
+            return View(user);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "client")]
+        public ActionResult UserOrders()
+        {
+            var userOrders = orderService.GetUserOrders(User.Identity.GetUserId());
+
+            OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(userOrders); 
+
+            return View(ordersModel);
+        }
+
+        #endregion
     }
 }

@@ -15,15 +15,7 @@ namespace BeSide.Presenter.WebSite.Models
         public string ReturnUrl { get; set; }
     }
 
-    public class SendCodeViewModel
-    {
-        public string SelectedProvider { get; set; }
-        public ICollection<System.Web.Mvc.SelectListItem> Providers { get; set; }
-        public string ReturnUrl { get; set; }
-        public bool RememberMe { get; set; }
-    }
-
-    public class VerifyCodeViewModel
+   public class VerifyCodeViewModel
     {
         [Required]
         public string Provider { get; set; }
@@ -80,11 +72,24 @@ namespace BeSide.Presenter.WebSite.Models
         [Compare("Password", ErrorMessage = "Пароль и его подтверждение не совпадают.")]
         public string ConfirmPassword { get; set; }
 
+        [Required]
+        [Display(Name = "Роль")]
         public string Role { get; set; }
 
+        [Required]
+        [Display(Name = "Имя")]
         public string FirstName { get; set; }
+
+        [Required]
+        [Display(Name = "Фамилия")]
         public string LastName { get; set; }
+
+        [Required]
+        [Display(Name = "Отчество")]
         public string Patronymic { get; set; }
+
+        [Required]
+        [Display(Name = "Номер телефона")]
         public string PhoneNumber { get; set; }
     }
 

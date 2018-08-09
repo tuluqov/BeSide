@@ -1,0 +1,78 @@
+﻿@using System.Globalization
+@using BeSide.Presenter.WebSite.Models.Order
+@model OrderCollectionViewModel
+
+@{
+    ViewBag.Title = "UserOrders";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="site-section bg-light element-animate fadeInUp element-animated">
+    <div class="container">
+        <div class="col-md-8 col-lg-8 order-md-2 mb-5">
+            <div class="episodes" style="width: 1040px;">
+                @if (Model.Any())
+                {
+                    foreach (OrderViewModel order in Model)
+                    {
+                        <div class="row align-items-center p-4 episode" style="width: 1030px;">
+                            <div class="col-md-8">
+                                <h4>
+                                    @Html.RouteLink($"{order.ShortDescription}",
+                                        new { controller = "Order", action = "Details", id = order.Id},
+                                        new{ @class=""})
+                                </h4>
+
+                                <p style="margin: 5px">@order.FullDescription</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="mx-1 icon ion-android-list">
+                                            @order.ServiceModel.Name
+                                        </span>
+                                        <span class="mx-1 icon ion-android-pin">
+                                            @order.City
+                                        </span>
+                                        <span class="mx-1 icon ion-android-time">
+                                            @order.Deadline.ToShortDateString()
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p>Выложено @order.CreateDate.ToString(CultureInfo.InvariantCulture)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                @if (order.ContractPrice)
+                                {
+                                    <h5 class="float-right">Договорная</h5>
+                                }
+                                else
+                                {
+                                    <h5 class="float-right">@order.Price р.</h5>
+                                }
+                            </div>
+                            <div class="col btn-group-vertical">
+                                <div class="btn-block">
+                                    <div class="row p-1">
+                                        <a href="#" class="btn btn-primary">Редактировать</a>
+                                    </div>
+                                    <div class="row p-1">
+                                        <a href="#" class="btn btn-primary">Удалить</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <h3>У вас нет заказов</h3>
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+

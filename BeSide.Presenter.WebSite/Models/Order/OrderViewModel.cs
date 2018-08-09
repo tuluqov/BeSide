@@ -26,6 +26,7 @@ namespace BeSide.Presenter.WebSite.Models.Order
         public string NameProvider { get; set; }
 
         [Display(Name = "Цена")]
+        [Range(0, Double.MaxValue, ErrorMessage = "Недопустимое значение цены")]
         public float? Price { get; set; }
 
         [Display(Name = "Договорная")]
@@ -37,11 +38,7 @@ namespace BeSide.Presenter.WebSite.Models.Order
 
         [Display(Name = "Дата публикации")]
         public DateTime CreateDate { get; set; }
-
-        [MaxLength(15)]
-        [Display(Name = "Номер телефона")]
-        public string PhoneNumber { get; set; }
-
+        
         [Required]
         [MaxLength(40)]
         [Display(Name = "Город")]
@@ -102,7 +99,6 @@ namespace BeSide.Presenter.WebSite.Models.Order
                 NameProvider = NameProvider,
                 ClientProfileId = ClientProfileId,
                 ProviderProfileId = ProviderProfileId,
-                PhoneNumber = PhoneNumber,
 
                 ServiceId = ServiceId
             };

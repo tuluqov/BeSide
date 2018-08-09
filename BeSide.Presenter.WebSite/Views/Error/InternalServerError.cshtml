@@ -1,15 +1,12 @@
-﻿<html>
-<head>
-    <title>500 - Внутренняя ошибка сервера</title>
-    <meta charset="utf-8">
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /></head>
-<body>
-    <div>
-        <p>500 - Внутренняя ошибка сервера!!!</p>
-    </div>
-    <div class="alert-dark">
-        <a href="../Home/Index.cshtml">Перейти к главной странице</a>
-    </div>
-</body>
-</html>
+﻿@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid text-center p-5">
+    <h1>Ошибка 500(((</h1>
+    <h4>
+        @Html.RouteLink("Перейти домой", new { controller = "Home", action = "Index"})
+    </h4>
+</div>
 

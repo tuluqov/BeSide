@@ -63,7 +63,7 @@ namespace BeSide.BusinessLogic.BusinessComponents
 
         public IEnumerable<Order> GetUserOrders(string userId)
         {
-            var userOrders = uow.Orders.Find(order => order.ClientProfile.Id == userId);
+            var userOrders = uow.Orders.Find(order => order.ClientProfileId == userId);
             return userOrders;
         }
 

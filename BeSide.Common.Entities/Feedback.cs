@@ -19,6 +19,8 @@ namespace BeSide.Common.Entities
         [ForeignKey(nameof(OrderId))]
         public virtual Order Order { get; set; }
 
+        public DateTime CreateDate { get; set; }
+
         [Required]
         public string Text { get; set; }
 

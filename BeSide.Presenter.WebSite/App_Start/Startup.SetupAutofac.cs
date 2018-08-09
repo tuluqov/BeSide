@@ -47,7 +47,7 @@ namespace BeSide.Presenter.WebSite
             DependencyResolver.SetResolver(new AutofacDependencyResolver(container));
         }
 
-        
+
         private UserManager<ApplicationUser> BuildUserManager(IComponentContext context, IEnumerable<Parameter> parameters, IDataProtectionProvider dataProtectionProvider)
         {
             var manager = new UserManager<ApplicationUser>(context.Resolve<IUserStore<ApplicationUser>>());

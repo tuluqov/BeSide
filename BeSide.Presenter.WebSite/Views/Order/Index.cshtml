@@ -1,4 +1,5 @@
-﻿@using BeSide.Presenter.WebSite.Models.Category
+﻿@using System.Globalization
+@using BeSide.Presenter.WebSite.Models.Category
 @using BeSide.Presenter.WebSite.Models.Order
 @using BeSide.Presenter.WebSite.Models.Service
 @model BeSide.Presenter.WebSite.Models.Order.OrderCollectionViewModel
@@ -21,7 +22,7 @@
         <div class="row align-items-baseline border-top">
 
             <!-- Category sidebar -->
-            <div class="col-md-2 wrapper">
+            <div class="col-md-3 wrapper">
                 <nav id="sidebar">
                     <div class="my-2 text-center">
                         <h3>Категории</h3>
@@ -41,7 +42,9 @@
                                     @foreach (ServiceViewModel service in category.ServiceViewModels)
                                     {
                                         <li>
-                                            <a href="Index/@service.Id" class="dropdown-item">@service.Name</a>
+                                            @Html.HiddenFor(m => service.Id)
+                                            @Html.ActionLink($"{service.Name}", "Index", new { ServiceId = service.Id},
+                                                new { @class = "dropdown-item" })
                                         </li>
 
                                     }
@@ -53,53 +56,97 @@
             </div>
 
             <!-- Order view section -->
-            <div class="col-md-10 border-left">
+            <div class="col-md-9 border-left">
                 @foreach (OrderViewModel order in Model)
                 {
-                    <div class="col-md-10 ml-2 border-bottom border-primary my-2">
-                        <a href="Order/Details/@order.Id">
+                    <div class="row align-items-center p-4 episode" style="width: 1030px;">
+                        <div class="col-md-8">
+                            <h4>
+                                @Html.RouteLink($"{order.ShortDescription}",
+                                    new { controller = "Order", action = "Details", id = order.Id},
+                                    new{ @class=""})
+                            </h4>
+
+                            <p style="margin: 5px">@order.FullDescription</p>
                             <div class="row">
                                 <div class="col">
-                                    @Html.HiddenFor(m => order.Id)
-                                    <h4>@order.ShortDescription</h4>
-                                </div>
-
-                                <div class="col">
-                                    @if (order.ContractPrice)
-                                    {
-                                        <h5 class="float-right">Договорная</h5>
-                                    }
-                                    else
-                                    {
-                                        <h5 class="float-right">@order.Price р.</h5>
-                                    }
+                                    <span class="mx-1 icon ion-android-list">
+                                        @order.ServiceModel.Name
+                                    </span>
+                                    <span class="mx-1 icon ion-android-pin">
+                                        @order.City
+                                    </span>
+                                    <span class="mx-1 icon ion-android-time">
+                                        @order.Deadline.ToShortDateString()
+                                    </span>
                                 </div>
                             </div>
-                        </a>
-
-                        <div class="row">
-                            <div class="col">
-                                <p>
-                                    @order.FullDescription
-                                </p>
+                            <div class="row">
+                                <div class="col">
+                                    <p>Выложено @order.CreateDate.ToString(CultureInfo.InvariantCulture)</p>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col">
-                                <span class="mx-1 icon ion-android-list">
-                                    @order.ServiceModel.Name
-                                </span>
-                                <span class="mx-1 icon ion-android-pin">
-                                    @order.City
-                                </span>
-                                <span class="mx-1 icon ion-android-time">
-                                    @order.Deadline.ToShortDateString()
-                                </span>
-                            </div>
+                        <div class="col-md-2">
+                            @if (order.ContractPrice)
+                            {
+                                <h5 class="float-right">Договорная</h5>
+                            }
+                            else
+                            {
+                                <h5 class="float-right">@order.Price р.</h5>
+                            }
                         </div>
                     </div>
                 }
+
+
+                @*@foreach (OrderViewModel order in Model)
+                    {
+                        <div class="col-md-10 ml-2 border-bottom border-primary my-2">
+                            <a href="Order/Details/@order.Id">
+                                <div class="row">
+                                    <div class="col">
+                                        @Html.HiddenFor(m => order.Id)
+                                        <h4>@order.ShortDescription</h4>
+                                    </div>
+
+                                    <div class="col">
+                                        @if (order.ContractPrice)
+                                        {
+                                            <h5 class="float-right">Договорная</h5>
+                                        }
+                                        else
+                                        {
+                                            <h5 class="float-right">@order.Price р.</h5>
+                                        }
+                                    </div>
+                                </div>
+                            </a>
+
+                            <div class="row">
+                                <div class="col">
+                                    <p>
+                                        @order.FullDescription
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <span class="mx-1 icon ion-android-list">
+                                        @order.ServiceModel.Name
+                                    </span>
+                                    <span class="mx-1 icon ion-android-pin">
+                                        @order.City
+                                    </span>
+                                    <span class="mx-1 icon ion-android-time">
+                                        @order.Deadline.ToShortDateString()
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    }*@
             </div>
 
         </div>
