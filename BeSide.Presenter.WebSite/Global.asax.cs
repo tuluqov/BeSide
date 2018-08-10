@@ -25,6 +25,8 @@ namespace BeSide.Presenter.WebSite
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
 
+        
+
         public override void Init()
         {
             logger.Info("Application Init");

@@ -1,0 +1,171 @@
+﻿<error errorId="b01a1175-3143-4668-8317-c51f71ce423d" application="/LM/W3SVC/2/ROOT" host="DESKTOP-8T3R9H9" type="System.Web.HttpException" message="Не удалось найти общедоступный метод действия &quot;Delete&quot; на контроллере &quot;BeSide.Presenter.WebSite.Controllers.OrderController&quot;." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): Не удалось найти общедоступный метод действия &quot;Delete&quot; на контроллере &quot;BeSide.Presenter.WebSite.Controllers.OrderController&quot;.&#xD;&#xA;   в System.Web.Mvc.Controller.HandleUnknownAction(String actionName)&#xD;&#xA;   в System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecuteCore&gt;b__152_1(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecute&gt;b__151_2(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.&lt;&gt;c.&lt;BeginProcessRequest&gt;b__20_1(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   в System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="yusup@gmail.com" time="2018-08-10T06:56:45.8763431Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:close&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:.AspNet.ApplicationCookie=3rXyGrP96zrAX9T6a5i-iEPdB8IMpT8KN_kJm356Z80ND8xxe7fBNtP1h3AxbwiLyCKeIfAqzIPjq92zICDcXzX71GLYUCCu1g7uaXkD7YtF-F5ZzDbxqiyOhzCANkHV2GjQ8qm-ROJf4wxUv0gNLlAM-DBSu9sRc3KVgdouXrZ6KtH8bPMRG5W4De8ie48sLa_GhDRX6IYJWgXO9p8yabp2GFVglxWxJaYo3siNX_9hg-zLlRnEqEbXlKIsyTQsNR97YlE-jzVknw1lkTcseoWTAROUAZk17Bv1JYBj0KIYr6AVywDe0z1Ub4wdjHtZe7QU-jiC690k_b6X8XjkL8C9_-eEA86UWRl_GeP5l4L_TwZ5cVSek9AwTCpqngGxQJUvBZ_fdzFK1YZczfeLhLMx3-ooUYc_Z2JwMWj3UAfPJBG2peHHIWJV-mJ-eHRA5Fu6bEhLsu5MkspLUavHa75V6OslqB3HvqEcCp65DrKGZ1V5PlLLCE25Z2L7osUrac0Ewz_pSAWLOsK0GMkpKA; __RequestVerificationToken=WrwHeLxBroz1VPpSSrhRJ3jFOzTcXxSOczoUXBEei0fgwFbQ_sfgCsqdp5VxTQueDuL7NkgaF-AejqEU2HExOXAm7QMyjeFL_uqEzzcO2rw1&#xD;&#xA;HTTP_HOST:localhost:44365&#xD;&#xA;HTTP_REFERER:https://localhost:44365/Account/UserOrders&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: close&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: .AspNet.ApplicationCookie=3rXyGrP96zrAX9T6a5i-iEPdB8IMpT8KN_kJm356Z80ND8xxe7fBNtP1h3AxbwiLyCKeIfAqzIPjq92zICDcXzX71GLYUCCu1g7uaXkD7YtF-F5ZzDbxqiyOhzCANkHV2GjQ8qm-ROJf4wxUv0gNLlAM-DBSu9sRc3KVgdouXrZ6KtH8bPMRG5W4De8ie48sLa_GhDRX6IYJWgXO9p8yabp2GFVglxWxJaYo3siNX_9hg-zLlRnEqEbXlKIsyTQsNR97YlE-jzVknw1lkTcseoWTAROUAZk17Bv1JYBj0KIYr6AVywDe0z1Ub4wdjHtZe7QU-jiC690k_b6X8XjkL8C9_-eEA86UWRl_GeP5l4L_TwZ5cVSek9AwTCpqngGxQJUvBZ_fdzFK1YZczfeLhLMx3-ooUYc_Z2JwMWj3UAfPJBG2peHHIWJV-mJ-eHRA5Fu6bEhLsu5MkspLUavHa75V6OslqB3HvqEcCp65DrKGZ1V5PlLLCE25Z2L7osUrac0Ewz_pSAWLOsK0GMkpKA; __RequestVerificationToken=WrwHeLxBroz1VPpSSrhRJ3jFOzTcXxSOczoUXBEei0fgwFbQ_sfgCsqdp5VxTQueDuL7NkgaF-AejqEU2HExOXAm7QMyjeFL_uqEzzcO2rw1&#xD;&#xA;Host: localhost:44365&#xD;&#xA;Referer: https://localhost:44365/Account/UserOrders&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&#xD;&#xA;upgrade-insecure-requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="F:\C#\BeSide\BeSide.Presenter.WebSite\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="yusup@gmail.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="yusup@gmail.com" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="yusup@gmail.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Order/Delete/1006" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="F:\C#\BeSide\BeSide.Presenter.WebSite\Order\Delete\1006" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="54281" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Order/Delete/1006" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="44365" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Order/Delete/1006" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="close" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string=".AspNet.ApplicationCookie=3rXyGrP96zrAX9T6a5i-iEPdB8IMpT8KN_kJm356Z80ND8xxe7fBNtP1h3AxbwiLyCKeIfAqzIPjq92zICDcXzX71GLYUCCu1g7uaXkD7YtF-F5ZzDbxqiyOhzCANkHV2GjQ8qm-ROJf4wxUv0gNLlAM-DBSu9sRc3KVgdouXrZ6KtH8bPMRG5W4De8ie48sLa_GhDRX6IYJWgXO9p8yabp2GFVglxWxJaYo3siNX_9hg-zLlRnEqEbXlKIsyTQsNR97YlE-jzVknw1lkTcseoWTAROUAZk17Bv1JYBj0KIYr6AVywDe0z1Ub4wdjHtZe7QU-jiC690k_b6X8XjkL8C9_-eEA86UWRl_GeP5l4L_TwZ5cVSek9AwTCpqngGxQJUvBZ_fdzFK1YZczfeLhLMx3-ooUYc_Z2JwMWj3UAfPJBG2peHHIWJV-mJ-eHRA5Fu6bEhLsu5MkspLUavHa75V6OslqB3HvqEcCp65DrKGZ1V5PlLLCE25Z2L7osUrac0Ewz_pSAWLOsK0GMkpKA; __RequestVerificationToken=WrwHeLxBroz1VPpSSrhRJ3jFOzTcXxSOczoUXBEei0fgwFbQ_sfgCsqdp5VxTQueDuL7NkgaF-AejqEU2HExOXAm7QMyjeFL_uqEzzcO2rw1" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:44365" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://localhost:44365/Account/UserOrders" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_APPLICATIONINSIGHTS_REQUESTTRACKINGTELEMETRYMODULE_ROOTREQUEST_ID">
+      <value string="d3ce6443-f0ed-44b5-a34a-576bb66e6c35" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="3rXyGrP96zrAX9T6a5i-iEPdB8IMpT8KN_kJm356Z80ND8xxe7fBNtP1h3AxbwiLyCKeIfAqzIPjq92zICDcXzX71GLYUCCu1g7uaXkD7YtF-F5ZzDbxqiyOhzCANkHV2GjQ8qm-ROJf4wxUv0gNLlAM-DBSu9sRc3KVgdouXrZ6KtH8bPMRG5W4De8ie48sLa_GhDRX6IYJWgXO9p8yabp2GFVglxWxJaYo3siNX_9hg-zLlRnEqEbXlKIsyTQsNR97YlE-jzVknw1lkTcseoWTAROUAZk17Bv1JYBj0KIYr6AVywDe0z1Ub4wdjHtZe7QU-jiC690k_b6X8XjkL8C9_-eEA86UWRl_GeP5l4L_TwZ5cVSek9AwTCpqngGxQJUvBZ_fdzFK1YZczfeLhLMx3-ooUYc_Z2JwMWj3UAfPJBG2peHHIWJV-mJ-eHRA5Fu6bEhLsu5MkspLUavHa75V6OslqB3HvqEcCp65DrKGZ1V5PlLLCE25Z2L7osUrac0Ewz_pSAWLOsK0GMkpKA" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="WrwHeLxBroz1VPpSSrhRJ3jFOzTcXxSOczoUXBEei0fgwFbQ_sfgCsqdp5VxTQueDuL7NkgaF-AejqEU2HExOXAm7QMyjeFL_uqEzzcO2rw1" />
+    </item>
+  </cookies>
+</error>

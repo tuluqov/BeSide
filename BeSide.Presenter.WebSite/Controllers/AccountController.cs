@@ -4,6 +4,7 @@ using BeSide.BusinessLogic.Construct.Infrastructure;
 using BeSide.Presenter.WebSite.Models;
 using Microsoft.Owin.Security;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -28,7 +29,7 @@ namespace BeSide.Presenter.WebSite.Controllers
             }
         }
 
-        public AccountController(IUserService userService, 
+        public AccountController(IUserService userService,
             IOrderService orderService)
         {
             this.userService = userService;
@@ -87,7 +88,7 @@ namespace BeSide.Presenter.WebSite.Controllers
             return View(model);
         }
 
-        
+
 
         [HttpGet]
         [AllowAnonymous]
@@ -137,7 +138,7 @@ namespace BeSide.Presenter.WebSite.Controllers
 
             return View(model);
         }
-        
+
         private async Task SetInitialDataAsync()
         {
             await userService.SetInitialData(new UserDto
@@ -149,7 +150,7 @@ namespace BeSide.Presenter.WebSite.Controllers
             }, new List<string> { "client", "provider", "admin" });
         }
 
-        
+
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
@@ -167,7 +168,7 @@ namespace BeSide.Presenter.WebSite.Controllers
             string userId = User.Identity.GetUserId();
 
             ApplicationUser user = userService.GetById(userId);
-            
+
             return View(user);
         }
 
@@ -177,9 +178,77 @@ namespace BeSide.Presenter.WebSite.Controllers
         {
             var userOrders = orderService.GetUserOrders(User.Identity.GetUserId());
 
-            OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(userOrders); 
+            OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(userOrders);
 
             return View(ordersModel);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "client")]
+        public ActionResult Feedbacks()
+        {
+            var userOrders = orderService.GetUserOrders(User.Identity.GetUserId());
+
+            OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(userOrders);
+
+            return View(ordersModel);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "client")]
+        public ActionResult UserOrdersStatused(OrderStatus orderStatus)
+        {
+            IEnumerable<Order> orders;
+
+            switch (orderStatus)
+            {
+                case OrderStatus.Active:
+                    {
+                        orders = orderService.Find(m => m.OrderStatus == OrderStatus.Active &&
+                                                        m.ClientProfileId == User.Identity.GetUserId());
+                        
+                        OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
+
+                        return View(ordersModel);
+                    }
+
+
+                case OrderStatus.Accepted:
+                    {
+                        orders = orderService.Find(m => m.OrderStatus == OrderStatus.Accepted && 
+                                                        m.ClientProfileId == User.Identity.GetUserId());
+
+
+                        OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
+
+                        return View(ordersModel);
+                    }
+
+                case OrderStatus.Complited:
+                    {
+                        orders = orderService.Find(m => m.OrderStatus == OrderStatus.Complited && 
+                                                        m.ClientProfileId == User.Identity.GetUserId());
+                       
+                        OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
+
+                        return View(ordersModel);
+                    }
+                    
+
+                case OrderStatus.NotComplited:
+                    {
+                        orders = orderService.Find(m => m.OrderStatus == OrderStatus.NotComplited &&
+                                                        m.ClientProfileId == User.Identity.GetUserId());
+
+                        OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
+
+                        return View(ordersModel);
+                    }
+
+
+            }
+
+            return View();
         }
 
         #endregion

@@ -1,9 +1,10 @@
 ﻿@using BeSide.Common.Entities
-@using BeSide.Presenter.WebSite.Models.Order
+@using BeSide.Presenter.WebSite.Models.Category
+@using BeSide.Presenter.WebSite.Models.Service
 @model BeSide.Presenter.WebSite.Models.Order.OrderViewModel
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -12,7 +13,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="form-wrap">
-                    @using (Html.BeginForm("Create", "Order", FormMethod.Post))
+                    @using (Html.BeginForm("Edit", "Order", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
 
@@ -24,19 +25,20 @@
                         <div class="form-group col-md-10">
                             @Html.LabelFor(model => model.ServiceId, new { @class = "col-md-3" })
                             <select name="ServiceId" class="form-control">
-                                @foreach (Category category in ViewBag.Category)
+                                @foreach (CategoryViewModel category in ViewBag.Categoryes)
                                 {
-                                    if (category.Services.Count == 0)
+                                <optgroup label="@category.Name">
+                                    @foreach (ServiceViewModel service in category.ServiceViewModels)
                                     {
-                                        continue;
-                                    }
-
-                                    <optgroup label="@category.Name">
-                                        @foreach (Service service in category.Services)
+                                        if (service.Id == Model.ServiceId)
                                         {
-                                            <option value="@service.Id">@service.Name</option>
+                                            <option value="@service.Id" selected="">@service.Name</option>
+                                            continue;
                                         }
-                                    </optgroup>
+
+                                        <option value="@service.Id">@service.Name</option>
+                                    }
+                                </optgroup>
                                 }
 
                             </select>
@@ -83,8 +85,8 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Deadline, htmlAttributes: new { @class = "col-md-3" })
                             <div class="col-md-10">
-                                @Html.ValidationMessageFor(model => model.Deadline, "", new { @class = "text-danger" })
                                 @Html.EditorFor(model => model.Deadline, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Deadline, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -98,7 +100,15 @@
 
                         <div class="form-group">
                             <div class="col-md-10">
-                                <input type="submit" value="Добавить объявление" class="btn btn-primary" />
+                                @Html.HiddenFor(m => m.ClientProfileId)
+                                @Html.HiddenFor(m => m.CreateDate)
+                                @Html.HiddenFor(m => m.OrderStatus)
+                                @Html.HiddenFor(m => m.ProviderProfileId)
+                                @Html.HiddenFor(m => m.Id)
+                                <input type="submit" value="Изменить" class="btn btn-primary"/>
+                                @Html.RouteLink("Отменить",
+                                    new {controller = "Account", action = "UserOrders"},
+                                    new {@class = "btn btn-primary"})
                             </div>
                         </div>
                     }
@@ -106,5 +116,4 @@
             </div>
         </div>
     </div>
-
 </section>

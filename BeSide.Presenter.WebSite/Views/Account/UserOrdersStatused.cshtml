@@ -1,10 +1,10 @@
 ﻿@using System.Globalization
 @using BeSide.Common.Entities
 @using BeSide.Presenter.WebSite.Models.Order
-@model OrderCollectionViewModel
+@model BeSide.Presenter.WebSite.Models.Order.OrderCollectionViewModel
 
 @{
-    ViewBag.Title = "UserOrders";
+    ViewBag.Title = "UserOrdersStatused";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -75,26 +75,16 @@
                                     }
                                 </div>
                             </div>
-                            <div class="col btn-group-vertical">
-                                <div class="btn-block">
-                                    <div class="row p-1">
-                                        @Html.RouteLink("Редактировать",
-                                            new {controller ="Order", action ="Edit", id = order.Id},
-                                            new{ @class="btn btn-primary"} )
-                                    </div>
-                                    <div class="row p-1">
-                                        @Html.RouteLink("Удалить",
-                                            new {controller ="Order", action ="Delete", id = order.Id},
-                                            new{ @class="btn btn-primary"} )
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     }
                 }
                 else
                 {
-                    <h3>У вас нет заказов</h3>
+                    <div class="row align-items-center p-4" style="width: 1030px;">
+                        <div class="col-md-8">
+                            <h3>У вас нет заказов</h3>
+                        </div>
+                    </div>
                 }
             </div>
         </div>

@@ -2,10 +2,12 @@
 using System.Linq;
 using System.Web.Mvc;
 using BeSide.BusinessLogic.Construct;
+using BeSide.Common.Entities;
 using BeSide.Presenter.WebSite.Models.Category;
 using BeSide.Presenter.WebSite.Models.Feedback;
 using BeSide.Presenter.WebSite.Models.Order;
 using Microsoft.AspNet.Identity;
+using PagedList;
 
 namespace BeSide.Presenter.WebSite.Controllers
 {
@@ -25,30 +27,6 @@ namespace BeSide.Presenter.WebSite.Controllers
             this.categoryService = categoryService;
             this.userService = userService;
             this.feedbackService = feedbackService;
-        }
-
-        // GET: Order
-        [HttpGet]
-        public ActionResult Index(int? ServiceId)
-        {
-            if (ServiceId == null)
-            {
-                var allOrders = orderService.GetAll();
-                OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(allOrders);
-
-                ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
-
-                return View(collectionOrders);
-            }
-            else
-            {
-                var searchOrders = orderService.Find(m => m.ServiceId == ServiceId);
-                OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(searchOrders);
-
-                ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
-
-                return View(collectionOrders);
-            }
         }
 
         #region Feedbacks
@@ -89,6 +67,40 @@ namespace BeSide.Presenter.WebSite.Controllers
 
         #region Orders
 
+        // GET: Order
+        [HttpGet]
+        public ActionResult Index(int? ServiceId, int? page, string find)
+        {
+            if (ServiceId == null && find == null)
+            {
+                var allOrders = orderService.GetAll();
+                OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(allOrders);
+
+                ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
+
+                return View(collectionOrders.ToPagedList(page ?? 1, 10));
+            }
+            else if (find != null)
+            {
+                var findOrders = orderService.Find(m => m.ShortDescription.Contains(find));
+
+                OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(findOrders);
+
+                ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
+
+                return View(collectionOrders.ToPagedList(page ?? 1, 10));
+            }
+            else
+            {
+                var searchOrders = orderService.Find(m => m.ServiceId == ServiceId);
+                OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(searchOrders);
+
+                ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
+
+                return View(collectionOrders.ToPagedList(page ?? 1, 10));
+            }
+        }
+
         // GET: Order/Details/5
         [HttpGet]
         public ActionResult Details(int id)
@@ -120,6 +132,7 @@ namespace BeSide.Presenter.WebSite.Controllers
             {
                 model.ClientProfileId = User.Identity.GetUserId();
                 model.CreateDate = DateTime.Now;
+                model.OrderStatus = OrderStatus.Active;
 
                 orderService.Add(model.GetOrder());
 
@@ -139,48 +152,71 @@ namespace BeSide.Presenter.WebSite.Controllers
         [Authorize(Roles = "client")]
         public ActionResult Edit(int id)
         {
-            return View();
+            var order = orderService.GetById(id);
+
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+
+            OrderViewModel model = new OrderViewModel(order);
+
+            ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
+
+            return View(model);
         }
 
         // POST: Order/Edit/5
         [HttpPost]
         [Authorize(Roles = "client")]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(OrderViewModel model)
         {
-            try
+            if (model.ClientProfileId == User.Identity.GetUserId())
             {
-                // TODO: Add update logic here
+                if (ModelState.IsValid)
+                {
+                    Order order = model.GetOrder();
 
-                return RedirectToAction("Index");
+                    orderService.Update(order);
+
+                    return RedirectToAction("UserOrders", "Account");
+                }
+
+                return View(model);
             }
-            catch
-            {
-                return View();
-            }
+
+            return RedirectToAction("Index", "Home");
         }
 
-        // GET: Order/Delete/5
+        //// GET: Order/Delete/5
+        //[Authorize(Roles = "client")]
+        //public ActionResult Delete(int id)
+        //{
+        //    return View();
+        //}
+
+        // POST: Order/Delete/5
+        [HttpGet]
         [Authorize(Roles = "client")]
         public ActionResult Delete(int id)
         {
-            return View();
+            Order order = orderService.GetById(id);
+
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+
+            if (order.ClientProfileId == User.Identity.GetUserId())
+            {
+                orderService.Delete(id);
+
+                return RedirectToAction("UserOrders", "Account");
+            }
+
+            return RedirectToAction("Index", "Home");
         }
 
-        // POST: Order/Delete/5
-        [HttpPost]
-        [Authorize(Roles = "client")]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

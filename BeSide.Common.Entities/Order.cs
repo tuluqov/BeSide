@@ -46,5 +46,7 @@ namespace BeSide.Common.Entities
         public virtual ProviderProfile ProviderProfile { get; set; }
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
+
+        public OrderStatus OrderStatus { get; set; }
     }
 }

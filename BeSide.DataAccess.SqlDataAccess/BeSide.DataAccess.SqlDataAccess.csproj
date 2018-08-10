@@ -108,6 +108,10 @@
     <Compile Include="Migrations\201808082239374_В.Designer.cs">
       <DependentUpon>201808082239374_В.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808091031074_Enum.cs" />
+    <Compile Include="Migrations\201808091031074_Enum.Designer.cs">
+      <DependentUpon>201808091031074_Enum.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -149,6 +153,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808082239374_В.resx">
       <DependentUpon>201808082239374_В.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808091031074_Enum.resx">
+      <DependentUpon>201808091031074_Enum.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

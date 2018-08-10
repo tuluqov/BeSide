@@ -58,6 +58,8 @@ namespace BeSide.Presenter.WebSite.Models.Order
 
         public FeedbacksCollectionViewModel Feedbacks { get; set; }
 
+        public OrderStatus OrderStatus { get; set; }
+
         public OrderViewModel()
         {
             
@@ -82,6 +84,8 @@ namespace BeSide.Presenter.WebSite.Models.Order
             ServiceModel = new ServiceViewModel(order.Service);
 
             Feedbacks = new FeedbacksCollectionViewModel(order.Feedbacks);
+
+            OrderStatus = order.OrderStatus;
         }
 
         public Common.Entities.Order GetOrder()
@@ -100,7 +104,8 @@ namespace BeSide.Presenter.WebSite.Models.Order
                 ClientProfileId = ClientProfileId,
                 ProviderProfileId = ProviderProfileId,
 
-                ServiceId = ServiceId
+                ServiceId = ServiceId,
+                OrderStatus = OrderStatus
             };
 
             return order;
