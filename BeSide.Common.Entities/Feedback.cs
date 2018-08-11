@@ -22,9 +22,11 @@ namespace BeSide.Common.Entities
         public DateTime CreateDate { get; set; }
 
         [Required]
+        [MaxLength(200)]
         public string Text { get; set; }
 
         [Required]
+        [Range(0, Double.MaxValue)]
         public float Price { get; set; }
     }
 }

@@ -233,7 +233,6 @@
     <Compile Include="Models\AccountDbInitializer.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AddServiceViewModel.cs" />
-    <Compile Include="Models\CatalogViewModel.cs" />
     <Compile Include="Models\Category\CategoryCollectionViewModel.cs" />
     <Compile Include="Models\Feedback\FeedbacksCollectionViewModel.cs" />
     <Compile Include="Models\Feedback\FeedbackViewModel.cs" />
@@ -243,6 +242,8 @@
     <Compile Include="Models\Category\CategoryViewModel.cs" />
     <Compile Include="Models\Service\ServiceCollectionViewModel.cs" />
     <Compile Include="Models\Service\ServiceViewModel.cs" />
+    <Compile Include="Models\User\ProviderCollectionViewModel.cs" />
+    <Compile Include="Models\User\ProviderViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -463,6 +464,7 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.bootstrap.year.calendar.js" />
+    <Content Include="Scripts\jquery.maskedinput.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -607,13 +609,13 @@
     <Content Include="Views\Account\Feedbacks.cshtml" />
     <Content Include="Views\Account\UserOrdersStatused.cshtml" />
     <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Executor\Index.cshtml" />
+    <Content Include="Views\Executor\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="App_GlobalResources\" />
     <Folder Include="img\" />
-    <Folder Include="Models\User\" />
-    <Folder Include="Views\Executor\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

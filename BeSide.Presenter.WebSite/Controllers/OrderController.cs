@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Web.Mvc;
 using BeSide.BusinessLogic.Construct;
 using BeSide.Common.Entities;
@@ -53,7 +52,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         [Authorize(Roles = "provider")]
         public ActionResult AddFeedback(FeedbackViewModel model)
         {
-            Common.Entities.Feedback feedback = model.GetFeedback();
+            Feedback feedback = model.GetFeedback();
 
             feedback.ProviderProfileId = User.Identity.GetUserId();
             feedback.CreateDate = DateTime.Now;
@@ -144,9 +143,6 @@ namespace BeSide.Presenter.WebSite.Controllers
             return View(model);
         }
 
-        #endregion
-
-
         // GET: Order/Edit/5
         [HttpGet]
         [Authorize(Roles = "client")]
@@ -189,13 +185,6 @@ namespace BeSide.Presenter.WebSite.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        //// GET: Order/Delete/5
-        //[Authorize(Roles = "client")]
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
         // POST: Order/Delete/5
         [HttpGet]
         [Authorize(Roles = "client")]
@@ -218,5 +207,6 @@ namespace BeSide.Presenter.WebSite.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        #endregion
     }
 }

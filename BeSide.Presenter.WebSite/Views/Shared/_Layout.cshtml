@@ -45,7 +45,7 @@
                             </div>
                         </li>
                         <li class="nav-item">
-                            @Html.RouteLink("Исполнители", new {controller = "Home", action = "Index"},
+                            @Html.RouteLink("Исполнители", new {controller = "Executor", action = "Index"},
                                 new { @class="nav-link"})
                         </li>
                         <li class="nav-item">
@@ -179,6 +179,12 @@
     <script src="~/Content/js/jquery.stellar.min.js"></script>
     <script src="~/Content/js/jquery.animateNumber.min.js"></script>
     <script src="~/Content/js/main.js"></script>
+    <script src="~/Scripts/jquery.maskedinput.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#phone").mask("+375(99) 999-99-99");
+        })
+    </script>
 </body>
 </html>
 

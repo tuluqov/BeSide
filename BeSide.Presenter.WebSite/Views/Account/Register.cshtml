@@ -43,7 +43,7 @@
                     {
                         @Html.AntiForgeryToken()
 
-                        @Html.ValidationSummary("", new {@class = "text-danger"})
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Email, "Email")
@@ -84,7 +84,7 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.PhoneNumber, "Номер телефона")
-                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control py-2" })
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control py-2", id = "phone", placeholder ="+375(XX) XXX-XX-XX" })
                             </div>
                         </div>
                         <div class="row mb-5">

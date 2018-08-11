@@ -10,6 +10,7 @@ namespace BeSide.Common.Entities
         [Required]
         [MaxLength(100)]
         public string ShortDescription { get; set; }
+
         [Required]
         [MaxLength(1000)]
         public string FullDescription { get; set; }

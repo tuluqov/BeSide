@@ -3,15 +3,78 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BeSide.BusinessLogic.Construct;
+using BeSide.Common.Entities;
+using BeSide.Presenter.WebSite.Models.Category;
+using BeSide.Presenter.WebSite.Models.Order;
+using BeSide.Presenter.WebSite.Models.User;
+using PagedList;
 
 namespace BeSide.Presenter.WebSite.Controllers
 {
     public class ExecutorController : Controller
     {
-        // GET: Executor
-        public ActionResult Index()
+        private readonly IUserService userService;
+        private readonly ICategoryService categoryService;
+        private readonly ISeviceService seviceService;
+
+        public ExecutorController(IUserService userService, 
+            ICategoryService categoryService,
+            ISeviceService seviceService)
         {
-            return View();
+            this.userService = userService;
+            this.categoryService = categoryService;
+            this.seviceService = seviceService;
+        }
+
+        // GET: Executor
+        public ActionResult Index(int? ServiceId, int? page, string find)
+        {
+            if (ServiceId == null && find == null)
+            {
+                var allProviders = userService.GetAllProviders();
+                ProviderCollectionViewModel providerCollection = new ProviderCollectionViewModel(allProviders);
+
+                ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
+
+                return View(providerCollection.ToPagedList(page ?? 1, 10));
+            }
+            else if (find != null)
+            {
+                var findProviders = userService.FindProviders(m => m.CompanyName.Contains(find));
+
+                ProviderCollectionViewModel providerCollection = new ProviderCollectionViewModel(findProviders);
+
+
+                ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
+
+                return View(providerCollection.ToPagedList(page ?? 1, 10));
+            }
+            else
+            {
+
+                
+                var service = seviceService.GetById((int) ServiceId);
+
+                var profiles = userService.GetAllProviders();
+
+                var searchProfiles = profiles;
+
+                ProviderCollectionViewModel providerCollection = new ProviderCollectionViewModel(searchProfiles);
+
+                ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
+
+                return View(providerCollection.ToPagedList(page ?? 1, 10));
+            }
+        }
+
+        // GET: Order/Details/5
+        [HttpGet]
+        public ActionResult Details(string id)
+        {
+            ProviderViewModel provider = new ProviderViewModel((ProviderProfile)userService.GetById(id).UserProfile);
+            
+            return View(provider);
         }
     }
 }

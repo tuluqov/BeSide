@@ -1,0 +1,16 @@
+2018-08-11 11:22:57.1181|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Start
+2018-08-11 11:22:58.9553|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-11 11:22:59.2157|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-11 11:22:59.2516|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-11 11:25:03.0753|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Start
+2018-08-11 11:25:03.7030|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-11 11:25:03.8356|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-11 11:25:55.9938|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Error
+2018-08-11 11:54:18.7099|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-11 11:54:18.7099|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-11 11:54:55.4391|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Dispose
+2018-08-11 11:55:25.4538|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Dispose
+2018-08-11 11:55:46.3794|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-11 11:56:25.4553|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Dispose
+2018-08-11 11:56:28.7405|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-11 11:58:25.4727|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Dispose

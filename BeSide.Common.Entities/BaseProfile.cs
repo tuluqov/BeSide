@@ -13,9 +13,11 @@ namespace BeSide.Common.Entities
         [Required]
         [MaxLength(50)]
         public string FirstName { get; set; }
+
         [Required]
         [MaxLength(50)]
         public string LastName { get; set; }
+
         [Required]
         [MaxLength(50)]
         public string Patronymic { get; set; }

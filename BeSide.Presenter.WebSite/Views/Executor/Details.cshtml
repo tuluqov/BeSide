@@ -1,0 +1,62 @@
+﻿@using System.Text
+@using BeSide.Presenter.WebSite.Models.Category
+@using BeSide.Presenter.WebSite.Models.Service
+@model BeSide.Presenter.WebSite.Models.User.ProviderViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="site-section">
+    <div class="container col-md-10 form-wrap justify-content-center">
+
+        <div class="row border-bottom">
+            <div class="col-md-7">
+                <h3>@Model.CompanyName</h3>
+
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="row container ml-1">
+                <p>@Model.Discription</p>
+            </div>
+            <!-- Feedbacks -->
+            <div class="row container">
+                <div class="col-md-7">
+                    @if (!Model.Services.Any())
+                    {
+                        <h3 class="mb-5">Нет сервисов</h3>
+                    }
+                    else
+                    {
+                        <h3 class="mb-5">Оказываемы услуги</h3>
+                        <!-- Service list -->
+                        <ul class="comment-list">
+                            @foreach (CategoryViewModel category in Model.Categories)
+                            {
+                                <li class="comment">
+                                    <div class="vcard bio">
+                                        <img src="../../Content/images/person_1.jpg" alt="Image placeholder" />
+                                    </div>
+                                    <div class="comment-body">
+                                        <h3></h3>
+                                        <div class="meta">@category.Name</div>
+                                        <p>
+                                            @foreach (ServiceViewModel service in category.ServiceViewModels)
+                                            {
+                                                @service.Name
+                                            }
+                                        </p>
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

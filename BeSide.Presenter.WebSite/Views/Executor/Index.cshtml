@@ -1,0 +1,110 @@
+﻿@using System.Globalization
+@using BeSide.Common.Entities
+@using BeSide.Presenter.WebSite.Models.Category
+@using BeSide.Presenter.WebSite.Models.Order
+@using BeSide.Presenter.WebSite.Models.Service
+@using BeSide.Presenter.WebSite.Models.User
+@using PagedList.Mvc
+@model PagedList.IPagedList<BeSide.Presenter.WebSite.Models.User.ProviderViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="site-section">
+    <div class="container-fluid">
+
+        <!-- Search bar -->
+        <div class="row">
+            <div class="mb-4 col-md-8 container-fluid">
+                @using (Html.BeginForm("Index", "Order", FormMethod.Get))
+                {
+                    @Html.TextBox("find", "", new { @class = "form-control py-2", placeholder = "Поиск в каталоге..." })
+                }
+            </div>
+        </div>
+
+        <div class="row align-items-baseline border-top">
+
+            <!-- Category sidebar -->
+            <div class="col-md-3 wrapper">
+                <nav id="sidebar">
+                    <div class="my-2 text-center">
+                        <h3>Категории</h3>
+                    </div>
+
+                    @foreach (CategoryViewModel category in ViewBag.Categoryes)
+                    {
+                        if (!category.ServiceViewModels.Any())
+                        {
+                            continue;
+                        }
+
+                        <ul class="list-unstyled components">
+                            <li class="active">
+                                <a href="#@category.Id" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle dropdown-item">@category.Name</a>
+                                <ul class="collapse list-unstyled" id="@category.Id">
+                                    @foreach (ServiceViewModel service in category.ServiceViewModels)
+                                    {
+                                        <li>
+                                            @Html.HiddenFor(m => service.Id)
+                                            @Html.ActionLink($"{service.Name}", "Index",
+                                                new { ServiceId = service.Id },
+                                                new { @class = "dropdown-item" })
+                                        </li>
+
+                                    }
+                                </ul>
+                            </li>
+                        </ul>
+                    }
+                </nav>
+            </div>
+
+            <!-- Order view section -->
+            <div class="col-md-9 border-left">
+                @foreach (ProviderViewModel provider in Model)
+                {
+                    <div class="row align-items-center p-4 episode" style="width: 1030px;">
+                        <div class="col-md-8">
+                            <h4>
+                                @if (provider.CompanyName == null)
+                                {
+                                    @Html.RouteLink($"{provider.LastName} {provider.FirstName} {provider.Patronymic}",
+                                        new {controller = "Executor", action = "Details", id = provider.Id},
+                                        new {@class = ""})
+                                }
+                                else
+                                {
+                                    @Html.RouteLink($"{provider.CompanyName}",
+                                        new {controller = "Executor", action = "Details", id = provider.Id},
+                                        new {@class = ""})
+                                }
+                            </h4>
+                            <p style="margin: 5px">@provider.Discription</p>
+                            <div class="row">
+                                <div class="col">
+                                    <span class="mx-1 icon ion-android-list">
+                                        @if (!provider.Services.Any())
+                                        {
+                                            @provider.Services.FirstOrDefault()
+
+                                            if (provider.Services.Count() > 1)
+                                            {
+                                                @provider.Services.Count()
+                                            }
+                                        }
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="block-27 text-center col-md-10">
+                    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

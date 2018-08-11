@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using BeSide.BusinessLogic.Construct.DTO;
@@ -14,5 +15,7 @@ namespace BeSide.BusinessLogic.Construct
         Task SetInitialData(UserDto admin, List<string> roles);
 
         ApplicationUser GetById(string id);
+        IEnumerable<ProviderProfile> GetAllProviders();
+        IEnumerable<ProviderProfile> FindProviders(Func<ProviderProfile, bool> predicate);
     }
 }

@@ -9,7 +9,7 @@ namespace BeSide.Presenter.WebSite.Models.Category
 
         public string Name { get; set; }
 
-        public IEnumerable<ServiceViewModel> ServiceViewModels { get; set; }
+        public ServiceCollectionViewModel ServiceViewModels { get; set; }
 
         public CategoryViewModel()
         {

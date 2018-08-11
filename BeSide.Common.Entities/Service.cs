@@ -1,10 +1,12 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeSide.Common.Entities
 {
     public class Service : BaseEntity
     {
+        [MaxLength(100)]
         public string Name { get; set; }
 
         public int CategoryId { get; set; }

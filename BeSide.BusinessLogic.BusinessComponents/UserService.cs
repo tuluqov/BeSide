@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -134,6 +135,19 @@ namespace BeSide.BusinessLogic.BusinessComponents
             ApplicationUser user = uow.UserManager.Users.FirstOrDefault(m => m.Id == id);
 
             return user;
+        }
+
+        public IEnumerable<ProviderProfile> GetAllProviders()
+        {
+            var providers = uow.ProviderProfiles.GetAll();
+
+            return providers;
+        }
+
+        public IEnumerable<ProviderProfile> FindProviders(Func<ProviderProfile, bool> predicate)
+        {
+            var result = uow.ProviderProfiles.Find(predicate);
+            return result;
         }
     }
 }
