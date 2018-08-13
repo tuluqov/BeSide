@@ -149,5 +149,23 @@ namespace BeSide.BusinessLogic.BusinessComponents
             var result = uow.ProviderProfiles.Find(predicate);
             return result;
         }
+
+        public void UpdateProvider(ProviderProfile provider)
+        {
+            uow.ProviderProfiles.Update(provider);
+            uow.Save();
+        }
+
+        public void UpdateClient(ClientProfile client)
+        {
+            uow.ClientProfiles.Update(client);
+            uow.Save();
+        }
+
+        public void UpdateUser(ApplicationUser user)
+        {
+            uow.UserManager.Update(user);
+            uow.Save();
+        }
     }
 }

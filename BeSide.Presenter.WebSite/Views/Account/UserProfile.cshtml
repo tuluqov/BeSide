@@ -18,24 +18,32 @@
                                 @Html.RouteLink("Мои отклики", new { controller = "Admin", action = "Users" }, new { @class = "btn btn-primary py-2 px-4" })
                                 @Html.RouteLink("Подтвержденные отклики", new { controller = "Admin", action = "Category" }, new { @class = "btn btn-primary py-2 px-4" })
                                 @Html.RouteLink("Выполненные заказы", new { controller = "Admin", action = "Service" }, new { @class = "btn btn-primary py-2 px-4 mb-3" })
-                        
+
                             }
                             else if (User.IsInRole("client"))
                             {
                                 @Html.RouteLink("Мои объявления", new { controller = "Account", action = "UserOrders" }, new { @class = "btn btn-primary py-2 px-4" })
                                 @Html.RouteLink("Отклики на объявления", new { controller = "Admin", action = "Category" }, new { @class = "btn btn-primary py-2 px-4" })
                                 @Html.RouteLink("Выполненные заказы", new { controller = "Account", action = "UserOrdersStatused", orderStatus = OrderStatus.Complited }, new { @class = "btn btn-primary py-2 px-4 mb-3" })
-                        
+
                             }
                         </div>
-                        
+
                         <div class="col-5 block-28 text-center mb-5">
                             <figure>
                                 <img src="../../Content/images/person_3.jpg" alt="" class="img-fluid">
                             </figure>
                             <h2>@Model.UserProfile.LastName @Model.UserProfile.FirstName</h2>
                             <h3 class="subheading">@Model.Email</h3>
-                            <a href="#">Редактировать профиль</a>
+                            @if (User.IsInRole("provider"))
+                            {
+                                @Html.ActionLink("Редактировать профиль", "EditProvider", "Account")
+
+                            }
+                            else if (User.IsInRole("client"))
+                            {
+                                @Html.ActionLink("Редактировать профиль", "EditClient", "Account")
+                            }
                         </div>
                     </div>
                 </div>

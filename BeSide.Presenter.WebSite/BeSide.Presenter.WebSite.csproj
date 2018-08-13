@@ -242,6 +242,8 @@
     <Compile Include="Models\Category\CategoryViewModel.cs" />
     <Compile Include="Models\Service\ServiceCollectionViewModel.cs" />
     <Compile Include="Models\Service\ServiceViewModel.cs" />
+    <Compile Include="Models\User\EditClientViewModel.cs" />
+    <Compile Include="Models\User\EditProviderProfileViewModel.cs" />
     <Compile Include="Models\User\ProviderCollectionViewModel.cs" />
     <Compile Include="Models\User\ProviderViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -611,6 +613,8 @@
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Views\Executor\Index.cshtml" />
     <Content Include="Views\Executor\Details.cshtml" />
+    <Content Include="Views\Account\EditProvider.cshtml" />
+    <Content Include="Views\Account\EditClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

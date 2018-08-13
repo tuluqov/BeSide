@@ -4,13 +4,13 @@ using BeSide.BusinessLogic.Construct.Infrastructure;
 using BeSide.Presenter.WebSite.Models;
 using Microsoft.Owin.Security;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using BeSide.Common.Entities;
 using BeSide.Presenter.WebSite.Models.Order;
+using BeSide.Presenter.WebSite.Models.User;
 using Microsoft.AspNet.Identity;
 
 namespace BeSide.Presenter.WebSite.Controllers
@@ -172,6 +172,78 @@ namespace BeSide.Presenter.WebSite.Controllers
             return View(user);
         }
 
+        #region Edit
+
+        [HttpGet]
+        [Authorize(Roles = "provider")]
+        public ActionResult EditProvider()
+        {
+            var provider = (ProviderProfile)userService.GetById(User.Identity.GetUserId()).UserProfile;
+
+            EditProviderProfileViewModel model = new EditProviderProfileViewModel(provider);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "provider")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditProvider(EditProviderProfileViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var profile = model.GetProfile();
+
+                profile.ApplicationUser = userService.GetById(model.Id);
+
+                profile.ApplicationUser.Email = model.Email;
+                profile.ApplicationUser.PhoneNumber = model.PhoneNumber;
+
+                userService.UpdateProvider(profile);
+
+                return RedirectToAction("UserProfile", "Account");
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "client")]
+        public ActionResult EditClient()
+        {
+            var client = (ClientProfile)userService.GetById(User.Identity.GetUserId()).UserProfile;
+
+            EditClientViewModel model = new EditClientViewModel(client);
+
+            return View(model);
+
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "client")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditClient(EditClientViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var appUser = userService.GetById(model.Id);
+
+                appUser.UserProfile = model.GetProfile();
+
+                appUser.UserProfile.Id = appUser.Id;
+                appUser.Email = model.Email;
+                appUser.PhoneNumber = model.PhoneNumber;
+                
+                userService.UpdateUser(appUser);
+
+                return RedirectToAction("UserProfile", "Account");
+            }
+
+            return View(model);
+        }
+
+        #endregion
+
         [HttpGet]
         [Authorize(Roles = "client")]
         public ActionResult UserOrders()
@@ -206,7 +278,7 @@ namespace BeSide.Presenter.WebSite.Controllers
                     {
                         orders = orderService.Find(m => m.OrderStatus == OrderStatus.Active &&
                                                         m.ClientProfileId == User.Identity.GetUserId());
-                        
+
                         OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
 
                         return View(ordersModel);
@@ -215,7 +287,7 @@ namespace BeSide.Presenter.WebSite.Controllers
 
                 case OrderStatus.Accepted:
                     {
-                        orders = orderService.Find(m => m.OrderStatus == OrderStatus.Accepted && 
+                        orders = orderService.Find(m => m.OrderStatus == OrderStatus.Accepted &&
                                                         m.ClientProfileId == User.Identity.GetUserId());
 
 
@@ -226,14 +298,14 @@ namespace BeSide.Presenter.WebSite.Controllers
 
                 case OrderStatus.Complited:
                     {
-                        orders = orderService.Find(m => m.OrderStatus == OrderStatus.Complited && 
+                        orders = orderService.Find(m => m.OrderStatus == OrderStatus.Complited &&
                                                         m.ClientProfileId == User.Identity.GetUserId());
-                       
+
                         OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
 
                         return View(ordersModel);
                     }
-                    
+
 
                 case OrderStatus.NotComplited:
                     {
