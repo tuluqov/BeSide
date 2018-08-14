@@ -61,6 +61,7 @@
     <Compile Include="BaseEntity.cs" />
     <Compile Include="Category.cs" />
     <Compile Include="ClientProfile.cs" />
+    <Compile Include="ContactMessage.cs" />
     <Compile Include="Feedback.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderStatus.cs" />

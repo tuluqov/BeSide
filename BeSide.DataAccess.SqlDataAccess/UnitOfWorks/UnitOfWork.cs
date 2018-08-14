@@ -18,6 +18,7 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
             IRepository<ProviderProfile> providerProfiles,
             IRepository<ClientProfile> clientProfiles,
             IRepository<Feedback> feedbacks,
+            IRepository<ContactMessage> contactMessages,
             UserManager<ApplicationUser> userManager,
             RoleManager<ApplicationRole> roleManager)
         {
@@ -28,6 +29,7 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
             ProviderProfiles = providerProfiles;
             ClientProfiles = clientProfiles;
             Feedbacks = feedbacks;
+            ContactMessages = contactMessages;
             UserManager = userManager;
             RoleManager = roleManager;
         }
@@ -38,7 +40,6 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
 
         public IRepository<Order> Orders { get; }
         
-
         public IRepository<Service> Services { get; }
 
         public IRepository<ProviderProfile> ProviderProfiles { get; }
@@ -46,6 +47,8 @@ namespace BeSide.DataAccess.SqlDataAccess.UnitOfWorks
         public IRepository<ClientProfile> ClientProfiles { get; }
 
         public IRepository<Feedback> Feedbacks { get; }
+
+        public IRepository<ContactMessage> ContactMessages { get; }
         
         public UserManager<ApplicationUser> UserManager { get; }
 

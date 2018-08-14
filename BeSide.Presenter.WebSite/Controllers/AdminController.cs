@@ -197,6 +197,7 @@ namespace BeSide.Presenter.WebSite.Controllers
             return View(model);
         }
 
+        [HttpGet]
         public ActionResult DeleteService(int id)
         {
             var service = seviceService.GetById(id);
@@ -209,6 +210,12 @@ namespace BeSide.Presenter.WebSite.Controllers
             }
 
             return HttpNotFound();
+        }
+
+        [HttpGet]
+        public ActionResult Logger()
+        {
+            return View();
         }
 
         #endregion

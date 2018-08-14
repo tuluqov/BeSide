@@ -14,42 +14,40 @@
     <!-- Theme Style -->
     <link rel="stylesheet" href="~/Content/css/style.css">
     <link href='@Url.Content("~/Content/themes/base/all.css")' rel="stylesheet" type="text/css" />
+    <link href="~/Content/css/select2.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datepicker.min.css" />
+    <link href="~/Content/bootstrap-datepicker3.min.css" />
 </head>
 
 <body>
     <header role="banner">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                @Html.RouteLink("BeSide", new
-                {
-                    controller = "Home",
-                    action = "Index"
-                }, new
-                {
-                    @class = "navbar-brand absolute"
-                })
+                @Html.RouteLink("BeSide", new{controller = "Home", action = "Index" },
+                    new { @class = "navbar-brand" })
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
                     <ul class="navbar-nav mx-auto">
-                        <li class="nav-item dropdown">
-                            @Html.RouteLink("Заказы", new {controller = "Order", action = "Index"},
-                                new { @class="nav-link dropdown-toggle"})
-                            <div class="dropdown-menu" aria-labelledby="dropdown">
-                                @Html.RouteLink("Все заказы", new { controller = "Order", action = "Index" }, new { @class = "dropdown-item" })
-                                @if (User.IsInRole("client"))
-                                {
-                                    @Html.RouteLink("Добавить заказ", new { controller = "Order", action = "Create" }, new { @class = "dropdown-item" })
-                                }
-                            </div>
+                        @if (User.IsInRole("client"))
+                        {
+                            <li class="nav-item">
+                                @Html.RouteLink("Добавить заказ", new { controller = "Order", action = "Create" },
+                                    new { @class = "nav-link" })
+                            </li>
+                        }
+                        <li class="nav-item">
+                            @Html.RouteLink("Заказы", new { controller = "Order", action = "Index" },
+                                new { @class = "nav-link" })
                         </li>
                         <li class="nav-item">
                             @Html.RouteLink("Исполнители", new {controller = "Executor", action = "Index"},
                                 new { @class="nav-link"})
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="about.html">О нас</a>
+                            @Html.RouteLink("О нас", new {controller = "Home", action = "About"},
+                                new { @class="nav-link"})
                         </li>
                         <li class="nav-item">
                             @Html.RouteLink("Контакты", new { controller = "Home", action = "Contact"},
@@ -95,7 +93,6 @@
                             </li>
                         }
                     </ul>
-
                 </div>
             </div>
         </nav>
@@ -121,12 +118,16 @@
                                 <li>
                                     @Html.RouteLink("Заказы", new { controller = "Order", action = "Index" })
                                 </li>
-                                <li><a href="#">Исполнители</a></li>
+                                <li>
+                                    @Html.RouteLink("Исполнители", new { controller = "Executor", action = "Index" })
+                                </li>
                             </ul>
                         </div>
                         <div class="col-md-6">
                             <ul class="list-unstyled">
-                                <li><a href="#">О нас</a></li>
+                                <li>
+                                    @Html.RouteLink("О нас", new { controller = "Home", action = "About" })
+                                </li>
                                 <li>
                                     @Html.RouteLink("Контакты", new { controller = "Home", action = "Contact" })
                                 </li>
@@ -139,9 +140,13 @@
                     <h3 class="heading">Контактная информация</h3>
                     <div class="block-23">
                         <ul>
-                            <li><span class="icon ion-android-pin"></span><span class="text">ул. Филимонова 15, Минск, Беларусь</span></li>
-                            <li><a href="#"><span class="icon ion-ios-telephone"></span><span class="text">+375(25) 636-86-10</span></a></li>
-                            <li><a href="#"><span class="icon ion-android-mail"></span><span class="text">usup1999@gmail.com</span></a></li>
+                            <li>
+                                <a href="https://maps.google.com/?q=ул.+Филимонова+15+Минск+Беларусь">
+                                    <span class="icon ion-android-pin"></span><span class="text">ул. Филимонова 15, Минск, Беларусь</span>
+                                </a>
+                            </li>
+                            <li><a href="tg://resolve?domain=digital_gangster_95"><span class="icon ion-ios-telephone"></span><span class="text">+375(25) 636-86-10</span></a></li>
+                            <li><a href="mailto:usup1999@gmail.com"><span class="icon ion-android-mail"></span><span class="text">usup1999@gmail.com</span></a></li>
                         </ul>
                     </div>
                 </div>
@@ -150,16 +155,14 @@
                 <div class="col-md-12 text-center copyright">
 
                     <p class="float-md-left">
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Sam Solutions &copy;
                         <a>
                             <script>document.write(new Date().getFullYear());</script> Сделано с душою <i class="fa fa-heart" aria-hidden="true"></i>
                         </a>
-                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                     <p class="float-md-right">
                         <a href="#" class="fa fa-facebook p-2"></a>
-                        <a href="#" class="fa fa-twitter p-2"></a>
+                        <a href="https://twitter.com/Yusup_Tulukov" class="fa fa-twitter p-2"></a>
                         <a href="https://www.linkedin.com/in/yusup-tulukov-17981a14a/" class="fa fa-linkedin p-2"></a>
                         <a href="https://www.instagram.com/yusup_95_05/" class="fa fa-instagram p-2"></a>
                     </p>
@@ -169,40 +172,56 @@
     </footer>
 
     <!-- loader -->
-    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214" /></svg></div>
+    <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee" /><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214" /></svg></div>
     @*<script src="~/Content/js/jquery-3.2.1.min.js"></script>*@
     @*<script src='@Url.Content("~/Scripts/jquery-3.3.1.min.js")' type="text/javascript"></script>
         <script src='@Url.Content("~/Scripts/jquery-ui-1.12.1.min.js")' type="text/javascript"></script>*@
     <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <script src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-    <script src="~/Content/js/jquery-migrate-3.0.0.js"></script>
     <script src="~/Content/js/popper.min.js"></script>
-    <script src="~/Content/js/bootstrap.min.js"></script>
     <script src="~/Content/js/owl.carousel.min.js"></script>
     <script src="~/Content/js/jquery.waypoints.min.js"></script>
-    <script src="~/Content/js/jquery.stellar.min.js"></script>
     <script src="~/Content/js/jquery.animateNumber.min.js"></script>
-    <script src="~/Content/js/main.js"></script>
     <script src="~/Scripts/jquery.maskedinput.min.js"></script>
-<script>
-    $(document).ready(function () {
-        $("#phone").mask("+375(99) 999-99-99");
-    })
-</script>
-<script type="text/javascript">
-    //$(document).ready(function () {
-    //    $("[data-autocomplete-source]").each(function () {
-    //        var target = $(this);
-    //        target.autocomplete({ source: target.attr("data-autocomplete-source") });
-    //    });
-    //});
-    $(function () {
-        $("[data-autocomplete-source]").each(function () {
-            var target = $(this);
-            target.autocomplete({ source: target.attr("data-autocomplete-source") });
+    <script src="~/Content/js/jquery.stellar.min.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/jquery-migrate-3.0.0.js"></script>
+    <script src="~/Content/js/main.js"></script>
+    <script src="~/Scripts/select2.min.js"></script>
+    <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#phone").mask("+375(99) 999-99-99");
+        })
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            $("[data-autocomplete-source]").each(function () {
+                var target = $(this);
+                target.autocomplete({ source: target.attr("data-autocomplete-source") });
+            });
         });
-    });
-</script>
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#searchSelect").select2();
+        });
+    </script>
+
+    <script>
+        $(function () {
+            $('#datetimepicker').datepicker({
+                local: 'ru',
+                minDate: new Date().getDate()
+            });
+
+        });
+
+        $(' [data-toggle = "datepicker"] ').datepicker({
+            format: 'dd.mm.yyyy'
+
+        });
+    </script>
 
 </body>
 </html>

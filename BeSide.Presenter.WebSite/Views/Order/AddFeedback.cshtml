@@ -11,16 +11,22 @@
             <h2 class="mb-4">Оставить отклик</h2>
             @using (Html.BeginForm("AddFeedback", "Order", FormMethod.Post))
             {
+                @Html.AntiForgeryToken();
+
                 <div class="row">
                     <div class="col-md-12 form-group">
-                        @Html.Hidden("OrderId", Model.OrderId)
                         @Html.LabelFor(m => m.Text, "Описание")
-                        @Html.TextBoxFor(m => m.Text, new { @class = "form-control py-2" })
+                        @Html.TextBoxFor(m => m.Text, new { @class = "form-control py-2", maxlength=200, min=5 })
+                        @Html.ValidationMessageFor(model => model.Text, "", new { @class = "text-danger" })
 
                         @Html.LabelFor(m => m.Price, "Цена")
-                        @Html.TextBoxFor(m => m.Price, new { @class = "form-control py-2" })
+                        <input type="number" name="Price" maxlength="6" class="form-control py-2"/>
+                        @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
 
-                        <input type="submit" value="Добавить отклик" class="btn btn-primary px-5 py-2 mt-2">
+                        <div class="row container">
+                            @Html.Hidden("OrderId", Model.OrderId)
+                            <input type="submit" value="Добавить отклик" class="btn btn-primary px-5 py-2 mt-2">
+                        </div>
                     </div>
                 </div>
             }

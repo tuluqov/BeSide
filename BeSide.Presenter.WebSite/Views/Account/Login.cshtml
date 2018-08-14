@@ -43,12 +43,11 @@
                     @using (Html.BeginForm("Login", "Account", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
-
-                        @Html.ValidationSummary("", new { @class = "text-danger" })
+                        
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Email, "Email")
-                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control py-2" })
+                                <input type="email" name="Email" class="form-control py-2" maxlength="50"/>
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
                         </div>

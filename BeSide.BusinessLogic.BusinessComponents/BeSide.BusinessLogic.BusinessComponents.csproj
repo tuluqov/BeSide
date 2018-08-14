@@ -55,6 +55,7 @@
   <ItemGroup>
     <Compile Include="AdminService.cs" />
     <Compile Include="CategoryService.cs" />
+    <Compile Include="ContactMessageService.cs" />
     <Compile Include="FeedbackService.cs" />
     <Compile Include="OrderService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -31,6 +31,10 @@ namespace BeSide.Common.DependencyInjection
             builder.RegisterType<FeedbackService>()
                 .As<IFeedbackService>()
                 .InstancePerRequest();
+
+            builder.RegisterType<ContactMessageService>()
+                .As<IContactMessageService>()
+                .InstancePerRequest();
         }
     }
 }

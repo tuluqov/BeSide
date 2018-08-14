@@ -26,7 +26,7 @@ namespace BeSide.Common.Entities
         public string Text { get; set; }
 
         [Required]
-        [Range(0, Double.MaxValue)]
+        [Range(0, float.MaxValue)]
         public float Price { get; set; }
     }
 }

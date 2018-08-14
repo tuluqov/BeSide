@@ -13,6 +13,7 @@ namespace BeSide.DataAccess.Construct
         IRepository<ProviderProfile> ProviderProfiles { get; }
         IRepository<ClientProfile> ClientProfiles { get; }
         IRepository<Feedback> Feedbacks { get; }
+        IRepository<ContactMessage> ContactMessages { get; }
         UserManager<ApplicationUser> UserManager { get; }
         RoleManager<ApplicationRole> RoleManager { get; }
 

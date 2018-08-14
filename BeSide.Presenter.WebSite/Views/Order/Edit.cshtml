@@ -24,7 +24,7 @@
 
                         <div class="form-group col-md-10">
                             @Html.LabelFor(model => model.ServiceId, new { @class = "col-md-3" })
-                            <select name="ServiceId" class="form-control">
+                            <select name="ServiceId" class="form-control" id="searchSelect">
                                 @foreach (CategoryViewModel category in ViewBag.Categoryes)
                                 {
                                 <optgroup label="@category.Name">

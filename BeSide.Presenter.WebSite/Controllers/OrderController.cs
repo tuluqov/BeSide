@@ -51,16 +51,22 @@ namespace BeSide.Presenter.WebSite.Controllers
 
         [HttpPost]
         [Authorize(Roles = "provider")]
+        [ValidateAntiForgeryToken]
         public ActionResult AddFeedback(FeedbackViewModel model)
         {
-            Feedback feedback = model.GetFeedback();
+            if (ModelState.IsValid)
+            {
+                Feedback feedback = model.GetFeedback();
 
-            feedback.ProviderProfileId = User.Identity.GetUserId();
-            feedback.CreateDate = DateTime.Now;
+                feedback.ProviderProfileId = User.Identity.GetUserId();
+                feedback.CreateDate = DateTime.Now;
 
-            feedbackService.Add(feedback);
+                feedbackService.Add(feedback);
 
-            return RedirectToAction($"Details/{model.OrderId}");
+                return RedirectToAction($"Details/{model.OrderId}");
+            }
+
+            return View(model);
         }
 
         [HttpGet]
@@ -153,7 +159,7 @@ namespace BeSide.Presenter.WebSite.Controllers
             }
             else if (find != null)
             {
-                var findOrders = orderService.Find(m => m.ShortDescription.Contains(find));
+                var findOrders = orderService.Find(m => m.ShortDescription.ToLower().Contains(find.ToLower()));
 
                 OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(findOrders);
 
