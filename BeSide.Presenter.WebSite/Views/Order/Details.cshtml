@@ -37,6 +37,12 @@
                 <div class="text">
                     @Model.FullDescription
                 </div>
+                @if (Model.ProviderProfileId == User.Identity.GetUserId())
+                {
+                    <div class="text">
+                        <h4>@ViewBag.User.PhoneNumber</h4>
+                    </div>
+                }
             </div>
             <div class="col-md-3 col-lg-3 mb-5 mb-lg-0">
                 <div class="block-25">
@@ -60,7 +66,7 @@
 
         <!-- Feedbacks -->
         <div class="row border-top mt-2 mb-2">
-            <div class="col-md-7">
+            <div class="col-md-11">
                 @if (!Model.Feedbacks.Any())
                 {
                     <h3 class="mb-5">Нет откликов</h3>
@@ -72,15 +78,37 @@
                     <ul class="comment-list">
                         @foreach (FeedbackViewModel feedback in Model.Feedbacks)
                         {
-                            <li class="comment">
-                                <div class="vcard bio">
+                            <li class="comment row"  style="width: 90%">
+                                <div class="vcard">
                                     <img src="../../Content/images/person_1.jpg" alt="Image placeholder" />
                                 </div>
-                                <div class="comment-body">
+                                <div class="comment-body col">
                                     <h3>@feedback.ProviderProfile.LastName @feedback.ProviderProfile.FirstName</h3>
                                     <div class="meta">@feedback.CreateDate.ToString(CultureInfo.InvariantCulture)</div>
                                     <p>@feedback.Text</p>
                                 </div>
+                                <div class="col-md-2">
+                                    @feedback.Price р.
+                                </div>
+                                @if (Model.ClientProfileId == User.Identity.GetUserId())
+                                {
+                                <div class="col-md-4 float-right">
+                                    @if (Model.OrderStatus == OrderStatus.Active)
+                                    {
+                                        @Html.RouteLink("Выбрать исполнителем",
+                                            new {controller = "Order", action = "SelectPerfomer", orderId = Model.Id, userId = feedback.ProviderProfileId},
+                                            new {@class = "btn btn-primary float-right"})
+                                    }
+                                    @if (Model.ProviderProfileId == feedback.ProviderProfileId && Model.OrderStatus == OrderStatus.Accepted)
+                                    {
+                                        <div class="btn btn-primary float-right">Выбранный исполнитель</div>
+                                    }
+                                    @if (Model.ProviderProfileId == feedback.ProviderProfileId && Model.OrderStatus == OrderStatus.Complited)
+                                    {
+                                        <div class="btn btn-primary float-right">Выполнил заказ</div>
+                                    }
+                                </div>
+                                }
                             </li>
                         }
                     </ul>
@@ -88,7 +116,7 @@
                 }
             </div>
 
-            @if (User.IsInRole("provider") && User.Identity.GetUserId() != Model.ClientProfileId)
+            @if (User.IsInRole("provider") && Model.Feedbacks.Count(m => m.ProviderProfileId == User.Identity.GetUserId()) == 0)
             {
                 <div class="col-md-5 container float-right mt-2">
                     @Html.ActionLink("Откликнуться", "AddFeedback",

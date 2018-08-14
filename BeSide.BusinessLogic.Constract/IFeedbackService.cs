@@ -14,6 +14,8 @@ namespace BeSide.BusinessLogic.Construct
         void Delete(int id);
         void Update(Feedback feedback);
         IEnumerable<Feedback> GetAll();
+        IEnumerable<Feedback> GetUserOrdersFeedbacks(string userId);
+        IEnumerable<Feedback> GetProviderFeedbacks(string userId);
         IEnumerable<Feedback> Find(Func<Feedback, bool> predicate);
     }
 }

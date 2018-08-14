@@ -19,8 +19,9 @@
             <div class="mb-4 col-md-8 container-fluid">
                 @using (Html.BeginForm("Index", "Order", FormMethod.Get))
                 {
-                    @Html.TextBox("find", "",new { @class = "form-control py-2", placeholder = "Поиск в каталоге..." })
+                    @Html.TextBox("find", "", new { @class = "form-control py-2", placeholder = "Поиск в каталоге..." })
                 }
+                @*<input type="text" name="find" id="find" data-autocomplete-source='@Url.Action("Index", "Order")' class="form-control py-2" placeholder="Поиск..." />*@
             </div>
         </div>
 
@@ -49,14 +50,14 @@
                                         <li>
                                             @Html.HiddenFor(m => service.Id)
                                             @Html.ActionLink($"{service.Name}", "Index", new { ServiceId = service.Id },
-                 new { @class = "dropdown-item" })
+                                                new { @class = "dropdown-item" })
                                         </li>
 
                                     }
                                 </ul>
                             </li>
                         </ul>
-                        }
+                    }
                 </nav>
             </div>
 
@@ -68,8 +69,8 @@
                         <div class="col-md-8">
                             <h4>
                                 @Html.RouteLink($"{order.ShortDescription}",
-                                    new { controller = "Order", action = "Details", id = order.Id},
-                                    new{ @class=""})
+                                    new {controller = "Order", action = "Details", id = order.Id},
+                                    new {@class = ""})
                             </h4>
 
                             <p style="margin: 5px">@order.FullDescription</p>

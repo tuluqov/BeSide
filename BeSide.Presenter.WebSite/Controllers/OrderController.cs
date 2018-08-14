@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Web.Mvc;
 using BeSide.BusinessLogic.Construct;
 using BeSide.Common.Entities;
@@ -62,6 +63,77 @@ namespace BeSide.Presenter.WebSite.Controllers
             return RedirectToAction($"Details/{model.OrderId}");
         }
 
+        [HttpGet]
+        [Authorize(Roles = "client")]
+        public ActionResult FeedbacksOrders()
+        {
+            var feedbacks = feedbackService.GetUserOrdersFeedbacks(User.Identity.GetUserId());
+            
+            FeedbacksCollectionViewModel model = new FeedbacksCollectionViewModel(feedbacks);
+
+            return View(model);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "provider")]
+        public ActionResult FeedbacksProvider()
+        {
+            var feedbacks = feedbackService.GetProviderFeedbacks(User.Identity.GetUserId());
+
+            FeedbacksCollectionViewModel model = new FeedbacksCollectionViewModel(feedbacks);
+
+            return View("FeedbacksOrders", model);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "provider")]
+        public ActionResult SelectedFeedbacks()
+        {
+            var feedbacks = feedbackService.GetProviderFeedbacks(User.Identity.GetUserId()).Where(m => m.Order.OrderStatus == OrderStatus.Accepted);
+
+            FeedbacksCollectionViewModel model = new FeedbacksCollectionViewModel(feedbacks);
+
+            return View("FeedbacksOrders", model);
+        }
+
+
+        //выбор исполнителя
+        [HttpGet]
+        [Authorize(Roles = "client")]
+        public ActionResult SelectPerfomer(int orderId, string userId)
+        {
+            var order = orderService.GetById(orderId);
+
+            order.OrderStatus = OrderStatus.Accepted;
+            order.ProviderProfileId = userId;
+
+            orderService.Update(order);
+
+            return RedirectToAction($"Details/{orderId}");
+        }
+
+        //отмена выбора исполнителя
+        [HttpGet]
+        [Authorize(Roles = "client")]
+        public ActionResult Deselected(int orderId, OrderStatus status)
+        {
+            if (status == OrderStatus.Accepted)
+            {
+                var order = orderService.GetById(orderId);
+
+                order.OrderStatus = OrderStatus.Active;
+                order.ProviderProfileId = null;
+
+                orderService.Update(order);
+
+                return RedirectToAction($"Details/{orderId}");
+            }
+
+            return HttpNotFound();
+        }
+
+        
+
         #endregion
 
         #region Orders
@@ -88,6 +160,7 @@ namespace BeSide.Presenter.WebSite.Controllers
                 ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
 
                 return View(collectionOrders.ToPagedList(page ?? 1, 10));
+                //return Json(collectionOrders.ToPagedList(page ?? 1, 10), JsonRequestBehavior.AllowGet);
             }
             else
             {

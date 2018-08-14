@@ -47,6 +47,25 @@ namespace BeSide.BusinessLogic.BusinessComponents
             return feedback;
         }
 
+        public IEnumerable<Feedback> GetProviderFeedbacks(string userId)
+        {
+            var result = uow.Feedbacks.Find(m => m.ProviderProfileId == userId);
+            return result;
+        }
+
+        public IEnumerable<Feedback> GetUserOrdersFeedbacks(string userId)
+        {
+            var ordersUser = uow.Orders.Find(m => m.ClientProfileId == userId);
+            var result = new List<Feedback>();
+
+            foreach (Order order in ordersUser)
+            {
+                result.AddRange(order.Feedbacks);
+            }
+
+            return result;
+        }
+
         public void Update(Feedback feedback)
         {
             uow.Feedbacks.Update(feedback);

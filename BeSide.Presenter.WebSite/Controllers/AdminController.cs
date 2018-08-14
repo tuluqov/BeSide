@@ -79,22 +79,19 @@ namespace BeSide.Presenter.WebSite.Controllers
         }
 
         [HttpGet]
-        public ActionResult DeleteCategory()
-        {
-            return View();
-        }
-
-        [HttpPost]
         public ActionResult DeleteCategory(int id)
         {
-            if (ModelState.IsValid)
+
+            var category = categoryService.GetById(id);
+
+            if (category != null)
             {
                 categoryService.DeleteById(id);
 
                 return RedirectToAction("Category");
             }
 
-            return RedirectToAction("NotFound", "Error");
+            return HttpNotFound();
         }
 
         [HttpGet]
@@ -202,9 +199,16 @@ namespace BeSide.Presenter.WebSite.Controllers
 
         public ActionResult DeleteService(int id)
         {
-            seviceService.DeleteById(id);
+            var service = seviceService.GetById(id);
 
-            return RedirectToAction("Service", "Admin");
+            if (service != null)
+            {
+                seviceService.DeleteById(id);
+
+                return RedirectToAction("Service");
+            }
+
+            return HttpNotFound();
         }
 
         #endregion

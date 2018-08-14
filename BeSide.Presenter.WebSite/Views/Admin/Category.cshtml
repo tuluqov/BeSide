@@ -12,18 +12,8 @@
         <p class="col-9 text-left">@category.Name</p>
         <div class="form-check-inline">
             @Html.Hidden("id", category.Id)
-            @Html.ActionLink("Изменить", "EditCategory", "Admin", new { id = "id" }, new { @class = "btn btn-primary ml-3" })
-            @Html.ActionLink("Удалить", "DeleteCategory", "Admin", new { @class = "btn btn-primary ml-1" })
-            @*@using (Html.BeginForm("DeleteCategory", "Admin", FormMethod.Post))
-                {
-                    @Html.Hidden("id" , category.Id)
-                    <input type="submit" value="Удалить" class="btn btn-primary ml-3">
-                }
-
-                @using (Html.BeginForm("DeleteCategory", "Admin", FormMethod.Post))
-                {
-                    <input type="submit" value="Изменить" class="btn btn-primary ml-1">
-                }*@
+            @Html.ActionLink("Изменить", "EditCategory", "Admin", new { id = category.Id }, new { @class = "btn btn-primary ml-3" })
+            @Html.ActionLink("Удалить", "DeleteCategory", "Admin", new { id = category.Id }, new { @class = "btn btn-primary ml-1" })
         </div>
     </div>
     <hr />
