@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using BeSide.BusinessLogic.Construct;
@@ -56,17 +57,74 @@ namespace BeSide.Presenter.WebSite.Controllers
         {
             if (ModelState.IsValid)
             {
-                Feedback feedback = model.GetFeedback();
+                IEnumerable<Feedback> checkFeedback = feedbackService.Find(m =>
+                    m.OrderId == model.OrderId && m.ProviderProfileId == User.Identity.GetUserId());
 
-                feedback.ProviderProfileId = User.Identity.GetUserId();
-                feedback.CreateDate = DateTime.Now;
+                if (!checkFeedback.Any())
+                {
+                    Feedback feedback = model.GetFeedback();
 
-                feedbackService.Add(feedback);
+                    feedback.ProviderProfileId = User.Identity.GetUserId();
+                    feedback.CreateDate = DateTime.Now;
 
-                return RedirectToAction($"Details/{model.OrderId}");
+                    feedbackService.Add(feedback);
+
+                    return RedirectToAction($"Details/{model.OrderId}");
+                }
+
+                return RedirectToAction("Error", "Home");
+
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "provider")]
+        public ActionResult EditFeedback(int id)
+        {
+            var feedback = feedbackService.GetById(id);
+
+            FeedbackViewModel model = new FeedbackViewModel(feedback);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "provider")]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditFeedback(FeedbackViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var feedback = model.GetFeedback();
+
+                feedback.ProviderProfileId = User.Identity.GetUserId();
+
+                feedbackService.Update(feedback);
+
+                return RedirectToAction($"Details/{feedback.OrderId}");
+            }
+
+            return HttpNotFound();
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "provider")]
+        public ActionResult DeleteFeedback(int id)
+        {
+            var feedback = feedbackService.GetById(id);
+
+            if (feedback != null && feedback.ProviderProfileId == User.Identity.GetUserId())
+            {
+                var idOrder = feedback.OrderId;
+
+                feedbackService.Delete(id);
+
+                return RedirectToAction($"Details/{idOrder}");
+            }
+
+            return HttpNotFound();
         }
 
         [HttpGet]

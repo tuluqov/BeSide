@@ -14,7 +14,6 @@
 
         <div class="row border-bottom">
             <div class="col-md-7">
-                @*<h3>@ViewBag.User.UserProfile.FirstName</h3>*@
                 <h3>@Model.ShortDescription</h3>
 
             </div>
@@ -78,12 +77,14 @@
                     <ul class="comment-list">
                         @foreach (FeedbackViewModel feedback in Model.Feedbacks)
                         {
-                            <li class="comment row"  style="width: 90%">
+                            <li class="comment row" style="width: 90%">
                                 <div class="vcard">
                                     <img src="../../Content/images/person_1.jpg" alt="Image placeholder" />
                                 </div>
                                 <div class="comment-body col">
-                                    <h3>@feedback.ProviderProfile.LastName @feedback.ProviderProfile.FirstName</h3>
+                                    <a href="~/Executor/Details/@feedback.ProviderProfile.Id">
+                                        <h3 class="btn-link">@feedback.ProviderProfile.LastName @feedback.ProviderProfile.FirstName</h3>
+                                    </a>
                                     <div class="meta">@feedback.CreateDate.ToString(CultureInfo.InvariantCulture)</div>
                                     <p>@feedback.Text</p>
                                 </div>
@@ -92,22 +93,34 @@
                                 </div>
                                 @if (Model.ClientProfileId == User.Identity.GetUserId())
                                 {
-                                <div class="col-md-4 float-right">
-                                    @if (Model.OrderStatus == OrderStatus.Active)
-                                    {
-                                        @Html.RouteLink("Выбрать исполнителем",
-                                            new {controller = "Order", action = "SelectPerfomer", orderId = Model.Id, userId = feedback.ProviderProfileId},
-                                            new {@class = "btn btn-primary float-right"})
-                                    }
-                                    @if (Model.ProviderProfileId == feedback.ProviderProfileId && Model.OrderStatus == OrderStatus.Accepted)
-                                    {
-                                        <div class="btn btn-primary float-right">Выбранный исполнитель</div>
-                                    }
-                                    @if (Model.ProviderProfileId == feedback.ProviderProfileId && Model.OrderStatus == OrderStatus.Complited)
-                                    {
-                                        <div class="btn btn-primary float-right">Выполнил заказ</div>
-                                    }
-                                </div>
+                                    <div class="col-md-4 float-right">
+                                        @if (Model.OrderStatus == OrderStatus.Active)
+                                        {
+                                            @Html.RouteLink("Выбрать исполнителем",
+                                                new {controller = "Order", action = "SelectPerfomer", orderId = Model.Id, userId = feedback.ProviderProfileId},
+                                                new {@class = "btn btn-primary float-right"})
+                                        }
+                                        @if (Model.ProviderProfileId == feedback.ProviderProfileId && Model.OrderStatus == OrderStatus.Accepted)
+                                        {
+                                            <div class="btn btn-primary float-right">Выбранный исполнитель</div>
+                                        }
+                                        @if (Model.ProviderProfileId == feedback.ProviderProfileId && Model.OrderStatus == OrderStatus.Complited)
+                                        {
+                                            <div class="btn btn-primary float-right">Выполнил заказ</div>
+                                        }
+                                    </div>
+                                }
+                                else if (Model.Feedbacks.FirstOrDefault(m => m.ProviderProfileId == User.Identity.GetUserId()) != null)
+                                {
+                                    <div class="col-md-5 float-right">
+                                        @Html.RouteLink("Изменить отклик",
+                                            new { controller = "Order", action = "EditFeedback", id = feedback.Id },
+                                            new { @class= "btn btn-primary" })
+
+                                        @Html.RouteLink("Отменить отклик",
+                                            new { controller = "Order", action = "DeleteFeedback", id = feedback.Id },
+                                            new { @class= "btn btn-primary" })
+                                    </div>
                                 }
                             </li>
                         }

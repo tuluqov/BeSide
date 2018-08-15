@@ -1,9 +1,12 @@
-﻿namespace BeSide.Presenter.WebSite.Models.Service
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BeSide.Presenter.WebSite.Models.Service
 {
     public class ServiceViewModel
     {
         public int Id { get; set; }
 
+        [Display(Name = "Наименование")]
         public string Name { get; set; }
 
         public int CategoryId { get; set; }

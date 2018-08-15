@@ -32,8 +32,19 @@ namespace BeSide.Presenter.WebSite.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Contact(ContactMessageViewModel model)
         {
-            messageService.SendMessage(model.GetMessage());
+            if (ModelState.IsValid)
+            {
+                messageService.SendMessage(model.GetMessage());
 
+                return View();
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Error()
+        {
             return View();
         }
     }

@@ -88,8 +88,6 @@ namespace BeSide.Presenter.WebSite.Controllers
             return View(model);
         }
 
-
-
         [HttpGet]
         [AllowAnonymous]
         public ActionResult Register()

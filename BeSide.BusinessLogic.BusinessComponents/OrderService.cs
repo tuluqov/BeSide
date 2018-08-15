@@ -25,11 +25,6 @@ namespace BeSide.BusinessLogic.BusinessComponents
             uow.Save();
         }
 
-        public void Add(Order order, string userId)
-        {
-            throw new NotImplementedException();
-        }
-
         public void Delete(int id)
         {
             uow.Orders.Delete(id);
@@ -44,7 +39,18 @@ namespace BeSide.BusinessLogic.BusinessComponents
 
         public IEnumerable<Order> GetAll()
         {
-            var result = uow.Orders.GetAll();
+            var result = uow.Orders.GetAll().ToList();
+
+            foreach (Order order in result)
+            {
+                if (order.Deadline > DateTime.Now && order.ProviderProfileId == null)
+                {
+                    order.OrderStatus = OrderStatus.NotComplited;
+                }
+            }
+
+            uow.Save();
+
             return result;
         }
 

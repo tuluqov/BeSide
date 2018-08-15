@@ -56,7 +56,7 @@ namespace BeSide.Presenter.WebSite.Models.Feedback
                 ProviderProfileId = ProviderProfileId,
                 Text = Text,
                 Price = Price,
-                CreateDate = CreateDate
+                CreateDate = CreateDate,
             };
         }
     }

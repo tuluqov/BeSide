@@ -17,12 +17,12 @@
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Name, "Название категории")
                                 @Html.TextBoxFor(m => m.Name, new { @class = "form-control py-2" })
-                                @*@Html.ValidationMessageFor(m => m.Name, "Такая категория уже существует", new { @class = "text-danger" })*@
+                                @Html.ValidationMessageFor(m => m.Name, "Такая категория уже существует", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <input type="submit" value="Добавить" class="btn btn-primary px-5 py-2">
+                                <input type="submit" value="Добавить" class="btn btn-primary px-5 py-2 float-left">
                             </div>
                         </div>
                     }

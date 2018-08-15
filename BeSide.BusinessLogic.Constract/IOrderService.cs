@@ -11,7 +11,6 @@ namespace BeSide.BusinessLogic.Construct
     {
         Order GetById(int id);
         void Add(Order order);
-        void Add(Order order, string userId);
         void Delete(int id);
         void Update(Order order);
         IEnumerable<Order> GetAll();
