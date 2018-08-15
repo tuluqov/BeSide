@@ -43,7 +43,7 @@ namespace BeSide.BusinessLogic.BusinessComponents
 
             foreach (Order order in result)
             {
-                if (order.Deadline > DateTime.Now && order.ProviderProfileId == null)
+                if (order.Deadline < DateTime.Now && order.ProviderProfileId == null)
                 {
                     order.OrderStatus = OrderStatus.NotComplited;
                 }

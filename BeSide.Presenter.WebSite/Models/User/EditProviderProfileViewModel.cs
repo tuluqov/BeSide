@@ -11,21 +11,26 @@ namespace BeSide.Presenter.WebSite.Models.User
         [EmailAddress]
         [Display(Name = "Адрес электронной почты")]
         public string Email { get; set; }
-        
+
         [Required]
         [Display(Name = "Имя")]
+        [MaxLength(50)]
         public string FirstName { get; set; }
 
         [Required]
         [Display(Name = "Фамилия")]
+        [MaxLength(50)]
         public string LastName { get; set; }
 
         [Required]
         [Display(Name = "Отчество")]
+        [MaxLength(50)]
         public string Patronymic { get; set; }
 
         [Required]
         [Display(Name = "Номер телефона")]
+        [Phone]
+        [MaxLength(15)]
         public string PhoneNumber { get; set; }
 
         [MaxLength(100)]

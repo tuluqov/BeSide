@@ -21,7 +21,6 @@
                 {
                     @Html.TextBox("find", "", new { @class = "form-control py-2", placeholder = "Поиск в каталоге..." })
                 }
-                @*<input type="text" name="find" id="find" data-autocomplete-source='@Url.Action("Index", "Order")' class="form-control py-2" placeholder="Поиск..." />*@
             </div>
         </div>
 
@@ -63,70 +62,83 @@
 
             <!-- Order view section -->
             <div class="col-md-9 border-left">
-                @foreach (OrderViewModel order in Model)
+                @if (!Model.Any())
                 {
-                    <div class="row align-items-center p-4 episode" style="width: 1030px;">
-                        <div class="col-md-8">
-                            <h4>
-                                @Html.RouteLink($"{order.ShortDescription}",
-                                    new {controller = "Order", action = "Details", id = order.Id},
-                                    new {@class = ""})
-                            </h4>
-
-                            <p style="margin: 5px">@order.FullDescription</p>
-                            <div class="row">
-                                <div class="col">
-                                    <span class="mx-1 icon ion-android-list">
-                                        @order.ServiceModel.Name
-                                    </span>
-                                    <span class="mx-1 icon ion-android-pin">
-                                        @order.City
-                                    </span>
-                                    <span class="mx-1 icon ion-android-time">
-                                        @order.Deadline.ToShortDateString()
-                                    </span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    <p>Выложено @order.CreateDate.ToString(CultureInfo.InvariantCulture)</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            @if (order.ContractPrice)
-                            {
-                                <h5 class="text-center">Договорная</h5>
-                            }
-                            else
-                            {
-                                <h5 class="float-right">@order.Price р.</h5>
-                            }
-
-                            <div class="text-center">
-
-
-                                @switch (order.OrderStatus)
-                                {
-                                    case OrderStatus.Active:
-                                        <p>Активный</p>
-                                        break;
-
-                                    case OrderStatus.Complited:
-                                        <p>Выполнен</p>
-                                        break;
-
-                                    case OrderStatus.Accepted:
-                                        <p>Подтвержден</p>
-                                        break;
-
-                                    case OrderStatus.NotComplited:
-                                        <p>Не выполнен</p>
-                                        break;
-                                }
-                            </div>
-                        </div>
+                    <div class="mt-5 mb-5 text-center" style="min-height: 500px">
+                        <h3 >Ничего не найдено</h3>
                     </div>
+                    return;
+                }
+                else
+                {
+
+
+                    foreach (OrderViewModel order in Model)
+                    {
+
+
+                        <div class="row align-items-center p-4 episode" style="width: 1030px;">
+                            <div class="col-md-8">
+                                <h4>
+                                    @Html.RouteLink($"{order.ShortDescription}",
+                                        new {controller = "Order", action = "Details", id = order.Id},
+                                        new {@class = ""})
+                                </h4>
+
+                                <p style="margin: 5px">@order.FullDescription</p>
+                                <div class="row">
+                                    <div class="col">
+                                        <span class="mx-1 icon ion-android-list">
+                                            @order.ServiceModel.Name
+                                        </span>
+                                        <span class="mx-1 icon ion-android-pin">
+                                            @order.City
+                                        </span>
+                                        <span class="mx-1 icon ion-android-time">
+                                            @order.Deadline.ToShortDateString()
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <p>Выложено @order.CreateDate.ToString(CultureInfo.InvariantCulture)</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="container">
+                                    @if (order.ContractPrice)
+                                    {
+                                        <h5 class="text-center">Договорная</h5>
+                                    }
+                                    else
+                                    {
+                                        <h5 class="text-center" style="min-width: 200px">@order.Price р.</h5>
+                                    }
+                                </div>
+                                <div class="text-center container">
+                                    @switch (order.OrderStatus)
+                                    {
+                                        case OrderStatus.Active:
+                                            <p>Активный</p>
+                                            break;
+
+                                        case OrderStatus.Complited:
+                                            <p>Выполнен</p>
+                                            break;
+
+                                        case OrderStatus.Accepted:
+                                            <p>Подтвержден</p>
+                                            break;
+
+                                        case OrderStatus.NotComplited:
+                                            <p>Не выполнен</p>
+                                            break;
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    }
                 }
                 <div class="block-27 text-center col-md-10">
                     @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))

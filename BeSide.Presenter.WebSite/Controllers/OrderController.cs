@@ -121,6 +121,11 @@ namespace BeSide.Presenter.WebSite.Controllers
 
                 feedbackService.Delete(id);
 
+                var order = orderService.GetById(idOrder);
+                order.OrderStatus = OrderStatus.Active;
+                order.ProviderProfileId = null;
+                orderService.Update(order);
+
                 return RedirectToAction($"Details/{idOrder}");
             }
 

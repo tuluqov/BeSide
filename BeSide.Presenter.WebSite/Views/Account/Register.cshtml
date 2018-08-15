@@ -45,21 +45,21 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Email, "Email")
-                                <input type="email" name="Email" class="form-control py-2" maxlength="50" autocomplete="off"/>
+                                <input type="email" name="Email" class="form-control py-2" maxlength="50" autocomplete="off" required/>
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Password, "Пароль")
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control py-2" })
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control py-2", required=string.Empty, })
                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.ConfirmPassword, "Повторите пароль")
-                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control py-2" })
+                                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control py-2", required = string.Empty })
                                 @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -67,28 +67,28 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.FirstName, "Имя")
-                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control py-2", maxlength=50, autocomplete = "off" })
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control py-2", maxlength=50, autocomplete = "off", required=string.Empty })
                                 @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.LastName, "Фамилия")
-                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control py-2", maxlength = 50, autocomplete = "off" })
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control py-2", maxlength = 50, autocomplete = "off", required=string.Empty })
                                 @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Patronymic, "Отчество")
-                                @Html.TextBoxFor(m => m.Patronymic, new { @class = "form-control py-2", maxlength = 50, autocomplete = "off" })
+                                @Html.TextBoxFor(m => m.Patronymic, new { @class = "form-control py-2", maxlength = 50, autocomplete = "off", required = string.Empty })
                                 @Html.ValidationMessageFor(m => m.Patronymic, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.PhoneNumber, "Номер телефона")
-                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control py-2", id = "phone", placeholder = "+375(XX) XXX-XX-XX" })
+                                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control py-2", id = "phone", placeholder = "+375(XX) XXX-XX-XX", required = string.Empty })
                                 @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
                             </div>
                         </div>

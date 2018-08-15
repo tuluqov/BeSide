@@ -25,6 +25,11 @@ namespace BeSide.Presenter.WebSite.Models
         [MaxLength(1000)]
         public string Text { get; set; }
 
+        public ContactMessageViewModel()
+        {
+            
+        }
+
         public ContactMessageViewModel(ContactMessage message)
         {
             Id = message.Id;

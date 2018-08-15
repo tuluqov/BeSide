@@ -44,17 +44,19 @@
                     {
                         @Html.AntiForgeryToken()
                         
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Email, "Email")
-                                <input type="email" name="Email" class="form-control py-2" maxlength="50"/>
+                                <input type="email" name="Email" class="form-control py-2" maxlength="50" required/>
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row mb-5">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Password, "Пароль")
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control py-2" })
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control py-2", required=string.Empty })
                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                             </div>
                         </div>

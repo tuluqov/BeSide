@@ -23,12 +23,13 @@ namespace BeSide.Presenter.WebSite.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult About()
         {
             return View();
         }
 
-        public ActionResult About()
+        [HttpGet]
+        public ActionResult Contact()
         {
             return View();
         }
@@ -41,10 +42,16 @@ namespace BeSide.Presenter.WebSite.Controllers
             {
                 messageService.SendMessage(model.GetMessage());
 
-                return View();
+                return RedirectToAction("SuccessfullySent");
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult SuccessfullySent()
+        {
+            return View();
         }
 
         [HttpGet]

@@ -129,7 +129,7 @@
                 }
             </div>
 
-            @if (User.IsInRole("provider") && Model.Feedbacks.Count(m => m.ProviderProfileId == User.Identity.GetUserId()) == 0)
+            @if (User.IsInRole("provider") && Model.Feedbacks.Count(m => m.ProviderProfileId == User.Identity.GetUserId()) == 0 && Model.OrderStatus == OrderStatus.Active)
             {
                 <div class="ml-3 mt-2">
                     @Html.ActionLink("Откликнуться", "AddFeedback",
