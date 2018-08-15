@@ -229,3 +229,10 @@
 2018-08-15 22:27:53.7246|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
 2018-08-15 22:28:39.5284|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
 2018-08-15 22:28:42.9227|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Dispose
+2018-08-15 22:50:01.3496|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Start
+2018-08-15 22:50:02.7369|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-15 22:50:02.9174|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-15 22:55:59.7301|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-15 22:56:22.1202|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Dispose
+2018-08-15 22:57:05.2152|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-15 22:57:22.1370|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Dispose

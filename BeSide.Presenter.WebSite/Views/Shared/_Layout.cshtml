@@ -45,10 +45,10 @@
                             @Html.RouteLink("Исполнители", new {controller = "Executor", action = "Index"},
                                 new { @class="nav-link"})
                         </li>
-                        <li class="nav-item">
+                        @*<li class="nav-item">
                             @Html.RouteLink("О нас", new {controller = "Home", action = "About"},
                                 new { @class="nav-link"})
-                        </li>
+                        </li>*@
                         <li class="nav-item">
                             @Html.RouteLink("Контакты", new { controller = "Home", action = "Contact"},
                                 new { @class = "nav-link" })
@@ -113,9 +113,6 @@
                         <div class="col-md-6">
                             <ul class="list-unstyled">
                                 <li>
-                                    @Html.RouteLink("Домой", new { controller = "Home", action = "Index" })
-                                </li>
-                                <li>
                                     @Html.RouteLink("Заказы", new { controller = "Order", action = "Index" })
                                 </li>
                                 <li>
@@ -126,12 +123,11 @@
                         <div class="col-md-6">
                             <ul class="list-unstyled">
                                 <li>
-                                    @Html.RouteLink("О нас", new { controller = "Home", action = "About" })
+                                    @Html.RouteLink("Домой", new { controller = "Home", action = "Index" })
                                 </li>
                                 <li>
                                     @Html.RouteLink("Контакты", new { controller = "Home", action = "Contact" })
                                 </li>
-                                <li><a href="#">Секретно</a></li>
                             </ul>
                         </div>
                     </div>
