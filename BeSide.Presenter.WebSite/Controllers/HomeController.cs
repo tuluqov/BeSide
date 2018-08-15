@@ -23,6 +23,11 @@ namespace BeSide.Presenter.WebSite.Controllers
             return View();
         }
 
+        public ActionResult Contact()
+        {
+            return View();
+        }
+
         public ActionResult About()
         {
             return View();

@@ -146,3 +146,12 @@
 2018-08-15 13:52:07.3915|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Start
 2018-08-15 13:52:07.4683|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
 2018-08-15 13:52:07.7266|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-15 14:03:28.2632|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Start
+2018-08-15 14:03:29.0431|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-15 14:03:29.1658|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-15 14:04:33.0967|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Error
+2018-08-15 14:04:34.7261|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Error
+2018-08-15 14:04:43.9478|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Error
+2018-08-15 14:05:49.0487|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Start
+2018-08-15 14:05:49.7788|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init
+2018-08-15 14:05:49.9005|INFO|BeSide.Presenter.WebSite.MvcApplication|Application Init

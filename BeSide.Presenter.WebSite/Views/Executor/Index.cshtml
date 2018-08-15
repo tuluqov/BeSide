@@ -18,7 +18,7 @@
         <!-- Search bar -->
         <div class="row">
             <div class="mb-4 col-md-8 container-fluid">
-                @using (Html.BeginForm("Index", "Order", FormMethod.Get))
+                @using (Html.BeginForm("Index", "Executor", FormMethod.Get))
                 {
                     @Html.TextBox("find", "", new { @class = "form-control py-2", placeholder = "Поиск в каталоге..." })
                 }

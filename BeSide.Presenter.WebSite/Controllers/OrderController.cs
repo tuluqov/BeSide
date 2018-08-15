@@ -132,7 +132,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         public ActionResult FeedbacksOrders()
         {
             var feedbacks = feedbackService.GetUserOrdersFeedbacks(User.Identity.GetUserId());
-            
+
             FeedbacksCollectionViewModel model = new FeedbacksCollectionViewModel(feedbacks);
 
             return View(model);
@@ -196,7 +196,7 @@ namespace BeSide.Presenter.WebSite.Controllers
             return HttpNotFound();
         }
 
-        
+
 
         #endregion
 
@@ -217,7 +217,8 @@ namespace BeSide.Presenter.WebSite.Controllers
             }
             else if (find != null)
             {
-                var findOrders = orderService.Find(m => m.ShortDescription.ToLower().Contains(find.ToLower()));
+                var findOrders = orderService.Find(m => m.ShortDescription.ToLower().Contains(find.ToLower())
+                                                        || m.FullDescription.ToLower().Contains(find.ToLower()));
 
                 OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(findOrders);
 

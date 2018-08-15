@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using BeSide.BusinessLogic.Construct;
 using BeSide.Common.Entities;
 using BeSide.Presenter.WebSite.Models.Category;
-using BeSide.Presenter.WebSite.Models.Order;
 using BeSide.Presenter.WebSite.Models.User;
 using PagedList;
 
@@ -18,7 +13,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         private readonly ICategoryService categoryService;
         private readonly ISeviceService seviceService;
 
-        public ExecutorController(IUserService userService, 
+        public ExecutorController(IUserService userService,
             ICategoryService categoryService,
             ISeviceService seviceService)
         {
@@ -28,6 +23,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         }
 
         // GET: Executor
+        [HttpGet]
         public ActionResult Index(int? ServiceId, int? page, string find)
         {
             if (ServiceId == null && find == null)
@@ -41,7 +37,8 @@ namespace BeSide.Presenter.WebSite.Controllers
             }
             else if (find != null)
             {
-                var findProviders = userService.FindProviders(m => m.CompanyName.Contains(find));
+                var findProviders = userService.FindProviders(m => m.CompanyName.ToLower().Contains(find.ToLower())
+                                                                   || m.Discription.ToLower().Contains(find.ToLower()));
 
                 ProviderCollectionViewModel providerCollection = new ProviderCollectionViewModel(findProviders);
 
@@ -53,8 +50,8 @@ namespace BeSide.Presenter.WebSite.Controllers
             else
             {
 
-                
-                var service = seviceService.GetById((int) ServiceId);
+
+                var service = seviceService.GetById((int)ServiceId);
 
                 var profiles = userService.GetAllProviders();
 
@@ -73,7 +70,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         public ActionResult Details(string id)
         {
             ProviderViewModel provider = new ProviderViewModel((ProviderProfile)userService.GetById(id).UserProfile);
-            
+
             return View(provider);
         }
     }
