@@ -21,7 +21,18 @@ namespace BeSide.Common.Entities
         [Required]
         [MaxLength(50)]
         public string Patronymic { get; set; }
-
+        
         public virtual ApplicationUser ApplicationUser { get; set; }
+
+        //Avatar
+        [StringLength(255)]
+        public string FileName { get; set; }
+
+        [StringLength(100)]
+        public string ContentType { get; set; }
+
+        public byte[] Content { get; set; }
+
+        public FileType FileType { get; set; }
     }
 }

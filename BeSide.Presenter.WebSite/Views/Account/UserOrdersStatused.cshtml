@@ -10,11 +10,12 @@
 
 <section class="site-section bg-light element-animate fadeInUp element-animated">
     <div class="container">
-        <div class="col-md-8 col-lg-8 order-md-2 mb-5">
-            <div class="episodes" style="width: 1040px;">
-                @if (Model.Any())
-                {
-                    foreach (OrderViewModel order in Model)
+
+        @if (Model.Any())
+        {
+            <div class="col-md-8 col-lg-8 order-md-2 mb-5">
+                <div class="episodes" style="width: 1040px;">
+                    @foreach (OrderViewModel order in Model)
                     {
                         <div class="row align-items-center p-4 episode" style="width: 1030px;">
                             <div class="col-md-8">
@@ -76,18 +77,17 @@
                                 </div>
                             </div>
                         </div>
+
                     }
-                }
-                else
-                {
-                    <div class="row align-items-center p-4" style="width: 1030px;">
-                        <div class="col-md-8">
-                            <h3>У вас нет заказов</h3>
-                        </div>
-                    </div>
-                }
+                </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="col-md-8">
+                <h3>У вас нет заказов</h3>
+            </div>
+        }
     </div>
 </section>
 

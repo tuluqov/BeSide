@@ -11,7 +11,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="form-wrap">
-                    @using (Html.BeginForm("EditClient", "Account", FormMethod.Post))
+                    @using (Html.BeginForm("EditClient", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
 
@@ -32,7 +32,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.FirstName, new { @class = "col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.FirstName, new { @class = "form-control", maxlength = 50, autocomplete = "off", required = string.Empty })
+                                    <input type="text" name="FirstName" class="form-control py-2" maxlength="50" autocomplete="off" required value="@Model.FirstName" />
                                     @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -40,7 +40,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.LastName, new { @class = "col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.LastName, new { @class = "form-control", maxlength = 50, autocomplete = "off", required = string.Empty })
+                                    <input type="text" name="LastName" class="form-control py-2" maxlength="50" autocomplete="off" required value="@Model.LastName" />
                                     @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Patronymic, new { @class = "col-md-2" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.Patronymic, new { @class = "form-control", maxlength = 50, autocomplete = "off", required = string.Empty })
+                                    <input type="text" name="Patronymic" class="form-control py-2" maxlength="50" autocomplete="off" required value="@Model.Patronymic" />
                                     @Html.ValidationMessageFor(model => model.Patronymic, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -56,13 +56,20 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.PhoneNumber, new { @class = "col-md-3" })
                                 <div class="col-md-10">
-                                    @Html.EditorFor(model => model.PhoneNumber, new { @class = "form-control", id = "phone", placeholder = "+375(XX) XXX-XX-XX", required = string.Empty })
-                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+                                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control py-2", id = "phone", placeholder = "+375(XX) XXX-XX-XX", required = string.Empty })
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new {@class = "text-danger"})
                                 </div>
                             </div>
                             
                             <div class="form-group">
-                                <div class="col-md-10">
+                                @Html.Label("Загрузить фото", new { @class = "col-md-3" })
+                                <div class="col-md-12">
+                                    <input type="file" name="upload" id="Image"/>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="col-md-10 mt-4">
                                     @Html.HiddenFor(m => m.Id)
                                     <input type="submit" value="Сохранить" class="btn btn-primary px-5" />
                                 </div>

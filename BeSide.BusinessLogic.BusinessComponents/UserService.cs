@@ -150,15 +150,15 @@ namespace BeSide.BusinessLogic.BusinessComponents
             return result;
         }
 
-        public void UpdateProvider(ProviderProfile provider)
+        public void UpdateProvider(BaseProfile provider)
         {
-            uow.ProviderProfiles.Update(provider);
+            uow.ProviderProfiles.Update((ProviderProfile)provider);
             uow.Save();
         }
 
-        public void UpdateClient(ClientProfile client)
+        public void UpdateClient(BaseProfile client)
         {
-            uow.ClientProfiles.Update(client);
+            uow.ClientProfiles.Update((ClientProfile)client);
             uow.Save();
         }
 

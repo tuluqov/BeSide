@@ -63,6 +63,8 @@
     <Compile Include="ClientProfile.cs" />
     <Compile Include="ContactMessage.cs" />
     <Compile Include="Feedback.cs" />
+    <Compile Include="FileType.cs" />
+    <Compile Include="Image.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderStatus.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

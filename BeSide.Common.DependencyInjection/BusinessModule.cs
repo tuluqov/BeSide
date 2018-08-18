@@ -35,6 +35,10 @@ namespace BeSide.Common.DependencyInjection
             builder.RegisterType<ContactMessageService>()
                 .As<IContactMessageService>()
                 .InstancePerRequest();
+
+            builder.RegisterType<ImageService>()
+                .As<IImageService>()
+                .InstancePerRequest();
         }
     }
 }

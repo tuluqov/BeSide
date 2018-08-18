@@ -4,6 +4,7 @@ using BeSide.BusinessLogic.Construct.Infrastructure;
 using BeSide.Presenter.WebSite.Models;
 using Microsoft.Owin.Security;
 using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web;
@@ -20,6 +21,7 @@ namespace BeSide.Presenter.WebSite.Controllers
     {
         private readonly IUserService userService;
         private readonly IOrderService orderService;
+        private readonly IImageService imageService;
 
         private IAuthenticationManager AuthenticationManager
         {
@@ -30,10 +32,12 @@ namespace BeSide.Presenter.WebSite.Controllers
         }
 
         public AccountController(IUserService userService,
-            IOrderService orderService)
+            IOrderService orderService,
+            IImageService imageService)
         {
             this.userService = userService;
             this.orderService = orderService;
+            this.imageService = imageService;
         }
 
         #region LoginRigester
@@ -98,12 +102,28 @@ namespace BeSide.Presenter.WebSite.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, HttpPostedFileBase upload)
         {
-            //await SetInitialDataAsync();
+            await SetInitialDataAsync();
 
             if (ModelState.IsValid)
             {
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var avatar = new Image
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Avatar,
+                        ContentType = upload.ContentType
+                    };
+
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    model.Images = new List<Image> { avatar };
+                }
+
                 UserDto userDto = new UserDto
                 {
                     Email = model.Email,
@@ -113,7 +133,8 @@ namespace BeSide.Presenter.WebSite.Controllers
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     Patronymic = model.Patronymic,
-                    PhoneNumber = model.PhoneNumber
+                    PhoneNumber = model.PhoneNumber,
+                    Images = model.Images
                 };
 
                 OperationDetails operationDetails = userService.Create(userDto);
@@ -186,18 +207,34 @@ namespace BeSide.Presenter.WebSite.Controllers
         [HttpPost]
         [Authorize(Roles = "provider")]
         [ValidateAntiForgeryToken]
-        public ActionResult EditProvider(EditProviderProfileViewModel model)
+        public ActionResult EditProvider(EditProviderProfileViewModel model, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
-                var profile = model.GetProfile();
+                var appUser = userService.GetById(model.Id);
 
-                profile.ApplicationUser = userService.GetById(model.Id);
+                appUser.UserProfile = model.GetProfile();
 
-                profile.ApplicationUser.Email = model.Email;
-                profile.ApplicationUser.PhoneNumber = model.PhoneNumber;
+                appUser.UserProfile.Id = appUser.Id;
+                appUser.Email = model.Email;
+                appUser.PhoneNumber = model.PhoneNumber;
 
-                userService.UpdateProvider(profile);
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    appUser.UserProfile.FileName = System.IO.Path.GetFileName(upload.FileName);
+                    appUser.UserProfile.FileType = FileType.Avatar;
+                    appUser.UserProfile.ContentType = upload.ContentType;
+
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        appUser.UserProfile.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                }
+
+                appUser.Email = model.Email;
+                appUser.PhoneNumber = model.PhoneNumber;
+
+                userService.UpdateProvider(appUser.UserProfile);
 
                 return RedirectToAction("UserProfile", "Account");
             }
@@ -220,7 +257,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         [HttpPost]
         [Authorize(Roles = "client")]
         [ValidateAntiForgeryToken]
-        public ActionResult EditClient(EditClientViewModel model)
+        public ActionResult EditClient(EditClientViewModel model, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
@@ -231,13 +268,31 @@ namespace BeSide.Presenter.WebSite.Controllers
                 appUser.UserProfile.Id = appUser.Id;
                 appUser.Email = model.Email;
                 appUser.PhoneNumber = model.PhoneNumber;
-                
-                userService.UpdateUser(appUser);
+
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    appUser.UserProfile.FileName = System.IO.Path.GetFileName(upload.FileName);
+                    appUser.UserProfile.FileType = FileType.Avatar;
+                    appUser.UserProfile.ContentType = upload.ContentType;
+
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        appUser.UserProfile.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                }
+
+                userService.UpdateClient(appUser.UserProfile);
 
                 return RedirectToAction("UserProfile", "Account");
             }
 
             return View(model);
+        }
+
+        public ActionResult GetImage(string id)
+        {
+            var user = userService.GetById(id);
+            return File(user.UserProfile.Content, user.UserProfile.ContentType);
         }
 
         #endregion
@@ -265,7 +320,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "client")]
+        [Authorize(Roles = "client, provider")]
         public ActionResult UserOrdersStatused(OrderStatus orderStatus)
         {
             IEnumerable<Order> orders;
@@ -286,8 +341,8 @@ namespace BeSide.Presenter.WebSite.Controllers
                 case OrderStatus.Accepted:
                     {
                         orders = orderService.Find(m => m.OrderStatus == OrderStatus.Accepted &&
-                                                        m.ClientProfileId == User.Identity.GetUserId());
-
+                                                        (m.ClientProfileId == User.Identity.GetUserId()
+                                                        || m.ProviderProfileId == User.Identity.GetUserId()));
 
                         OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
 
@@ -297,7 +352,8 @@ namespace BeSide.Presenter.WebSite.Controllers
                 case OrderStatus.Complited:
                     {
                         orders = orderService.Find(m => m.OrderStatus == OrderStatus.Complited &&
-                                                        m.ClientProfileId == User.Identity.GetUserId());
+                                                        (m.ClientProfileId == User.Identity.GetUserId()
+                                                         || m.ProviderProfileId == User.Identity.GetUserId()));
 
                         OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
 
@@ -308,14 +364,13 @@ namespace BeSide.Presenter.WebSite.Controllers
                 case OrderStatus.NotComplited:
                     {
                         orders = orderService.Find(m => m.OrderStatus == OrderStatus.NotComplited &&
-                                                        m.ClientProfileId == User.Identity.GetUserId());
+                                                        (m.ClientProfileId == User.Identity.GetUserId()
+                                                         || m.ProviderProfileId == User.Identity.GetUserId()));
 
                         OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
 
                         return View(ordersModel);
                     }
-
-
             }
 
             return View();

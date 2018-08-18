@@ -36,6 +36,16 @@ namespace BeSide.Presenter.WebSite.Models.User
 
         public FeedbacksCollectionViewModel Feedbacks { get; set; }
 
+        [StringLength(255)]
+        public string FileName { get; set; }
+
+        [StringLength(100)]
+        public string ContentType { get; set; }
+
+        public byte[] Content { get; set; }
+
+        public FileType FileType { get; set; }
+
         public ProviderViewModel()
         {
 
@@ -53,6 +63,10 @@ namespace BeSide.Presenter.WebSite.Models.User
             Services = new ServiceCollectionViewModel(profile.Services);
             Feedbacks = new FeedbacksCollectionViewModel(profile.Feedbacks);
             Categories = new CategoryCollectionViewModel(profile.Categories);
+            ContentType = profile.ContentType;
+            Content = profile.Content;
+            FileName = profile.FileName;
+            FileType = profile.FileType;
         }
 
         public ProviderProfile GProfile()
@@ -64,7 +78,11 @@ namespace BeSide.Presenter.WebSite.Models.User
                 LastName = LastName,
                 Patronymic = Patronymic,
                 CompanyName = CompanyName,
-                Discription = Discription
+                Discription = Discription,
+                ContentType = ContentType,
+                Content = Content,
+                FileName = FileName,
+                FileType = FileType
             };
         }
     }

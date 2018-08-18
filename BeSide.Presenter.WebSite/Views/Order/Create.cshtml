@@ -13,14 +13,14 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="form-wrap">
-                    @using (Html.BeginForm("Create", "Order", FormMethod.Post))
+                    @using (Html.BeginForm("Create", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
 
                         <h4>Добавление заказа</h4>
                         <hr />
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                        
+
                         <div class="form-group col-md-10">
                             @Html.LabelFor(model => model.ServiceId, new { @class = "col-md-3" })
                             <select name="ServiceId" class="form-control" id="searchSelect">
@@ -44,7 +44,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.ShortDescription, new { @class = "col-md-3" })
                             <div class="col-md-10">
-                                <input type="text" name="ShortDescription" class="form-control" maxlength="100" required autocomplete="off"/>
+                                <input type="text" name="ShortDescription" class="form-control" maxlength="100" required autocomplete="off" />
                                 @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -52,21 +52,21 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.FullDescription, htmlAttributes: new { @class = "col-md-3" })
                             <div class="col-md-10">
-                                @Html.TextAreaFor(model => model.FullDescription, new {@class = "form-control", id = "exampleFormControlTextarea1", rows = 5, maxlength = "1000" })
-                                @Html.ValidationMessageFor(model => model.FullDescription, "", new {@class = "text-danger"})
+                                @Html.TextAreaFor(model => model.FullDescription, new { @class = "form-control", id = "exampleFormControlTextarea1", rows = 5, maxlength = "1000" })
+                                @Html.ValidationMessageFor(model => model.FullDescription, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
                         <div class="form-group row ml-1">
                             @Html.LabelFor(model => model.NameProvider, new { @class = "col-md-1" })
                             <div class="col-md-2">
-                                <input type="text" name="NameProvider" class="form-control" maxlength="50" required autocomplete="off"/>
+                                <input type="text" name="NameProvider" class="form-control" maxlength="50" required autocomplete="off" />
                                 @Html.ValidationMessageFor(model => model.NameProvider, "", new { @class = "text-danger" })
                             </div>
 
                             @Html.LabelFor(model => model.Price, new { @class = "col-md-1" })
                             <div class="col-md-2">
-                                <input type="number" min=0 max="1000000" name="Price" class="form-control" autocomplete="off" step="0.01"/>
+                                <input type="number" min=0 max="1000000" name="Price" class="form-control" autocomplete="off" step="0.01" />
                                 @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                             </div>
                             р.
@@ -76,11 +76,12 @@
                                 @Html.ValidationMessageFor(model => model.ContractPrice, "", new { @class = "text-danger" })
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.Deadline, new { @class = "col-md-3" })
                             <div class="col-md-10">
-                                <input type="text" id='datetimepicker' data-toggle="datepicker" name="Deadline" class="form-control" min="@DateTime.Now.Date.ToString("yyyy-MM-dd")" required autocomplete="off"/>
+                                @*<input type="text" id='datetimepicker' data-toggle="datepicker" name="Deadline" class="form-control" min="@DateTime.Now.Date.ToString("yyyy-MM-dd")" required autocomplete="off"/>*@
+                                <input type="date" name="Deadline" class="form-control" min="@DateTime.Now.Date.ToString("yyyy-MM-dd")" required autocomplete="off" />
                                 @Html.ValidationMessageFor(model => model.Deadline, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -88,14 +89,21 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.City, new { @class = "col-md-2" })
                             <div class="col-md-10">
-                                <input type="text" name="City" maxlength="40" required class="form-control"/>
+                                <input type="text" name="City" maxlength="40" required class="form-control" />
                                 @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
                         <div class="form-group">
+                            <label for="Image" class="col-md-2">Фото</label>
                             <div class="col-md-10">
-                                <input type="submit" value="Добавить объявление" class="btn btn-primary" />
+                                <input type="file" name="upload" id="Image"/>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <input type="submit" value="Добавить объявление" class="btn btn-primary" id="add_order"/>
                             </div>
                         </div>
                     }

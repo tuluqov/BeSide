@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using BeSide.Common.Entities;
 
 namespace BeSide.Presenter.WebSite.Models
 {
@@ -91,6 +92,8 @@ namespace BeSide.Presenter.WebSite.Models
         [Required]
         [Display(Name = "Номер телефона")]
         public string PhoneNumber { get; set; }
+
+        public ICollection<Image> Images { get; set; }
     }
 
     public class ResetPasswordViewModel

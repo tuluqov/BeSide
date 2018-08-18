@@ -24,10 +24,10 @@
             </div>
         </div>
 
-        <div class="row align-items-baseline border-top">
+        <div class="row border-top">
 
             <!-- Category sidebar -->
-            <div class="col-md-3 wrapper">
+            <div class="col-md-3 wrapper p-4">
                 <nav id="sidebar">
                     <div class="my-2 text-center">
                         <h3>Категории</h3>
@@ -47,9 +47,12 @@
                                     @foreach (ServiceViewModel service in category.ServiceViewModels)
                                     {
                                         <li>
-                                            @Html.HiddenFor(m => service.Id)
-                                            @Html.ActionLink($"{service.Name}", "Index", new { ServiceId = service.Id },
-                                                new { @class = "dropdown-item" })
+                                            <div style="margin-left: 30px">
+                                                @Html.HiddenFor(m => service.Id)
+                                                @Html.ActionLink($"{service.Name}", "Index", new {ServiceId = service.Id},
+                                                    new {@class = "dropdown-item"})
+                                            </div>
+                                            
                                         </li>
 
                                     }
@@ -71,73 +74,83 @@
                 }
                 else
                 {
-
-
                     foreach (OrderViewModel order in Model)
                     {
 
 
-                        <div class="row align-items-center p-4 episode" style="width: 1030px;">
-                            <div class="col-md-8">
-                                <h4>
-                                    @Html.RouteLink($"{order.ShortDescription}",
-                                        new {controller = "Order", action = "Details", id = order.Id},
-                                        new {@class = ""})
-                                </h4>
+                    <div class="row align-items-center p-4 episode" style="width: 100%;">
+                       @if (order.Images.Any(f => f.FileType == FileType.Avatar))
+                        {
+                            <figure>
+                                <img src="~/Image?id=@order.Images.First(f => f.FileType == FileType.Avatar).Id" 
+                                     alt="avatar" class="img-fluid" width="150" height="150"/>
+                            </figure>
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/img/no_order.png")"  class="img-fluid" width="150" height="150"/>
+                        }
 
-                                <p style="margin: 5px">@order.FullDescription</p>
-                                <div class="row">
-                                    <div class="col">
-                                        <span class="mx-1 icon ion-android-list">
-                                            @order.ServiceModel.Name
-                                        </span>
-                                        <span class="mx-1 icon ion-android-pin">
-                                            @order.City
-                                        </span>
-                                        <span class="mx-1 icon ion-android-time">
-                                            @order.Deadline.ToShortDateString()
-                                        </span>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col">
-                                        <p>Выложено @order.CreateDate.ToString(CultureInfo.InvariantCulture)</p>
-                                    </div>
+                        <div class="col-md-8">
+                            <h4>
+                                @Html.RouteLink($"{order.ShortDescription}",
+                                    new {controller = "Order", action = "Details", id = order.Id},
+                                    new {@class = ""})
+                            </h4>
+
+                            <p style="margin: 5px">@order.FullDescription</p>
+                            <div class="row">
+                                <div class="col">
+                                    <span class="mx-1 icon ion-android-list">
+                                        @order.ServiceModel.Name
+                                    </span>
+                                    <span class="mx-1 icon ion-android-pin">
+                                        @order.City
+                                    </span>
+                                    <span class="mx-1 icon ion-android-time">
+                                        @order.Deadline.ToShortDateString()
+                                    </span>
                                 </div>
                             </div>
-                            <div class="col-md-3">
-                                <div class="container">
-                                    @if (order.ContractPrice)
-                                    {
-                                        <h5 class="text-center">Договорная</h5>
-                                    }
-                                    else
-                                    {
-                                        <h5 class="text-center" style="min-width: 200px">@order.Price р.</h5>
-                                    }
-                                </div>
-                                <div class="text-center container">
-                                    @switch (order.OrderStatus)
-                                    {
-                                        case OrderStatus.Active:
-                                            <p>Активный</p>
-                                            break;
-
-                                        case OrderStatus.Complited:
-                                            <p>Выполнен</p>
-                                            break;
-
-                                        case OrderStatus.Accepted:
-                                            <p>Подтвержден</p>
-                                            break;
-
-                                        case OrderStatus.NotComplited:
-                                            <p>Не выполнен</p>
-                                            break;
-                                    }
+                            <div class="row">
+                                <div class="col">
+                                    <p>Выложено @order.CreateDate.ToString(CultureInfo.InvariantCulture)</p>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-2">
+                            <div class="container">
+                                @if (order.ContractPrice)
+                                {
+                                    <h5 class="text-center">Договорная</h5>
+                                }
+                                else
+                                {
+                                    <h5 class="text-center">@order.Price р.</h5>
+                                }
+                            </div>
+                            <div class="text-center container">
+                                @switch (order.OrderStatus)
+                                {
+                                    case OrderStatus.Active:
+                                        <p>Активный</p>
+                                        break;
+
+                                    case OrderStatus.Complited:
+                                        <p>Выполнен</p>
+                                        break;
+
+                                    case OrderStatus.Accepted:
+                                        <p>Подтвержден</p>
+                                        break;
+
+                                    case OrderStatus.NotComplited:
+                                        <p>Не выполнен</p>
+                                        break;
+                                }
+                            </div>
+                        </div>
+                    </div>
                     }
                 }
                 <div class="block-27 text-center col-md-10">

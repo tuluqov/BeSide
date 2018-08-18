@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using BeSide.Common.Entities;
 
 namespace BeSide.Presenter.WebSite.Models.User
@@ -43,6 +44,18 @@ namespace BeSide.Presenter.WebSite.Models.User
 
         public ApplicationUser ApplicationUser { get; set; }
 
+        [StringLength(255)]
+        public string FileName { get; set; }
+
+        [StringLength(100)]
+        public string ContentType { get; set; }
+
+        public byte[] Content { get; set; }
+
+        public FileType FileType { get; set; }
+
+        public ICollection<Image> Images { get; set; }
+
         public EditProviderProfileViewModel()
         {
             
@@ -59,6 +72,10 @@ namespace BeSide.Presenter.WebSite.Models.User
             Patronymic = profile.Patronymic;
             PhoneNumber = profile.ApplicationUser.PhoneNumber;
             ApplicationUser = profile.ApplicationUser;
+            ContentType = profile.ContentType;
+            Content = profile.Content;
+            FileName = profile.FileName;
+            FileType = profile.FileType;
         }
 
         public ProviderProfile GetProfile()
@@ -71,7 +88,11 @@ namespace BeSide.Presenter.WebSite.Models.User
                 FirstName = FirstName,
                 LastName = LastName,
                 Patronymic = Patronymic,
-                ApplicationUser = ApplicationUser
+                ApplicationUser = ApplicationUser,
+                ContentType = ContentType,
+                Content = Content,
+                FileName = FileName,
+                FileType = FileType
             };
         }
     }

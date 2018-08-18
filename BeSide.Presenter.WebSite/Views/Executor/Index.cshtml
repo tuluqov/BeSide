@@ -25,10 +25,10 @@
             </div>
         </div>
 
-        <div class="row align-items-baseline border-top">
+        <div class="row border-top">
 
             <!-- Category sidebar -->
-            <div class="col-md-3 wrapper">
+            <div class="col-md-3 wrapper p-4">
                 <nav id="sidebar">
                     <div class="my-2 text-center">
                         <h3>Категории</h3>
@@ -64,9 +64,29 @@
 
             <!-- Order view section -->
             <div class="col-md-9 border-left">
+                @if (!Model.Any())
+                {
+                    <div class="mt-5 mb-5 text-center" style="min-height: 500px">
+                        <h3>Ничего не найдено</h3>
+                    </div>
+                    return;
+                }
+
                 @foreach (ProviderViewModel provider in Model)
                 {
-                    <div class="row align-items-center p-4 episode" style="width: 1030px;">
+                    <div class="row align-items-center p-4 episode" style="width: 100%;">
+                        @if (provider.FileType == FileType.Avatar)
+                        {
+                            <figure>
+                                <img src="~/Account/GetImage?id=@provider.Id"
+                                     alt="avatar" class="img-fluid" width="150" height="150" />
+                            </figure>
+                        }
+                        else
+                        {
+                            <img src="@Url.Content("~/img/no_avatar.png")" class="img-fluid" width="150" height="150" />
+                        }
+
                         <div class="col-md-8">
                             <h4>
                                 @if (provider.CompanyName == null)

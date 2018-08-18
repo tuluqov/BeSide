@@ -13,7 +13,7 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="form-wrap">
-                    @using (Html.BeginForm("Edit", "Order", FormMethod.Post))
+                    @using (Html.BeginForm("Edit", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
 
@@ -27,18 +27,18 @@
                             <select name="ServiceId" class="form-control" id="searchSelect">
                                 @foreach (CategoryViewModel category in ViewBag.Categoryes)
                                 {
-                                <optgroup label="@category.Name">
-                                    @foreach (ServiceViewModel service in category.ServiceViewModels)
-                                    {
-                                        if (service.Id == Model.ServiceId)
+                                    <optgroup label="@category.Name">
+                                        @foreach (ServiceViewModel service in category.ServiceViewModels)
                                         {
-                                            <option value="@service.Id" selected="">@service.Name</option>
-                                            continue;
-                                        }
+                                            if (service.Id == Model.ServiceId)
+                                            {
+                                                <option value="@service.Id" selected="">@service.Name</option>
+                                                continue;
+                                            }
 
-                                        <option value="@service.Id">@service.Name</option>
-                                    }
-                                </optgroup>
+                                            <option value="@service.Id">@service.Name</option>
+                                        }
+                                    </optgroup>
                                 }
                             </select>
                         </div>
@@ -46,7 +46,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.ShortDescription, new { @class = "col-md-3" })
                             <div class="col-md-10">
-                                <input type="text" name="ShortDescription" class="form-control" maxlength="100" required autocomplete="off" value="@Model.ShortDescription"/>
+                                <input type="text" name="ShortDescription" class="form-control" maxlength="100" required autocomplete="off" value="@Model.ShortDescription" />
                                 @Html.ValidationMessageFor(model => model.ShortDescription, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -62,13 +62,13 @@
                         <div class="form-group row ml-1">
                             @Html.LabelFor(model => model.NameProvider, new { @class = "col-md-1" })
                             <div class="col-md-2">
-                                <input type="text" name="NameProvider" class="form-control" maxlength="50" required autocomplete="off" value="@Model.NameProvider"/>
+                                <input type="text" name="NameProvider" class="form-control" maxlength="50" required autocomplete="off" value="@Model.NameProvider" />
                                 @Html.ValidationMessageFor(model => model.NameProvider, "", new { @class = "text-danger" })
                             </div>
 
                             @Html.LabelFor(model => model.Price, new { @class = "col-md-1" })
                             <div class="col-md-2">
-                                <input type="number" min=0 max="1000000" name="Price" class="form-control" autocomplete="off" step="0.01" value="@Model.Price"/>
+                                <input type="number" min=0 max="1000000" name="Price" class="form-control" autocomplete="off" step="0.01" value="@Model.Price" />
                                 @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                             </div>
 
@@ -84,7 +84,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Deadline, new { @class = "col-md-3" })
                             <div class="col-md-10">
-                                <input type="text" id='datetimepicker' data-toggle="datepicker" name="Deadline" class="form-control" min="@DateTime.Now.Date.ToString("yyyy-MM-dd")" required autocomplete="off" value="@Model.Deadline"/>
+                                <input type="text" id='datetimepicker' data-toggle="datepicker" name="Deadline" class="form-control" min="@DateTime.Now.Date.ToString("yyyy-MM-dd")" required autocomplete="off" value="@Model.Deadline" />
                                 @Html.ValidationMessageFor(model => model.Deadline, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -92,8 +92,15 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.City, new { @class = "col-md-2" })
                             <div class="col-md-10">
-                                <input type="text" name="City" maxlength="40" required class="form-control" value="@Model.City"/>
+                                <input type="text" name="City" maxlength="40" required class="form-control" value="@Model.City" />
                                 @Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Image" class="col-md-2">Фото</label>
+                            <div class="col-md-10">
+                                <input type="file" name="upload" id="Image" />
                             </div>
                         </div>
 
@@ -104,7 +111,7 @@
                                 @Html.HiddenFor(m => m.OrderStatus)
                                 @Html.HiddenFor(m => m.ProviderProfileId)
                                 @Html.HiddenFor(m => m.Id)
-                                <input type="submit" value="Изменить" class="btn btn-primary"/>
+                                <input type="submit" value="Изменить" class="btn btn-primary" />
                                 @Html.RouteLink("Отменить",
                                     new {controller = "Account", action = "UserOrders"},
                                     new {@class = "btn btn-primary"})

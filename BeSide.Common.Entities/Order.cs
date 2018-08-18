@@ -48,6 +48,8 @@ namespace BeSide.Common.Entities
 
         public virtual ICollection<Feedback> Feedbacks { get; set; }
 
+        public virtual ICollection<Image> Galery { get; set; }
+        
         public OrderStatus OrderStatus { get; set; }
     }
 }

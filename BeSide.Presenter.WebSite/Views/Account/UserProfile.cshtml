@@ -17,22 +17,28 @@
                             {
                                 @Html.RouteLink("Мои отклики", new { controller = "Order", action = "FeedbacksProvider" }, new { @class = "btn btn-primary py-2 px-4" })
                                 @Html.RouteLink("Подтвержденные отклики", new { controller = "Order", action = "SelectedFeedbacks" }, new { @class = "btn btn-primary py-2 px-4" })
-                                @Html.RouteLink("Выполненные заказы", new { controller = "Admin", action = "Service" }, new { @class = "btn btn-primary py-2 px-4 mb-3" })
-
+                                @Html.RouteLink("Выполненные заказы", new { controller = "Account", action = "UserOrdersStatused", orderStatus = OrderStatus.Complited }, new { @class = "btn btn-primary py-2 px-4 mb-3" })
                             }
                             else if (User.IsInRole("client"))
                             {
                                 @Html.RouteLink("Мои объявления", new { controller = "Account", action = "UserOrders" }, new { @class = "btn btn-primary py-2 px-4" })
                                 @Html.RouteLink("Отклики на объявления", new { controller = "Order", action = "FeedbacksOrders" }, new { @class = "btn btn-primary py-2 px-4" })
                                 @Html.RouteLink("Выполненные заказы", new { controller = "Account", action = "UserOrdersStatused", orderStatus = OrderStatus.Complited }, new { @class = "btn btn-primary py-2 px-4 mb-3" })
-
                             }
                         </div>
 
                         <div class="col-5 block-28 text-center mb-5">
-                            <figure>
-                                <img src="../../Content/images/person_3.jpg" alt="" class="img-fluid">
-                            </figure>
+                            @if (Model.UserProfile.FileType == FileType.Avatar)
+                            {
+                                <figure>
+                                    <img src="~/Account/GetImage?id=@Model.Id"
+                                         alt="avatar" class="img-fluid" width="150" height="150"/>
+                                </figure>
+                            }
+                            else
+                            {
+                                <img src="@Url.Content("~/img/no_avatar.png")" class="img-fluid" width="150" height="150"/>
+                            }
                             <h2>@Model.UserProfile.LastName @Model.UserProfile.FirstName</h2>
                             <h3 class="subheading">@Model.Email</h3>
                             @if (User.IsInRole("provider"))

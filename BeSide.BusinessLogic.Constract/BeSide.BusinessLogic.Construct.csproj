@@ -61,6 +61,7 @@
     <Compile Include="ICategoryService.cs" />
     <Compile Include="IContactMessageService.cs" />
     <Compile Include="IFeedbackService.cs" />
+    <Compile Include="IImageService.cs" />
     <Compile Include="Infrastructure\OperationDetails.cs" />
     <Compile Include="IOrderService.cs" />
     <Compile Include="ISeviceService.cs" />

@@ -15,8 +15,8 @@ namespace BeSide.BusinessLogic.Construct
         Task SetInitialData(UserDto admin, List<string> roles);
 
         ApplicationUser GetById(string id);
-        void UpdateProvider(ProviderProfile provider);
-        void UpdateClient(ClientProfile client);
+        void UpdateProvider(BaseProfile provider);
+        void UpdateClient(BaseProfile client);
         void UpdateUser(ApplicationUser user);
         IEnumerable<ProviderProfile> GetAllProviders();
         IEnumerable<ProviderProfile> FindProviders(Func<ProviderProfile, bool> predicate);

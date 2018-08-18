@@ -38,6 +38,16 @@ namespace BeSide.Presenter.WebSite.Models.User
         [MaxLength(15)]
         public string PhoneNumber { get; set; }
 
+        [StringLength(255)]
+        public string FileName { get; set; }
+
+        [StringLength(100)]
+        public string ContentType { get; set; }
+
+        public byte[] Content { get; set; }
+
+        public FileType FileType { get; set; }
+
         public ApplicationUser ApplicationUser { get; set; }
 
         public EditClientViewModel()
@@ -54,6 +64,10 @@ namespace BeSide.Presenter.WebSite.Models.User
             Patronymic = profile.Patronymic;
             PhoneNumber = profile.ApplicationUser.PhoneNumber;
             ApplicationUser = profile.ApplicationUser;
+            ContentType = profile.ContentType;
+            Content = profile.Content;
+            FileName = profile.FileName;
+            FileType = profile.FileType;
         }
 
         public ClientProfile GetProfile()
@@ -64,6 +78,10 @@ namespace BeSide.Presenter.WebSite.Models.User
                 FirstName = FirstName,
                 LastName = LastName,
                 Patronymic = Patronymic,
+                ContentType = ContentType,
+                Content = Content,
+                FileName = FileName,
+                FileType = FileType
             };
         }
     }

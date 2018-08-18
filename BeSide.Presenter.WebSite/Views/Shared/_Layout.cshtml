@@ -46,9 +46,9 @@
                                 new { @class="nav-link"})
                         </li>
                         @*<li class="nav-item">
-                            @Html.RouteLink("О нас", new {controller = "Home", action = "About"},
-                                new { @class="nav-link"})
-                        </li>*@
+                                @Html.RouteLink("О нас", new {controller = "Home", action = "About"},
+                                    new { @class="nav-link"})
+                            </li>*@
                         <li class="nav-item">
                             @Html.RouteLink("Контакты", new { controller = "Home", action = "Contact"},
                                 new { @class = "nav-link" })
@@ -58,7 +58,7 @@
                         @if (Request.IsAuthenticated)
                         {
                             <li>
-                                @Html.RouteLink(@User.Identity.Name, new
+                                @Html.RouteLink(User.Identity.Name, new
                                 {
                                     controller = "Account",
                                     action = "UserProfile"
@@ -141,7 +141,7 @@
                                     <span class="icon ion-android-pin"></span><span class="text">ул. Филимонова 15, Минск, Беларусь</span>
                                 </a>
                             </li>
-                            <li><a href="tg://resolve?domain=digital_gangster_95"><span class="icon ion-ios-telephone"></span><span class="text">+375(25) 636-86-10</span></a></li>
+                            <li><a href="tg://resolve?domain=digital_gangster_95"><span class="icon ion-ios-telephone"></span><span class="text">+375 (25) 636-86-10</span></a></li>
                             <li><a href="mailto:usup1999@gmail.com"><span class="icon ion-android-mail"></span><span class="text">usup1999@gmail.com</span></a></li>
                         </ul>
                     </div>
@@ -153,7 +153,7 @@
                     <p class="float-md-left">
                         Sam Solutions &copy;
                         <a>
-                            <script>document.write(new Date().getFullYear());</script> Сделано с душою <i class="fa fa-heart" aria-hidden="true"></i>
+                            <script>document.write(new Date().getFullYear());</script> Сделано с душой <i class="fa fa-heart" aria-hidden="true"></i>
                         </a>
                     </p>
                     <p class="float-md-right">
@@ -185,10 +185,12 @@
     <script src="~/Content/js/main.js"></script>
     <script src="~/Scripts/select2.min.js"></script>
     <script src="~/Scripts/bootstrap-datepicker.min.js"></script>
+    <script src="~/SweetAlert2/sweetalert2.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@latest/dist/sweetalert2.all.js"></script>
     <script>
         $(document).ready(function () {
             $("#phone").mask("+375(99) 999-99-99");
-        })
+        });
     </script>
     <script type="text/javascript">
         $(function () {
@@ -214,11 +216,27 @@
         });
 
         $(' [data-toggle = "datepicker"] ').datepicker({
-            format: 'dd.mm.yyyy'
-
+            format: 'yyyy.mm.dd'
         });
     </script>
-
+    <script>
+        $("#add_order").click(function () {
+            swal({
+                title: 'Объявление успшено добавлено!',
+                text: 'Объявление успшено добавлено!',
+                type: 'success',
+                confirmButtonText: 'OK'
+            });
+        });
+    </script>
+    @*<script>
+            swal({
+                title: 'Объявление успшено добавлено!',
+                text: 'Объявление успшено добавлено!',
+                type: 'success',
+                confirmButtonText: 'OK'
+            });
+        </script>*@
 </body>
 </html>
 

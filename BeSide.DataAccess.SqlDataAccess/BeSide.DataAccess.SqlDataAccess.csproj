@@ -128,6 +128,42 @@
     <Compile Include="Migrations\201808150807460_Mes.Designer.cs">
       <DependentUpon>201808150807460_Mes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808161549590_img.cs" />
+    <Compile Include="Migrations\201808161549590_img.Designer.cs">
+      <DependentUpon>201808161549590_img.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808170657041_ImgUpdt.cs" />
+    <Compile Include="Migrations\201808170657041_ImgUpdt.Designer.cs">
+      <DependentUpon>201808170657041_ImgUpdt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808171105374_ImgUpdt2.cs" />
+    <Compile Include="Migrations\201808171105374_ImgUpdt2.Designer.cs">
+      <DependentUpon>201808171105374_ImgUpdt2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808171152026_ImgUpdt3.cs" />
+    <Compile Include="Migrations\201808171152026_ImgUpdt3.Designer.cs">
+      <DependentUpon>201808171152026_ImgUpdt3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808171204334_ImgUpdt1.cs" />
+    <Compile Include="Migrations\201808171204334_ImgUpdt1.Designer.cs">
+      <DependentUpon>201808171204334_ImgUpdt1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808171228408_ImgUpdt4.cs" />
+    <Compile Include="Migrations\201808171228408_ImgUpdt4.Designer.cs">
+      <DependentUpon>201808171228408_ImgUpdt4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808171235157_ImgUpdt5.cs" />
+    <Compile Include="Migrations\201808171235157_ImgUpdt5.Designer.cs">
+      <DependentUpon>201808171235157_ImgUpdt5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808171255435_ImgUpdt6.cs" />
+    <Compile Include="Migrations\201808171255435_ImgUpdt6.Designer.cs">
+      <DependentUpon>201808171255435_ImgUpdt6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201808171735577_ImgUpdt7.cs" />
+    <Compile Include="Migrations\201808171735577_ImgUpdt7.Designer.cs">
+      <DependentUpon>201808171735577_ImgUpdt7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BaseRepository.cs" />
@@ -184,6 +220,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808150807460_Mes.resx">
       <DependentUpon>201808150807460_Mes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808161549590_img.resx">
+      <DependentUpon>201808161549590_img.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808170657041_ImgUpdt.resx">
+      <DependentUpon>201808170657041_ImgUpdt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171105374_ImgUpdt2.resx">
+      <DependentUpon>201808171105374_ImgUpdt2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171152026_ImgUpdt3.resx">
+      <DependentUpon>201808171152026_ImgUpdt3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171204334_ImgUpdt1.resx">
+      <DependentUpon>201808171204334_ImgUpdt1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171228408_ImgUpdt4.resx">
+      <DependentUpon>201808171228408_ImgUpdt4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171235157_ImgUpdt5.resx">
+      <DependentUpon>201808171235157_ImgUpdt5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171255435_ImgUpdt6.resx">
+      <DependentUpon>201808171255435_ImgUpdt6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808171735577_ImgUpdt7.resx">
+      <DependentUpon>201808171735577_ImgUpdt7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

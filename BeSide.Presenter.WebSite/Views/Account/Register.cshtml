@@ -38,21 +38,21 @@
             <div class="col-md-7">
                 <div class="form-wrap">
                     <h2 class="mb-5">Зарегистрировать новый аккаунт</h2>
-                    @using (Html.BeginForm("Register", "Account", FormMethod.Post))
+                    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
                     {
                         @Html.AntiForgeryToken()
-                        
+
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Email, "Email")
-                                <input type="email" name="Email" class="form-control py-2" maxlength="50" autocomplete="off" required/>
+                                <input type="email" name="Email" class="form-control py-2" maxlength="50" autocomplete="off" required />
                                 @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.Password, "Пароль")
-                                @Html.PasswordFor(m => m.Password, new { @class = "form-control py-2", required=string.Empty, })
+                                @Html.PasswordFor(m => m.Password, new { @class = "form-control py-2", required = string.Empty, })
                                 @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -67,14 +67,14 @@
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.FirstName, "Имя")
-                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control py-2", maxlength=50, autocomplete = "off", required=string.Empty })
+                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control py-2", maxlength = 50, autocomplete = "off", required = string.Empty })
                                 @Html.ValidationMessageFor(m => m.FirstName, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.LastName, "Фамилия")
-                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control py-2", maxlength = 50, autocomplete = "off", required=string.Empty })
+                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control py-2", maxlength = 50, autocomplete = "off", required = string.Empty })
                                 @Html.ValidationMessageFor(m => m.LastName, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -103,6 +103,12 @@
                                     @Html.RadioButtonFor(m => m.Role, "client", new { @class = "custom-control-input", id = "Role2" })
                                     @Html.LabelFor(m => m.Role, "Клиент", new { @class = "custom-control-label", @for = "Role2" })
                                 </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                @Html.LabelFor(m => m.Images, "Загрузить фото")
+                                <input type="file" name="upload" id="Image" />
                             </div>
                         </div>
 

@@ -58,6 +58,8 @@ namespace BeSide.Presenter.WebSite.Models.Order
 
         public FeedbacksCollectionViewModel Feedbacks { get; set; }
 
+        public ICollection<Image> Images { get; set; }
+
         public OrderStatus OrderStatus { get; set; }
 
         public OrderViewModel()
@@ -85,6 +87,8 @@ namespace BeSide.Presenter.WebSite.Models.Order
 
             Feedbacks = new FeedbacksCollectionViewModel(order.Feedbacks);
 
+            Images = order.Galery;
+
             OrderStatus = order.OrderStatus;
         }
 
@@ -103,6 +107,7 @@ namespace BeSide.Presenter.WebSite.Models.Order
                 NameProvider = NameProvider,
                 ClientProfileId = ClientProfileId,
                 ProviderProfileId = ProviderProfileId,
+                Galery = Images,
 
                 ServiceId = ServiceId,
                 OrderStatus = OrderStatus

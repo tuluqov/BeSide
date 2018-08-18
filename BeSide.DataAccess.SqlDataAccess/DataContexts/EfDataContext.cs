@@ -13,6 +13,7 @@ namespace BeSide.DataAccess.SqlDataAccess.DataContexts
         public DbSet<ProviderProfile> ProviderProfiles { get; set; }
         public DbSet<Feedback> Feedbacks { get; set; }
         public DbSet<ContactMessage> ContactMessages { get; set; }
+        public DbSet<Image> Images { get; set; }
 
         public EfDataContext(string connectionString) : base(connectionString)
         {

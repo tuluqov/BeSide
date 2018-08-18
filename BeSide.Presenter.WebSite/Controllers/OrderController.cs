@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Web;
 using System.Web.Mvc;
 using BeSide.BusinessLogic.Construct;
 using BeSide.Common.Entities;
@@ -18,16 +20,19 @@ namespace BeSide.Presenter.WebSite.Controllers
         private readonly ICategoryService categoryService;
         private readonly IUserService userService;
         private readonly IFeedbackService feedbackService;
+        private readonly IImageService imageService;
 
         public OrderController(IOrderService orderService,
             ICategoryService categoryService,
             IUserService userService,
-            IFeedbackService feedbackService)
+            IFeedbackService feedbackService,
+            IImageService imageService)
         {
             this.orderService = orderService;
             this.categoryService = categoryService;
             this.userService = userService;
             this.feedbackService = feedbackService;
+            this.imageService = imageService;
         }
 
         #region Feedbacks
@@ -230,7 +235,6 @@ namespace BeSide.Presenter.WebSite.Controllers
                 ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
 
                 return View(collectionOrders.ToPagedList(page ?? 1, 10));
-                //return Json(collectionOrders.ToPagedList(page ?? 1, 10), JsonRequestBehavior.AllowGet);
             }
             else
             {
@@ -245,9 +249,14 @@ namespace BeSide.Presenter.WebSite.Controllers
 
         // GET: Order/Details/5
         [HttpGet]
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
-            OrderViewModel model = new OrderViewModel(orderService.GetById(id));
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            OrderViewModel model = new OrderViewModel(orderService.GetById((int)id));
 
             ViewBag.User = userService.GetById(model.ClientProfileId);
 
@@ -268,10 +277,26 @@ namespace BeSide.Presenter.WebSite.Controllers
         [HttpPost]
         [Authorize(Roles = "client")]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(OrderViewModel model)
+        public ActionResult Create(OrderViewModel model, HttpPostedFileBase upload)
         {
             if (ModelState.IsValid)
             {
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var avatar = new Image
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Avatar,
+                        ContentType = upload.ContentType
+                    };
+
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    model.Images = new List<Image> { avatar };
+                }
+
                 model.ClientProfileId = User.Identity.GetUserId();
                 model.CreateDate = DateTime.Now;
                 model.OrderStatus = OrderStatus.Active;
@@ -309,15 +334,35 @@ namespace BeSide.Presenter.WebSite.Controllers
         [HttpPost]
         [Authorize(Roles = "client")]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(OrderViewModel model)
+        public ActionResult Edit(OrderViewModel model, HttpPostedFileBase upload)
         {
             if (model.ClientProfileId == User.Identity.GetUserId())
             {
                 if (ModelState.IsValid)
                 {
-                    Order order = model.GetOrder();
+                    if (upload != null && upload.ContentLength > 0)
+                    {
+                        //if (model.Images.Any(f => f.FileType == FileType.Avatar))
+                        //{
+                        //    imageService.Delete(model.Images.First(p => p.FileType == FileType.Avatar).Id);
+                        //}
 
-                    orderService.Update(order);
+                        var avatar = new Image
+                        {
+                            FileName = System.IO.Path.GetFileName(upload.FileName),
+                            FileType = FileType.Avatar,
+                            ContentType = upload.ContentType
+                        };
+
+                        using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                        {
+                            avatar.Content = reader.ReadBytes(upload.ContentLength);
+                        }
+                        
+                        model.Images = new List<Image> { avatar };
+                    }
+
+                    orderService.Update(model.GetOrder());
 
                     return RedirectToAction("UserOrders", "Account");
                 }
@@ -342,6 +387,11 @@ namespace BeSide.Presenter.WebSite.Controllers
 
             if (order.ClientProfileId == User.Identity.GetUserId())
             {
+                //foreach (Image image in order.Galery)
+                //{
+                //    imageService.Delete(image.Id);
+                //}
+
                 orderService.Delete(id);
 
                 return RedirectToAction("UserOrders", "Account");
