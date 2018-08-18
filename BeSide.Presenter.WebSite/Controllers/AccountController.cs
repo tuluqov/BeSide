@@ -301,7 +301,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         [Authorize(Roles = "client")]
         public ActionResult UserOrders()
         {
-            var userOrders = orderService.GetUserOrders(User.Identity.GetUserId());
+            var userOrders = orderService.GetUserOrders(User.Identity.GetUserId()).OrderByDescending(m => m.CreateDate);
 
             OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(userOrders);
 
@@ -312,7 +312,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         [Authorize(Roles = "client")]
         public ActionResult Feedbacks()
         {
-            var userOrders = orderService.GetUserOrders(User.Identity.GetUserId());
+            var userOrders = orderService.GetUserOrders(User.Identity.GetUserId()).OrderByDescending(m => m.CreateDate);
 
             OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(userOrders);
 
@@ -330,7 +330,8 @@ namespace BeSide.Presenter.WebSite.Controllers
                 case OrderStatus.Active:
                     {
                         orders = orderService.Find(m => m.OrderStatus == OrderStatus.Active &&
-                                                        m.ClientProfileId == User.Identity.GetUserId());
+                                                        m.ClientProfileId == User.Identity.GetUserId())
+                            .OrderByDescending(m => m.CreateDate);
 
                         OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
 
@@ -342,7 +343,8 @@ namespace BeSide.Presenter.WebSite.Controllers
                     {
                         orders = orderService.Find(m => m.OrderStatus == OrderStatus.Accepted &&
                                                         (m.ClientProfileId == User.Identity.GetUserId()
-                                                        || m.ProviderProfileId == User.Identity.GetUserId()));
+                                                        || m.ProviderProfileId == User.Identity.GetUserId()))
+                            .OrderByDescending(m => m.CreateDate);
 
                         OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
 
@@ -353,7 +355,8 @@ namespace BeSide.Presenter.WebSite.Controllers
                     {
                         orders = orderService.Find(m => m.OrderStatus == OrderStatus.Complited &&
                                                         (m.ClientProfileId == User.Identity.GetUserId()
-                                                         || m.ProviderProfileId == User.Identity.GetUserId()));
+                                                         || m.ProviderProfileId == User.Identity.GetUserId()))
+                            .OrderByDescending(m => m.CreateDate);
 
                         OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
 
@@ -365,7 +368,8 @@ namespace BeSide.Presenter.WebSite.Controllers
                     {
                         orders = orderService.Find(m => m.OrderStatus == OrderStatus.NotComplited &&
                                                         (m.ClientProfileId == User.Identity.GetUserId()
-                                                         || m.ProviderProfileId == User.Identity.GetUserId()));
+                                                         || m.ProviderProfileId == User.Identity.GetUserId()))
+                            .OrderByDescending(m => m.CreateDate);
 
                         OrderCollectionViewModel ordersModel = new OrderCollectionViewModel(orders);
 

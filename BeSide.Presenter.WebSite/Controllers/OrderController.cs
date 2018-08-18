@@ -218,7 +218,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         {
             if (ServiceId == null && find == null)
             {
-                var allOrders = orderService.GetAll();
+                var allOrders = orderService.GetAll().OrderByDescending(m => m.CreateDate);
                 OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(allOrders);
 
                 ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
@@ -228,7 +228,8 @@ namespace BeSide.Presenter.WebSite.Controllers
             else if (find != null)
             {
                 var findOrders = orderService.Find(m => m.ShortDescription.ToLower().Contains(find.ToLower())
-                                                        || m.FullDescription.ToLower().Contains(find.ToLower()));
+                                                        || m.FullDescription.ToLower().Contains(find.ToLower()))
+                                            .OrderByDescending(m => m.CreateDate);
 
                 OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(findOrders);
 
@@ -238,7 +239,9 @@ namespace BeSide.Presenter.WebSite.Controllers
             }
             else
             {
-                var searchOrders = orderService.Find(m => m.ServiceId == ServiceId);
+                var searchOrders = orderService.Find(m => m.ServiceId == ServiceId)
+                    .OrderByDescending(m => m.CreateDate);
+
                 OrderCollectionViewModel collectionOrders = new OrderCollectionViewModel(searchOrders);
 
                 ViewBag.Categoryes = new CategoryCollectionViewModel(categoryService.GetAllCategory());
@@ -256,7 +259,14 @@ namespace BeSide.Presenter.WebSite.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            OrderViewModel model = new OrderViewModel(orderService.GetById((int)id));
+            var order = orderService.GetById((int)id);
+
+            if (order == null)
+            {
+                return HttpNotFound();
+            }
+
+            OrderViewModel model = new OrderViewModel(order);
 
             ViewBag.User = userService.GetById(model.ClientProfileId);
 
@@ -358,7 +368,7 @@ namespace BeSide.Presenter.WebSite.Controllers
                         {
                             avatar.Content = reader.ReadBytes(upload.ContentLength);
                         }
-                        
+
                         model.Images = new List<Image> { avatar };
                     }
 

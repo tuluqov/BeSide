@@ -91,13 +91,13 @@
                             <h4>
                                 @if (provider.CompanyName == null)
                                 {
-                                    @Html.RouteLink($"{provider.LastName} {provider.FirstName} {provider.Patronymic}",
+                                    @Html.RouteLink($"{provider.LastName} {provider.Patronymic}c{provider.FirstName}",
                                         new {controller = "Executor", action = "Details", id = provider.Id},
                                         new {@class = ""})
                                 }
                                 else
                                 {
-                                    @Html.RouteLink($"{provider.CompanyName}",
+                                    @Html.RouteLink($"{provider.CompanyName} ({provider.FirstName} {provider.LastName})",
                                         new {controller = "Executor", action = "Details", id = provider.Id},
                                         new {@class = ""})
                                 }

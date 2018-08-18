@@ -69,7 +69,19 @@ namespace BeSide.Presenter.WebSite.Controllers
         [HttpGet]
         public ActionResult Details(string id)
         {
-            ProviderViewModel provider = new ProviderViewModel((ProviderProfile)userService.GetById(id).UserProfile);
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            var providerProfile = userService.GetById(id);
+
+            if (providerProfile == null)
+            {
+                return HttpNotFound();
+            }
+
+            ProviderViewModel provider = new ProviderViewModel((ProviderProfile)providerProfile.UserProfile);
 
             return View(provider);
         }
