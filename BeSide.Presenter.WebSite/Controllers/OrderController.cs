@@ -324,9 +324,14 @@ namespace BeSide.Presenter.WebSite.Controllers
         // GET: Order/Edit/5
         [HttpGet]
         [Authorize(Roles = "client")]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            var order = orderService.GetById(id);
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            var order = orderService.GetById((int)id);
 
             if (order == null)
             {

@@ -1,7 +1,5 @@
-﻿@using System.Globalization
-@using BeSide.Common.Entities
+﻿@using BeSide.Common.Entities
 @using BeSide.Presenter.WebSite.Models.Category
-@using BeSide.Presenter.WebSite.Models.Order
 @using BeSide.Presenter.WebSite.Models.Service
 @using BeSide.Presenter.WebSite.Models.User
 @using PagedList.Mvc
@@ -48,12 +46,13 @@
                                     @foreach (ServiceViewModel service in category.ServiceViewModels)
                                     {
                                         <li>
-                                            @Html.HiddenFor(m => service.Id)
-                                            @Html.ActionLink($"{service.Name}", "Index",
-                                                new { ServiceId = service.Id },
-                                                new { @class = "dropdown-item" })
+                                            <div style="margin-left: 30px">
+                                                @Html.HiddenFor(m => service.Id)
+                                                @Html.ActionLink($"{service.Name}", "Index",
+                                                    new {ServiceId = service.Id},
+                                                    new {@class = "dropdown-item"})
+                                            </div>
                                         </li>
-
                                     }
                                 </ul>
                             </li>

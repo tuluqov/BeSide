@@ -31,7 +31,7 @@ namespace BeSide.Presenter.WebSite.Models.User
         [Required]
         [Display(Name = "Номер телефона")]
         [Phone]
-        [MaxLength(15)]
+        [MaxLength(20)]
         public string PhoneNumber { get; set; }
 
         [MaxLength(100)]

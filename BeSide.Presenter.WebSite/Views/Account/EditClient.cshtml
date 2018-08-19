@@ -24,8 +24,8 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.Email, new { @class = "col-md-5" })
                                 <div class="col-md-10">
-                                    <input type="email" name="Email" class="form-control py-2" maxlength="50" autocomplete="off" required value="@Model.Email"/>
-                                    @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
+                                    <input type="email" name="Email" class="form-control py-2" maxlength="50" autocomplete="off" required value="@Model.Email" />
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
                                 </div>
                             </div>
 
@@ -57,17 +57,17 @@
                                 @Html.LabelFor(model => model.PhoneNumber, new { @class = "col-md-3" })
                                 <div class="col-md-10">
                                     @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control py-2", id = "phone", placeholder = "+375(XX) XXX-XX-XX", required = string.Empty })
-                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new {@class = "text-danger"})
+                                    @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 @Html.Label("Загрузить фото", new { @class = "col-md-3" })
                                 <div class="col-md-12">
-                                    <input type="file" name="upload" id="Image"/>
+                                    <input type="file" name="upload" id="Image" accept="image/*" />
                                 </div>
                             </div>
-                            
+
                             <div class="form-group">
                                 <div class="col-md-10 mt-4">
                                     @Html.HiddenFor(m => m.Id)

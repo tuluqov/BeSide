@@ -80,7 +80,6 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Deadline, new { @class = "col-md-3" })
                             <div class="col-md-10">
-                                @*<input type="text" id='datetimepicker' data-toggle="datepicker" name="Deadline" class="form-control" min="@DateTime.Now.Date.ToString("yyyy-MM-dd")" required autocomplete="off"/>*@
                                 <input type="date" name="Deadline" class="form-control" min="@DateTime.Now.Date.ToString("yyyy-MM-dd")" required autocomplete="off" />
                                 @Html.ValidationMessageFor(model => model.Deadline, "", new { @class = "text-danger" })
                             </div>
@@ -97,7 +96,7 @@
                         <div class="form-group">
                             <label for="Image" class="col-md-2">Фото</label>
                             <div class="col-md-10">
-                                <input type="file" name="upload" id="Image"/>
+                                <input type="file" name="upload" id="Image" accept="image/*" multiple />
                             </div>
                         </div>
 
