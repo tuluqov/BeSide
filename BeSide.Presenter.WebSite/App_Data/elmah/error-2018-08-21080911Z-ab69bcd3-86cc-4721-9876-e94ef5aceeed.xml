@@ -1,0 +1,186 @@
+﻿<error errorId="ab69bcd3-86cc-4721-9876-e94ef5aceeed" application="/LM/W3SVC/2/ROOT" host="DESKTOP-8T3R9H9" type="System.Web.HttpException" message="Контроллер для пути &quot;/dsfds&quot; не найден или не реализует интерфейс IController." source="System.Web.Mvc" detail="System.Web.HttpException (0x80004005): Контроллер для пути &quot;/dsfds&quot; не найден или не реализует интерфейс IController.&#xD;&#xA;   в System.Web.Mvc.DefaultControllerFactory.GetControllerInstance(RequestContext requestContext, Type controllerType)&#xD;&#xA;   в System.Web.Mvc.DefaultControllerFactory.CreateController(RequestContext requestContext, String controllerName)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.ProcessRequestInit(HttpContextBase httpContext, IController&amp; controller, IControllerFactory&amp; factory)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContextBase httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.BeginProcessRequest(HttpContext httpContext, AsyncCallback callback, Object state)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.BeginProcessRequest(HttpContext context, AsyncCallback cb, Object extraData)&#xD;&#xA;   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   в System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="provider@gmail.com" time="2018-08-21T08:09:11.7200312Z" statusCode="404">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:close&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:jv_enter_ts_E4Zap53i23=1534756651924; jv_visits_count_E4Zap53i23=1; jv_refer_E4Zap53i23=https%3A%2F%2Flocalhost%3A44365%2FOrder; __RequestVerificationToken=NM_rJ9Ii_iHUUT-edU4Bxax3dmoUqiWN7aTkBVBb8KfqtKJDY8tLdFq7OkyB_OqIQEcJhUqYgBuJZcw1gJ2wVwIYXEkdTnlY3nMwIxNdtqU1; .AspNet.ApplicationCookie=e02AdeL_cILGwOWnTLuvLKk1NiUAtlQ_TsFN1cMdyZU_f0kpouhA8jK4WEVql9oxxISHQux2rdnYlAr--_FCgYtMPBJv6npyq1_Ud-ZeyQFLPjE38XM9eHfjCbrViJ_TDmiGz5fIOjCCYyAU470BbX7DWMkTcbDsACOohy0J50Og9hW7r-B-2DoJ4GOAlPMlPG2LY5Ou1GHIZzWg2FDyi0vNB9k-yp9tkVStDwJTf3aUoyiTOlN4VEea1PJv3Pb4pSU893EtAHiMF92L13FYiLHyrLQQoxoVc10ccbqLr5KXom4jtMmGCQBUMZNDOGBw7jhamNP6fOueEXfxafBxPkrWattrpuv6xg1X9iEqXFDQZIZOD6uxSRYfa-49Pbx-d6mciDP62I0rXza1lSmXDukcEwwbyrR3EU-RP8Ah4o1U3IUdL82P1BdUEoIAC9c2tnvNWJ5cZIE6_2PXyM7NuyPRxKhT3piZM-6aWs0mrfpxwtHPu026-w0-5NFcoWDlWV4RJyKFbugdQUzvebbxqA; jv_invitation_time_E4Zap53i23=1534838857397; jv_close_time_E4Zap53i23=1534838858944; jv_pages_count_E4Zap53i23=742&#xD;&#xA;HTTP_HOST:localhost:44365&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: close&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: jv_enter_ts_E4Zap53i23=1534756651924; jv_visits_count_E4Zap53i23=1; jv_refer_E4Zap53i23=https%3A%2F%2Flocalhost%3A44365%2FOrder; __RequestVerificationToken=NM_rJ9Ii_iHUUT-edU4Bxax3dmoUqiWN7aTkBVBb8KfqtKJDY8tLdFq7OkyB_OqIQEcJhUqYgBuJZcw1gJ2wVwIYXEkdTnlY3nMwIxNdtqU1; .AspNet.ApplicationCookie=e02AdeL_cILGwOWnTLuvLKk1NiUAtlQ_TsFN1cMdyZU_f0kpouhA8jK4WEVql9oxxISHQux2rdnYlAr--_FCgYtMPBJv6npyq1_Ud-ZeyQFLPjE38XM9eHfjCbrViJ_TDmiGz5fIOjCCYyAU470BbX7DWMkTcbDsACOohy0J50Og9hW7r-B-2DoJ4GOAlPMlPG2LY5Ou1GHIZzWg2FDyi0vNB9k-yp9tkVStDwJTf3aUoyiTOlN4VEea1PJv3Pb4pSU893EtAHiMF92L13FYiLHyrLQQoxoVc10ccbqLr5KXom4jtMmGCQBUMZNDOGBw7jhamNP6fOueEXfxafBxPkrWattrpuv6xg1X9iEqXFDQZIZOD6uxSRYfa-49Pbx-d6mciDP62I0rXza1lSmXDukcEwwbyrR3EU-RP8Ah4o1U3IUdL82P1BdUEoIAC9c2tnvNWJ5cZIE6_2PXyM7NuyPRxKhT3piZM-6aWs0mrfpxwtHPu026-w0-5NFcoWDlWV4RJyKFbugdQUzvebbxqA; jv_invitation_time_E4Zap53i23=1534838857397; jv_close_time_E4Zap53i23=1534838858944; jv_pages_count_E4Zap53i23=742&#xD;&#xA;Host: localhost:44365&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&#xD;&#xA;upgrade-insecure-requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="F:\C#\BeSide\BeSide.Presenter.WebSite\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="provider@gmail.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="provider@gmail.com" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="provider@gmail.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/dsfds" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="F:\C#\BeSide\BeSide.Presenter.WebSite\dsfds" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="27327" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/dsfds" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="44365" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/dsfds" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="close" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="jv_enter_ts_E4Zap53i23=1534756651924; jv_visits_count_E4Zap53i23=1; jv_refer_E4Zap53i23=https%3A%2F%2Flocalhost%3A44365%2FOrder; __RequestVerificationToken=NM_rJ9Ii_iHUUT-edU4Bxax3dmoUqiWN7aTkBVBb8KfqtKJDY8tLdFq7OkyB_OqIQEcJhUqYgBuJZcw1gJ2wVwIYXEkdTnlY3nMwIxNdtqU1; .AspNet.ApplicationCookie=e02AdeL_cILGwOWnTLuvLKk1NiUAtlQ_TsFN1cMdyZU_f0kpouhA8jK4WEVql9oxxISHQux2rdnYlAr--_FCgYtMPBJv6npyq1_Ud-ZeyQFLPjE38XM9eHfjCbrViJ_TDmiGz5fIOjCCYyAU470BbX7DWMkTcbDsACOohy0J50Og9hW7r-B-2DoJ4GOAlPMlPG2LY5Ou1GHIZzWg2FDyi0vNB9k-yp9tkVStDwJTf3aUoyiTOlN4VEea1PJv3Pb4pSU893EtAHiMF92L13FYiLHyrLQQoxoVc10ccbqLr5KXom4jtMmGCQBUMZNDOGBw7jhamNP6fOueEXfxafBxPkrWattrpuv6xg1X9iEqXFDQZIZOD6uxSRYfa-49Pbx-d6mciDP62I0rXza1lSmXDukcEwwbyrR3EU-RP8Ah4o1U3IUdL82P1BdUEoIAC9c2tnvNWJ5cZIE6_2PXyM7NuyPRxKhT3piZM-6aWs0mrfpxwtHPu026-w0-5NFcoWDlWV4RJyKFbugdQUzvebbxqA; jv_invitation_time_E4Zap53i23=1534838857397; jv_close_time_E4Zap53i23=1534838858944; jv_pages_count_E4Zap53i23=742" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:44365" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_APPLICATIONINSIGHTS_REQUESTTRACKINGTELEMETRYMODULE_ROOTREQUEST_ID">
+      <value string="6c5b9d73-be52-4935-a2d2-25722c28730c" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="jv_enter_ts_E4Zap53i23">
+      <value string="1534756651924" />
+    </item>
+    <item name="jv_visits_count_E4Zap53i23">
+      <value string="1" />
+    </item>
+    <item name="jv_refer_E4Zap53i23">
+      <value string="https%3A%2F%2Flocalhost%3A44365%2FOrder" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="NM_rJ9Ii_iHUUT-edU4Bxax3dmoUqiWN7aTkBVBb8KfqtKJDY8tLdFq7OkyB_OqIQEcJhUqYgBuJZcw1gJ2wVwIYXEkdTnlY3nMwIxNdtqU1" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="e02AdeL_cILGwOWnTLuvLKk1NiUAtlQ_TsFN1cMdyZU_f0kpouhA8jK4WEVql9oxxISHQux2rdnYlAr--_FCgYtMPBJv6npyq1_Ud-ZeyQFLPjE38XM9eHfjCbrViJ_TDmiGz5fIOjCCYyAU470BbX7DWMkTcbDsACOohy0J50Og9hW7r-B-2DoJ4GOAlPMlPG2LY5Ou1GHIZzWg2FDyi0vNB9k-yp9tkVStDwJTf3aUoyiTOlN4VEea1PJv3Pb4pSU893EtAHiMF92L13FYiLHyrLQQoxoVc10ccbqLr5KXom4jtMmGCQBUMZNDOGBw7jhamNP6fOueEXfxafBxPkrWattrpuv6xg1X9iEqXFDQZIZOD6uxSRYfa-49Pbx-d6mciDP62I0rXza1lSmXDukcEwwbyrR3EU-RP8Ah4o1U3IUdL82P1BdUEoIAC9c2tnvNWJ5cZIE6_2PXyM7NuyPRxKhT3piZM-6aWs0mrfpxwtHPu026-w0-5NFcoWDlWV4RJyKFbugdQUzvebbxqA" />
+    </item>
+    <item name="jv_invitation_time_E4Zap53i23">
+      <value string="1534838857397" />
+    </item>
+    <item name="jv_close_time_E4Zap53i23">
+      <value string="1534838858944" />
+    </item>
+    <item name="jv_pages_count_E4Zap53i23">
+      <value string="742" />
+    </item>
+  </cookies>
+</error>

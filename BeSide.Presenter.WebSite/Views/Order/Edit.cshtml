@@ -67,7 +67,7 @@
 
                             @Html.LabelFor(model => model.Price, new { @class = "col-md-1" })
                             <div class="col-md-2">
-                                <input type="number" min=0 max="1000000" name="Price" class="form-control" autocomplete="off" step="0.01" value="@Model.Price" />
+                                <input type="number" min=0 max="1000000" name="Price" class="form-control" autocomplete="off" value="@Model.Price" />
                                 @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                             </div>
 
