@@ -14,8 +14,7 @@ namespace BeSide.Common.Entities
 
         [MaxLength(300)]
         public string Discription { get; set; }
-
-        public virtual ICollection<Category> Categories { get; set; }
+        
         public virtual ICollection<Service> Services { get; set; }
         public virtual ICollection<Feedback> Feedbacks { get; set; }
     }

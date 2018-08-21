@@ -11,6 +11,7 @@ using System.Web;
 using System.Web.Mvc;
 using BeSide.Common.Entities;
 using BeSide.Presenter.WebSite.Models.Order;
+using BeSide.Presenter.WebSite.Models.Service;
 using BeSide.Presenter.WebSite.Models.User;
 using Microsoft.AspNet.Identity;
 
@@ -22,6 +23,8 @@ namespace BeSide.Presenter.WebSite.Controllers
         private readonly IUserService userService;
         private readonly IOrderService orderService;
         private readonly IImageService imageService;
+        private readonly ICategoryService categoryService;
+        private readonly ISeviceService serviceService;
 
         private IAuthenticationManager AuthenticationManager
         {
@@ -33,11 +36,15 @@ namespace BeSide.Presenter.WebSite.Controllers
 
         public AccountController(IUserService userService,
             IOrderService orderService,
-            IImageService imageService)
+            IImageService imageService,
+            ICategoryService categoryService,
+            ISeviceService serviceService)
         {
             this.userService = userService;
             this.orderService = orderService;
             this.imageService = imageService;
+            this.categoryService = categoryService;
+            this.serviceService = serviceService;
         }
 
         #region LoginRigester
@@ -292,6 +299,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         public ActionResult GetImage(string id)
         {
             var user = userService.GetById(id);
+
             return File(user.UserProfile.Content, user.UserProfile.ContentType);
         }
 
@@ -375,9 +383,91 @@ namespace BeSide.Presenter.WebSite.Controllers
 
                         return View(ordersModel);
                     }
+
+                default:
+                    return HttpNotFound();
             }
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "provider")]
+        public ActionResult AddService()
+        {
+            ViewBag.Category = categoryService.GetAllCategory();
 
             return View();
+        }
+
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddService(int? idService)
+        {
+            if (idService == null)
+            {
+                return HttpNotFound();
+            }
+
+            //var user = userService.GetById(User.Identity.GetUserId());
+
+            //var provider = (ProviderProfile)user.UserProfile;
+
+            var provider = userService.FindProviders(m => m.Id == User.Identity.GetUserId()).FirstOrDefault();
+
+            Service service = serviceService.GetById((int)idService);
+
+            if (service == null)
+            {
+                return HttpNotFound();
+            }
+
+            //if (provider.Services.Any(m => m.Id == idService))
+            //{
+            //    return HttpNotFound();
+            //}
+
+            provider.Services.Add(service);
+
+            userService.UpdateProvider(provider);
+
+            return RedirectToAction("UserProfile", "Account");
+        }
+
+        [HttpGet]
+        public ActionResult Services()
+        {
+            var user = userService.GetById(User.Identity.GetUserId());
+
+            var provider = (ProviderProfile)user.UserProfile;
+
+            var allServices = provider.Services;
+
+            return View(allServices);
+        }
+
+        [HttpGet]
+        public ActionResult DeleteService(int? id)
+        {
+            if (id == null)
+            {
+                return HttpNotFound();
+            }
+
+            var user = userService.GetById(User.Identity.GetUserId());
+
+            var provider = (ProviderProfile)user.UserProfile;
+
+            var service = provider.Services.First(m => m.Id == id);
+
+            if (service == null)
+            {
+                return HttpNotFound();
+            }
+
+            provider.Services.Remove(service);
+
+            return RedirectToAction("Services");
         }
 
         #endregion

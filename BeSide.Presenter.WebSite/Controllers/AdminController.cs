@@ -152,6 +152,7 @@ namespace BeSide.Presenter.WebSite.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddService(AddServiceViewModel addServiceView)
         {
             if (ModelState.IsValid)

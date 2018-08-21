@@ -1,0 +1,51 @@
+﻿@using BeSide.Common.Entities
+@using BeSide.Presenter.WebSite.Models
+
+@{
+    ViewBag.Title = "AddService";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="site-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-7">
+                <div class="form-wrap">
+                    <h2 class="mb-4">Добавление сервиса</h2>
+                    @using (Html.BeginForm("AddService", "Account", FormMethod.Post))
+                    {
+                        @Html.AntiForgeryToken();
+
+                        <div class="row">
+                            <div class="col-md-12 form-group">
+                                <select name="idService" class="form-control" id="searchSelect">
+                                    @foreach (Category category in ViewBag.Category)
+                                    {
+                                        if (category.Services.Count == 0)
+                                        {
+                                            continue;
+                                        }
+
+                                        <optgroup label="@category.Name">
+                                            @foreach (Service service in category.Services)
+                                            {
+                                                <option value="@service.Id">@service.Name</option>
+                                            }
+                                        </optgroup>
+                                    }
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6 form-group">
+                                <input type="submit" value="Добавить" class="btn btn-primary px-5 py-2 float-left">
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

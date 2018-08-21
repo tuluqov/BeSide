@@ -24,9 +24,9 @@ namespace BeSide.Presenter.WebSite.Controllers
 
         // GET: Executor
         [HttpGet]
-        public ActionResult Index(int? ServiceId, int? page, string find)
+        public ActionResult Index(int? serviceId, int? page, string find)
         {
-            if (ServiceId == null && find == null)
+            if (serviceId == null && find == null)
             {
                 var allProviders = userService.GetAllProviders();
                 ProviderCollectionViewModel providerCollection = new ProviderCollectionViewModel(allProviders);
@@ -37,8 +37,8 @@ namespace BeSide.Presenter.WebSite.Controllers
             }
             else if (find != null)
             {
-                var findProviders = userService.FindProviders(m => m.CompanyName.ToLower().Contains(find.ToLower())
-                                                                   || m.Discription.ToLower().Contains(find.ToLower()));
+                var findProviders = userService.FindProviders(m => m.Discription.ToLower().Contains(find.ToLower()) 
+                || m.FirstName.ToLower().Contains(find.ToLower()) || m.LastName.ToLower().Contains(find.ToLower()));
 
                 ProviderCollectionViewModel providerCollection = new ProviderCollectionViewModel(findProviders);
 
@@ -49,9 +49,7 @@ namespace BeSide.Presenter.WebSite.Controllers
             }
             else
             {
-
-
-                var service = seviceService.GetById((int)ServiceId);
+                var service = seviceService.GetById((int)serviceId);
 
                 var profiles = userService.GetAllProviders();
 

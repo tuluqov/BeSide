@@ -64,7 +64,7 @@
                             <div class="form-group">
                                 @Html.LabelFor(model => model.CompanyName, new { @class = "col-md-2" })
                                 <div class="col-md-10">
-                                    <input type="text" name="ComanyName" class="form-control py-2" maxlength="100" autocomplete="off" value="@Model.CompanyName" />
+                                    <input type="text" name="CompanyName" class="form-control py-2" maxlength="100" autocomplete="off" value="@Model.CompanyName" />
                                     @Html.ValidationMessageFor(model => model.CompanyName, "", new { @class = "text-danger" })
                                 </div>
                             </div>
@@ -87,7 +87,11 @@
                             <div class="form-group">
                                 <div class="col-md-10 mt-4">
                                     @Html.HiddenFor(m => m.Id)
-                                    <input type="submit" value="Сохранить" class="btn btn-primary px-5" />
+                                    @Html.HiddenFor(m => m.FileType)
+                                    @Html.HiddenFor(m => m.Content)
+                                    @Html.HiddenFor(m => m.ContentType)
+                                    @Html.HiddenFor(m => m.FileName)
+                                    <input type="submit" value="Сохранить" class="btn btn-primary px-5" onclick="findSize()" />
                                 </div>
                             </div>
                         </div>

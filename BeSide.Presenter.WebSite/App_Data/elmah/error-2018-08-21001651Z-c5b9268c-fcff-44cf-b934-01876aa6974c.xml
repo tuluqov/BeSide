@@ -1,0 +1,189 @@
+﻿<error errorId="c5b9268c-fcff-44cf-b934-01876aa6974c" application="/LM/W3SVC/2/ROOT" host="DESKTOP-8T3R9H9" type="System.ArgumentException" message="Словарь параметров содержит запись со значением NULL для параметра &quot;orderId&quot; типа &quot;System.Int32&quot;, не допускающего значение NULL, для метода &quot;System.Web.Mvc.ActionResult SelectDone(Int32)&quot; в &quot;BeSide.Presenter.WebSite.Controllers.OrderController&quot;. Необязательный параметр должен иметь ссылочный тип, тип, допускающий значение NULL, либо он должен быть объявлен как необязательный параметр.&#xD;&#xA;Имя параметра: parameters" source="System.Web.Mvc" detail="System.ArgumentException: Словарь параметров содержит запись со значением NULL для параметра &quot;orderId&quot; типа &quot;System.Int32&quot;, не допускающего значение NULL, для метода &quot;System.Web.Mvc.ActionResult SelectDone(Int32)&quot; в &quot;BeSide.Presenter.WebSite.Controllers.OrderController&quot;. Необязательный параметр должен иметь ссылочный тип, тип, допускающий значение NULL, либо он должен быть объявлен как необязательный параметр.&#xD;&#xA;Имя параметра: parameters&#xD;&#xA;   в System.Web.Mvc.ActionDescriptor.ExtractParameterFromDictionary(ParameterInfo parameterInfo, IDictionary`2 parameters, MethodInfo methodInfo)&#xD;&#xA;   в System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   в System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c.&lt;BeginInvokeSynchronousActionMethod&gt;b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__11_0()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass11_1.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__2()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass7_0.&lt;BeginInvokeActionMethodWithFilters&gt;b__1(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_6.&lt;BeginInvokeAction&gt;b__3()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_1.&lt;BeginInvokeAction&gt;b__5(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecuteCore&gt;b__152_1(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecute&gt;b__151_2(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.&lt;&gt;c.&lt;BeginProcessRequest&gt;b__20_1(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   в System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="yusup@gmail.com" time="2018-08-21T00:16:51.9427544Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:close&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:jv_enter_ts_E4Zap53i23=1534756651924; jv_visits_count_E4Zap53i23=1; jv_refer_E4Zap53i23=https%3A%2F%2Flocalhost%3A44365%2FOrder; __RequestVerificationToken=sk95uwYNoynS6VjrwtZs0vnlCObNPGh48C0Be6edStQcm6knXJlR4vKnjileO3m-q6Tmg1YrgPOOECGl7koOGmrZ3fBPLdFRNOBzu7PlN5U1; jv_close_time_E4Zap53i23=1534810075094; jv_invitation_time_E4Zap53i23=1534810599956; .AspNet.ApplicationCookie=t42URdaoHmcntK8p6eMSwBFKdUACrH4Gh7xFq7qudut_eEERpfRy7mN5w_-5mR0fmxH9suj-VVjDlkqBPAEY1oX0e1RiyNAmy2GfdE1QLrLRvMlFQrkv4ue2ij1luj-31Y5iJBClb0Ic4wquFTZXSgEAqKt7bW0-bpXIjJCmPRoZHjw7nsbgNSsham-Pnq6rcGgT0Og097wCYUq7EKyRlEUTP-VR94HTZ_aKq6Ckz-zQBHogE1e43LDCr8uy60OuTOjnA1yCVJGsJAHBb9Vx_Ti07BfrhpjNXxJzhdwSRLm6SbxNoSKm5EvBdPjXbHyb_CYAmfXEtgd4J7ixD6DZ0yCH15vdoEZhNNWPkGrxD6upRQOhlk-8v1qFSQf9fvUXVvWssu2G01jouQV_edPdHuFpW0Cu3f9wQcAzk_xz85hBzBeMPOtyoytR_53oGq_D5Hxqq9uHWdlLGdwHCTByoEsvvDFFHPpJ870ptVwMLfTpTij4eTXJOlFYw6Uxi2YWwpBmHY4_2D5D-jpMUGR4-IEWo3IYn6tlu3Ch2HgcHGE; jv_pages_count_E4Zap53i23=537&#xD;&#xA;HTTP_HOST:localhost:44365&#xD;&#xA;HTTP_REFERER:https://localhost:44365/Order/Details/1035&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: close&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: jv_enter_ts_E4Zap53i23=1534756651924; jv_visits_count_E4Zap53i23=1; jv_refer_E4Zap53i23=https%3A%2F%2Flocalhost%3A44365%2FOrder; __RequestVerificationToken=sk95uwYNoynS6VjrwtZs0vnlCObNPGh48C0Be6edStQcm6knXJlR4vKnjileO3m-q6Tmg1YrgPOOECGl7koOGmrZ3fBPLdFRNOBzu7PlN5U1; jv_close_time_E4Zap53i23=1534810075094; jv_invitation_time_E4Zap53i23=1534810599956; .AspNet.ApplicationCookie=t42URdaoHmcntK8p6eMSwBFKdUACrH4Gh7xFq7qudut_eEERpfRy7mN5w_-5mR0fmxH9suj-VVjDlkqBPAEY1oX0e1RiyNAmy2GfdE1QLrLRvMlFQrkv4ue2ij1luj-31Y5iJBClb0Ic4wquFTZXSgEAqKt7bW0-bpXIjJCmPRoZHjw7nsbgNSsham-Pnq6rcGgT0Og097wCYUq7EKyRlEUTP-VR94HTZ_aKq6Ckz-zQBHogE1e43LDCr8uy60OuTOjnA1yCVJGsJAHBb9Vx_Ti07BfrhpjNXxJzhdwSRLm6SbxNoSKm5EvBdPjXbHyb_CYAmfXEtgd4J7ixD6DZ0yCH15vdoEZhNNWPkGrxD6upRQOhlk-8v1qFSQf9fvUXVvWssu2G01jouQV_edPdHuFpW0Cu3f9wQcAzk_xz85hBzBeMPOtyoytR_53oGq_D5Hxqq9uHWdlLGdwHCTByoEsvvDFFHPpJ870ptVwMLfTpTij4eTXJOlFYw6Uxi2YWwpBmHY4_2D5D-jpMUGR4-IEWo3IYn6tlu3Ch2HgcHGE; jv_pages_count_E4Zap53i23=537&#xD;&#xA;Host: localhost:44365&#xD;&#xA;Referer: https://localhost:44365/Order/Details/1035&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&#xD;&#xA;upgrade-insecure-requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="F:\C#\BeSide\BeSide.Presenter.WebSite\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="yusup@gmail.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="yusup@gmail.com" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="yusup@gmail.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Order/SelectDone/1035" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="F:\C#\BeSide\BeSide.Presenter.WebSite\Order\SelectDone\1035" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="12025" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Order/SelectDone/1035" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="44365" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Order/SelectDone/1035" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="close" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="jv_enter_ts_E4Zap53i23=1534756651924; jv_visits_count_E4Zap53i23=1; jv_refer_E4Zap53i23=https%3A%2F%2Flocalhost%3A44365%2FOrder; __RequestVerificationToken=sk95uwYNoynS6VjrwtZs0vnlCObNPGh48C0Be6edStQcm6knXJlR4vKnjileO3m-q6Tmg1YrgPOOECGl7koOGmrZ3fBPLdFRNOBzu7PlN5U1; jv_close_time_E4Zap53i23=1534810075094; jv_invitation_time_E4Zap53i23=1534810599956; .AspNet.ApplicationCookie=t42URdaoHmcntK8p6eMSwBFKdUACrH4Gh7xFq7qudut_eEERpfRy7mN5w_-5mR0fmxH9suj-VVjDlkqBPAEY1oX0e1RiyNAmy2GfdE1QLrLRvMlFQrkv4ue2ij1luj-31Y5iJBClb0Ic4wquFTZXSgEAqKt7bW0-bpXIjJCmPRoZHjw7nsbgNSsham-Pnq6rcGgT0Og097wCYUq7EKyRlEUTP-VR94HTZ_aKq6Ckz-zQBHogE1e43LDCr8uy60OuTOjnA1yCVJGsJAHBb9Vx_Ti07BfrhpjNXxJzhdwSRLm6SbxNoSKm5EvBdPjXbHyb_CYAmfXEtgd4J7ixD6DZ0yCH15vdoEZhNNWPkGrxD6upRQOhlk-8v1qFSQf9fvUXVvWssu2G01jouQV_edPdHuFpW0Cu3f9wQcAzk_xz85hBzBeMPOtyoytR_53oGq_D5Hxqq9uHWdlLGdwHCTByoEsvvDFFHPpJ870ptVwMLfTpTij4eTXJOlFYw6Uxi2YWwpBmHY4_2D5D-jpMUGR4-IEWo3IYn6tlu3Ch2HgcHGE; jv_pages_count_E4Zap53i23=537" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:44365" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://localhost:44365/Order/Details/1035" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_APPLICATIONINSIGHTS_REQUESTTRACKINGTELEMETRYMODULE_ROOTREQUEST_ID">
+      <value string="e0488c7d-45c1-4c45-b31f-2eab34f09b9d" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="jv_enter_ts_E4Zap53i23">
+      <value string="1534756651924" />
+    </item>
+    <item name="jv_visits_count_E4Zap53i23">
+      <value string="1" />
+    </item>
+    <item name="jv_refer_E4Zap53i23">
+      <value string="https%3A%2F%2Flocalhost%3A44365%2FOrder" />
+    </item>
+    <item name="__RequestVerificationToken">
+      <value string="sk95uwYNoynS6VjrwtZs0vnlCObNPGh48C0Be6edStQcm6knXJlR4vKnjileO3m-q6Tmg1YrgPOOECGl7koOGmrZ3fBPLdFRNOBzu7PlN5U1" />
+    </item>
+    <item name="jv_close_time_E4Zap53i23">
+      <value string="1534810075094" />
+    </item>
+    <item name="jv_invitation_time_E4Zap53i23">
+      <value string="1534810599956" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="t42URdaoHmcntK8p6eMSwBFKdUACrH4Gh7xFq7qudut_eEERpfRy7mN5w_-5mR0fmxH9suj-VVjDlkqBPAEY1oX0e1RiyNAmy2GfdE1QLrLRvMlFQrkv4ue2ij1luj-31Y5iJBClb0Ic4wquFTZXSgEAqKt7bW0-bpXIjJCmPRoZHjw7nsbgNSsham-Pnq6rcGgT0Og097wCYUq7EKyRlEUTP-VR94HTZ_aKq6Ckz-zQBHogE1e43LDCr8uy60OuTOjnA1yCVJGsJAHBb9Vx_Ti07BfrhpjNXxJzhdwSRLm6SbxNoSKm5EvBdPjXbHyb_CYAmfXEtgd4J7ixD6DZ0yCH15vdoEZhNNWPkGrxD6upRQOhlk-8v1qFSQf9fvUXVvWssu2G01jouQV_edPdHuFpW0Cu3f9wQcAzk_xz85hBzBeMPOtyoytR_53oGq_D5Hxqq9uHWdlLGdwHCTByoEsvvDFFHPpJ870ptVwMLfTpTij4eTXJOlFYw6Uxi2YWwpBmHY4_2D5D-jpMUGR4-IEWo3IYn6tlu3Ch2HgcHGE" />
+    </item>
+    <item name="jv_pages_count_E4Zap53i23">
+      <value string="537" />
+    </item>
+  </cookies>
+</error>

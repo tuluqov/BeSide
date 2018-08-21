@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 using BeSide.BusinessLogic.Construct;
 using BeSide.Common.Entities;
 using BeSide.Presenter.WebSite.Models.Category;
@@ -180,6 +181,19 @@ namespace BeSide.Presenter.WebSite.Controllers
 
             order.OrderStatus = OrderStatus.Accepted;
             order.ProviderProfileId = userId;
+
+            orderService.Update(order);
+
+            return RedirectToAction($"Details/{orderId}");
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "client")]
+        public ActionResult SelectDone(int orderId)
+        {
+            var order = orderService.GetById(orderId);
+
+            order.OrderStatus = OrderStatus.Complited;
 
             orderService.Update(order);
 
@@ -402,10 +416,7 @@ namespace BeSide.Presenter.WebSite.Controllers
 
             if (order.ClientProfileId == User.Identity.GetUserId())
             {
-                //foreach (Image image in order.Galery)
-                //{
-                //    imageService.Delete(image.Id);
-                //}
+                order.Galery.Clear();
 
                 orderService.Delete(id);
 

@@ -9,39 +9,43 @@
 
 <section class="site-section bg-light element-animate fadeInUp element-animated">
     <div class="container">
-        <div class="col-md-8 col-lg-8 order-md-2 mb-5">
-            <div class="episodes" style="width: 1040px;">
-                @if (Model.Any())
-                {
-                    foreach (FeedbackViewModel feedback in Model)
-                    {
-                        <div class="row align-items-center p-4 episode" style="width: 1030px;">
-                            <div class="col-md-8">
-                                <h4>
-                                    @Html.RouteLink($"{feedback.Text}",
-                                        new { controller = "Order", action = "Details", id = feedback.OrderId})
-                                </h4>
 
-                                <p style="margin: 5px">@feedback.ProviderProfile.LastName @feedback.ProviderProfile.FirstName</p>
-                                <div class="row">
-                                    <div class="col">
-                                        <span class="mx-1 icon ion-android-time">
-                                            @feedback.CreateDate.ToString(CultureInfo.InvariantCulture)
-                                        </span>
-                                    </div>
+        @if (Model.Any())
+        {
+            <div class="col-md-8 col-lg-8 order-md-2 mb-5">
+                <div class="episodes" style="width: 1040px;">
+                    @foreach (FeedbackViewModel feedback in Model)
+                    {
+                    <div class="row align-items-center p-4 episode" style="width: 1030px;">
+                        <div class="col-md-8">
+                            <h4>
+                                @Html.RouteLink($"{feedback.Text}",
+                                    new {controller = "Order", action = "Details", id = feedback.OrderId})
+                            </h4>
+
+                            <p style="margin: 5px">@feedback.ProviderProfile.LastName @feedback.ProviderProfile.FirstName</p>
+                            <div class="row">
+                                <div class="col">
+                                    <span class="mx-1 icon ion-android-time">
+                                        @feedback.CreateDate.ToString(CultureInfo.InvariantCulture)
+                                    </span>
                                 </div>
                             </div>
-                            <div class="col">
-                                <h5 class="float-right">@feedback.Price р.</h5>
-                            </div>
                         </div>
+                        <div class="col">
+                            <h5 class="float-right">@feedback.Price р.</h5>
+                        </div>
+                    </div>
                     }
-                }
-                else
-                {
-                    <h3>У вас нет откликов</h3>
-                }
+                </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <div class="col-md-8">
+                <h3>У вас нет Откликов. Выберите заказ и откликнитесь на него.</h3>
+            </div>
+        }
+
     </div>
 </section>

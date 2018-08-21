@@ -1,0 +1,212 @@
+﻿<error errorId="e6e09d7a-773b-4a8b-8b34-e586f080e97d" application="/LM/W3SVC/2/ROOT" host="DESKTOP-8T3R9H9" type="System.InvalidOperationException" message="Не удалось определить связь между двумя объектами, поскольку они привязаны к разным объектам ObjectContext." source="EntityFramework" detail="System.InvalidOperationException: Не удалось определить связь между двумя объектами, поскольку они привязаны к разным объектам ObjectContext.&#xD;&#xA;   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.ValidateContextsAreCompatible(RelatedEnd targetRelatedEnd)&#xD;&#xA;   в System.Data.Entity.Core.Objects.DataClasses.RelatedEnd.Add(IEntityWrapper wrappedTarget, Boolean applyConstraints, Boolean addRelationshipAsUnchanged, Boolean relationshipAlreadyExists, Boolean allowModifyingOtherEndOfRelationship, Boolean forceForeignKeyChanges)&#xD;&#xA;   в System.Data.Entity.Core.Objects.ObjectStateManager.PerformAdd(IEntityWrapper wrappedOwner, RelatedEnd relatedEnd, IEntityWrapper entityToAdd, Boolean isForeignKeyChange)&#xD;&#xA;   в System.Data.Entity.Core.Objects.ObjectStateManager.PerformAdd(IList`1 entries)&#xD;&#xA;   в System.Data.Entity.Core.Objects.ObjectStateManager.DetectChanges()&#xD;&#xA;   в System.Data.Entity.Core.Objects.ObjectContext.DetectChanges()&#xD;&#xA;   в System.Data.Entity.Internal.InternalContext.DetectChanges(Boolean force)&#xD;&#xA;   в System.Data.Entity.Internal.InternalContext.GetStateEntry(Object entity)&#xD;&#xA;   в System.Data.Entity.Internal.InternalEntityEntry..ctor(InternalContext internalContext, Object entity)&#xD;&#xA;   в System.Data.Entity.DbContext.Entry[TEntity](TEntity entity)&#xD;&#xA;   в Microsoft.AspNet.Identity.EntityFramework.UserStore`6.AreClaimsLoaded(TUser user)&#xD;&#xA;   в Microsoft.AspNet.Identity.EntityFramework.UserStore`6.&lt;EnsureClaimsLoaded&gt;d__63.MoveNext()&#xD;&#xA;--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---&#xD;&#xA;   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   в Microsoft.AspNet.Identity.EntityFramework.UserStore`6.&lt;GetUserAggregateAsync&gt;d__67.MoveNext()&#xD;&#xA;--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---&#xD;&#xA;   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   в Microsoft.AspNet.Identity.TaskExtensions.CultureAwaiter`1.GetResult()&#xD;&#xA;   в Microsoft.AspNet.Identity.UserValidator`2.&lt;ValidateUserName&gt;d__14.MoveNext()&#xD;&#xA;--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---&#xD;&#xA;   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   в Microsoft.AspNet.Identity.UserValidator`2.&lt;ValidateAsync&gt;d__13.MoveNext()&#xD;&#xA;--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---&#xD;&#xA;   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   в Microsoft.AspNet.Identity.UserManager`2.&lt;UpdateAsync&gt;d__74.MoveNext()&#xD;&#xA;--- Конец трассировка стека из предыдущего расположения, где возникло исключение ---&#xD;&#xA;   в System.Runtime.CompilerServices.TaskAwaiter.ThrowForNonSuccess(Task task)&#xD;&#xA;   в System.Runtime.CompilerServices.TaskAwaiter.HandleNonSuccessAndDebuggerNotification(Task task)&#xD;&#xA;   в Microsoft.AspNet.Identity.AsyncHelper.RunSync[TResult](Func`1 func)&#xD;&#xA;   в Microsoft.AspNet.Identity.UserManagerExtensions.Update[TUser,TKey](UserManager`2 manager, TUser user)&#xD;&#xA;   в BeSide.BusinessLogic.BusinessComponents.UserService.UpdateUser(ApplicationUser user) в F:\C#\BeSide\BeSide.BusinessLogic.BusinessComponents\UserService.cs:строка 167&#xD;&#xA;   в BeSide.Presenter.WebSite.Controllers.AccountController.AddService(Nullable`1 idService) в F:\C#\BeSide\BeSide.Presenter.WebSite\Controllers\AccountController.cs:строка 423&#xD;&#xA;   в lambda_method(Closure , ControllerBase , Object[] )&#xD;&#xA;   в System.Web.Mvc.ActionMethodDispatcher.Execute(ControllerBase controller, Object[] parameters)&#xD;&#xA;   в System.Web.Mvc.ReflectedActionDescriptor.Execute(ControllerContext controllerContext, IDictionary`2 parameters)&#xD;&#xA;   в System.Web.Mvc.ControllerActionInvoker.InvokeActionMethod(ControllerContext controllerContext, ActionDescriptor actionDescriptor, IDictionary`2 parameters)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c.&lt;BeginInvokeSynchronousActionMethod&gt;b__9_0(IAsyncResult asyncResult, ActionInvocation innerInvokeState)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`2.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethod(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__11_0()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.AsyncInvocationWithFilters.&lt;&gt;c__DisplayClass11_1.&lt;InvokeActionMethodFilterAsynchronouslyRecursive&gt;b__2()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass7_0.&lt;BeginInvokeActionMethodWithFilters&gt;b__1(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeActionMethodWithFilters(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_6.&lt;BeginInvokeAction&gt;b__3()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_1.&lt;BeginInvokeAction&gt;b__5(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecuteCore&gt;b__152_1(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecute&gt;b__151_2(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.&lt;&gt;c.&lt;BeginProcessRequest&gt;b__20_1(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   в System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="provider@gmail.com" time="2018-08-20T10:33:51.1357887Z">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CACHE_CONTROL:max-age=0&#xD;&#xA;HTTP_CONNECTION:close&#xD;&#xA;HTTP_CONTENT_LENGTH:190&#xD;&#xA;HTTP_CONTENT_TYPE:application/x-www-form-urlencoded&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=XkZC6YS-iCJm61nxmDjwhB6593X5YnqhD9Za2oy6jm136Q_B5XbikrVk3SA7Ek-E3JU0z9h_f9JjXeRJ1ULtERPYL4qFhLnX3PsHAtpbiU81; jv_enter_ts_E4Zap53i23=1534756651924; jv_visits_count_E4Zap53i23=1; jv_refer_E4Zap53i23=https%3A%2F%2Flocalhost%3A44365%2FOrder; jv_utm_E4Zap53i23=; .AspNet.ApplicationCookie=tEOfzddWmZUJUyuHEsnYek9dYeoW5cxUCAKmo56fl_JvADVbM7iDYmxhzT3IAhDTCnQl-Ab9zD21MCfwHjql0ecsgXkmyjwMbtjXSGmESGKP_S3gnvaXit0-xPcGiqnYPFuK4n6BPrzNQDkGkZlpxOIzd1MSyjIv0ya1j2E0cnMigoKUSN8axnQzpuq7RV2sPri7ldiWkwwxQEaAxSBTtCVbfg6ugCk5fST5NeV-3HaKRcRuNFLLoS2sh0o8o1TBnU9OoqG2a9xFyGuluqlj-w-kaiSN7lOEh_EMJL3W-cPC80MunMBccMCrl4WET9uptPYZb3unB9dPkjqbgNLEaV1vLQEPUQ-ivcbMHmk7_c72XM7akXvbY-FA9iXKSuLtisceummVc5PKyS3r1CmCNlZxWcfkal0ZWEr801v_Jdy1pQDVfqx7Vo9q5XplUMtYbvloppKxvWMte-sasRpr-CKDySSXRnjA9Qf6vd7wUbI_nt-UTD9LbZNOxRwOw0hj9s7wSWi_8WtEYHPnRtreXA; jv_invitation_time_E4Zap53i23=1534761047691; jv_close_time_E4Zap53i23=1534761061328; jv_pages_count_E4Zap53i23=46&#xD;&#xA;HTTP_HOST:localhost:44365&#xD;&#xA;HTTP_REFERER:https://localhost:44365/Account/AddService&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&#xD;&#xA;HTTP_ORIGIN:https://localhost:44365&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Cache-Control: max-age=0&#xD;&#xA;Connection: close&#xD;&#xA;Content-Length: 190&#xD;&#xA;Content-Type: application/x-www-form-urlencoded&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: __RequestVerificationToken=XkZC6YS-iCJm61nxmDjwhB6593X5YnqhD9Za2oy6jm136Q_B5XbikrVk3SA7Ek-E3JU0z9h_f9JjXeRJ1ULtERPYL4qFhLnX3PsHAtpbiU81; jv_enter_ts_E4Zap53i23=1534756651924; jv_visits_count_E4Zap53i23=1; jv_refer_E4Zap53i23=https%3A%2F%2Flocalhost%3A44365%2FOrder; jv_utm_E4Zap53i23=; .AspNet.ApplicationCookie=tEOfzddWmZUJUyuHEsnYek9dYeoW5cxUCAKmo56fl_JvADVbM7iDYmxhzT3IAhDTCnQl-Ab9zD21MCfwHjql0ecsgXkmyjwMbtjXSGmESGKP_S3gnvaXit0-xPcGiqnYPFuK4n6BPrzNQDkGkZlpxOIzd1MSyjIv0ya1j2E0cnMigoKUSN8axnQzpuq7RV2sPri7ldiWkwwxQEaAxSBTtCVbfg6ugCk5fST5NeV-3HaKRcRuNFLLoS2sh0o8o1TBnU9OoqG2a9xFyGuluqlj-w-kaiSN7lOEh_EMJL3W-cPC80MunMBccMCrl4WET9uptPYZb3unB9dPkjqbgNLEaV1vLQEPUQ-ivcbMHmk7_c72XM7akXvbY-FA9iXKSuLtisceummVc5PKyS3r1CmCNlZxWcfkal0ZWEr801v_Jdy1pQDVfqx7Vo9q5XplUMtYbvloppKxvWMte-sasRpr-CKDySSXRnjA9Qf6vd7wUbI_nt-UTD9LbZNOxRwOw0hj9s7wSWi_8WtEYHPnRtreXA; jv_invitation_time_E4Zap53i23=1534761047691; jv_close_time_E4Zap53i23=1534761061328; jv_pages_count_E4Zap53i23=46&#xD;&#xA;Host: localhost:44365&#xD;&#xA;Referer: https://localhost:44365/Account/AddService&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&#xD;&#xA;origin: https://localhost:44365&#xD;&#xA;upgrade-insecure-requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="F:\C#\BeSide\BeSide.Presenter.WebSite\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="provider@gmail.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="provider@gmail.com" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="provider@gmail.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="190" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Account/AddService" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="F:\C#\BeSide\BeSide.Presenter.WebSite\Account\AddService" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="60610" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="POST" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Account/AddService" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="44365" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Account/AddService" />
+    </item>
+    <item name="HTTP_CACHE_CONTROL">
+      <value string="max-age=0" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="close" />
+    </item>
+    <item name="HTTP_CONTENT_LENGTH">
+      <value string="190" />
+    </item>
+    <item name="HTTP_CONTENT_TYPE">
+      <value string="application/x-www-form-urlencoded" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=XkZC6YS-iCJm61nxmDjwhB6593X5YnqhD9Za2oy6jm136Q_B5XbikrVk3SA7Ek-E3JU0z9h_f9JjXeRJ1ULtERPYL4qFhLnX3PsHAtpbiU81; jv_enter_ts_E4Zap53i23=1534756651924; jv_visits_count_E4Zap53i23=1; jv_refer_E4Zap53i23=https%3A%2F%2Flocalhost%3A44365%2FOrder; jv_utm_E4Zap53i23=; .AspNet.ApplicationCookie=tEOfzddWmZUJUyuHEsnYek9dYeoW5cxUCAKmo56fl_JvADVbM7iDYmxhzT3IAhDTCnQl-Ab9zD21MCfwHjql0ecsgXkmyjwMbtjXSGmESGKP_S3gnvaXit0-xPcGiqnYPFuK4n6BPrzNQDkGkZlpxOIzd1MSyjIv0ya1j2E0cnMigoKUSN8axnQzpuq7RV2sPri7ldiWkwwxQEaAxSBTtCVbfg6ugCk5fST5NeV-3HaKRcRuNFLLoS2sh0o8o1TBnU9OoqG2a9xFyGuluqlj-w-kaiSN7lOEh_EMJL3W-cPC80MunMBccMCrl4WET9uptPYZb3unB9dPkjqbgNLEaV1vLQEPUQ-ivcbMHmk7_c72XM7akXvbY-FA9iXKSuLtisceummVc5PKyS3r1CmCNlZxWcfkal0ZWEr801v_Jdy1pQDVfqx7Vo9q5XplUMtYbvloppKxvWMte-sasRpr-CKDySSXRnjA9Qf6vd7wUbI_nt-UTD9LbZNOxRwOw0hj9s7wSWi_8WtEYHPnRtreXA; jv_invitation_time_E4Zap53i23=1534761047691; jv_close_time_E4Zap53i23=1534761061328; jv_pages_count_E4Zap53i23=46" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:44365" />
+    </item>
+    <item name="HTTP_REFERER">
+      <value string="https://localhost:44365/Account/AddService" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36" />
+    </item>
+    <item name="HTTP_ORIGIN">
+      <value string="https://localhost:44365" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_APPLICATIONINSIGHTS_REQUESTTRACKINGTELEMETRYMODULE_ROOTREQUEST_ID">
+      <value string="ca538ef9-0cde-4517-9476-967644a2115e" />
+    </item>
+  </serverVariables>
+  <form>
+    <item name="__RequestVerificationToken">
+      <value string="OT6-RWokHWJ1lKPycnPJN880lyiJh_dUuBKc-7TcWekssC6a7z3poU6-CRcGmk-2VfT763trjlluzrAxl7v8B4VzllwaYEkJkuOR-CqSxXwmL0j2P-hxiKyJTQOhPginH2-xO6-U9z8LAK8Y0eD2AQ2" />
+    </item>
+    <item name="idService">
+      <value string="8" />
+    </item>
+  </form>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="XkZC6YS-iCJm61nxmDjwhB6593X5YnqhD9Za2oy6jm136Q_B5XbikrVk3SA7Ek-E3JU0z9h_f9JjXeRJ1ULtERPYL4qFhLnX3PsHAtpbiU81" />
+    </item>
+    <item name="jv_enter_ts_E4Zap53i23">
+      <value string="1534756651924" />
+    </item>
+    <item name="jv_visits_count_E4Zap53i23">
+      <value string="1" />
+    </item>
+    <item name="jv_refer_E4Zap53i23">
+      <value string="https%3A%2F%2Flocalhost%3A44365%2FOrder" />
+    </item>
+    <item name="jv_utm_E4Zap53i23">
+      <value string="" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="tEOfzddWmZUJUyuHEsnYek9dYeoW5cxUCAKmo56fl_JvADVbM7iDYmxhzT3IAhDTCnQl-Ab9zD21MCfwHjql0ecsgXkmyjwMbtjXSGmESGKP_S3gnvaXit0-xPcGiqnYPFuK4n6BPrzNQDkGkZlpxOIzd1MSyjIv0ya1j2E0cnMigoKUSN8axnQzpuq7RV2sPri7ldiWkwwxQEaAxSBTtCVbfg6ugCk5fST5NeV-3HaKRcRuNFLLoS2sh0o8o1TBnU9OoqG2a9xFyGuluqlj-w-kaiSN7lOEh_EMJL3W-cPC80MunMBccMCrl4WET9uptPYZb3unB9dPkjqbgNLEaV1vLQEPUQ-ivcbMHmk7_c72XM7akXvbY-FA9iXKSuLtisceummVc5PKyS3r1CmCNlZxWcfkal0ZWEr801v_Jdy1pQDVfqx7Vo9q5XplUMtYbvloppKxvWMte-sasRpr-CKDySSXRnjA9Qf6vd7wUbI_nt-UTD9LbZNOxRwOw0hj9s7wSWi_8WtEYHPnRtreXA" />
+    </item>
+    <item name="jv_invitation_time_E4Zap53i23">
+      <value string="1534761047691" />
+    </item>
+    <item name="jv_close_time_E4Zap53i23">
+      <value string="1534761061328" />
+    </item>
+    <item name="jv_pages_count_E4Zap53i23">
+      <value string="46" />
+    </item>
+  </cookies>
+</error>

@@ -11,7 +11,7 @@
 }
 
 <section class="site-section">
-    <div class="container-fluid">
+    <div class="container col-md-10">
 
         <!-- Search bar -->
         <div class="row">
@@ -23,10 +23,10 @@
             </div>
         </div>
 
-        <div class="row border-top">
+        <div class="row">
 
             <!-- Category sidebar -->
-            <div class="col-md-3 wrapper p-4">
+            @*<div class="col-md-3 wrapper p-4">
                 <nav id="sidebar">
                     <div class="my-2 text-center">
                         <h3>Категории</h3>
@@ -59,10 +59,10 @@
                         </ul>
                     }
                 </nav>
-            </div>
+            </div>*@
 
             <!-- Order view section -->
-            <div class="col-md-9 border-left">
+            <div class="col-md-9">
                 @if (!Model.Any())
                 {
                     <div class="mt-5 mb-5 text-center" style="min-height: 500px">
@@ -90,7 +90,7 @@
                             <h4>
                                 @if (provider.CompanyName == null)
                                 {
-                                    @Html.RouteLink($"{provider.LastName} {provider.Patronymic}c{provider.FirstName}",
+                                    @Html.RouteLink($"{provider.LastName} {provider.FirstName} {provider.Patronymic}",
                                         new {controller = "Executor", action = "Details", id = provider.Id},
                                         new {@class = ""})
                                 }
@@ -102,7 +102,7 @@
                                 }
                             </h4>
                             <p style="margin: 5px">@provider.Discription</p>
-                            <div class="row">
+                            @*<div class="row">
                                 <div class="col">
                                     <span class="mx-1 icon ion-android-list">
                                         @if (!provider.Services.Any())
@@ -116,7 +116,7 @@
                                         }
                                     </span>
                                 </div>
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 }

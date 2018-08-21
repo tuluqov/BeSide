@@ -14,6 +14,8 @@
                     <h2 class="mb-4">Добавление сервиса</h2>
                     @using (Html.BeginForm("AddService", "Admin", FormMethod.Post))
                     {
+                        @Html.AntiForgeryToken();
+
                         <div class="row">
                             <div class="col-md-12 form-group">
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">Категория</label>
@@ -26,7 +28,6 @@
                             <div class="col-md-12 form-group">
                                 @Html.LabelFor(m => m.ServiceName, "Название сервиса")
                                 @Html.TextBoxFor(m => m.ServiceName, new { @class = "form-control py-2" })
-                                @*@Html.ValidationMessageFor(m => m.Name, "Такая категория уже существует", new { @class = "text-danger" })*@
                             </div>
                         </div>
                         <div class="row">

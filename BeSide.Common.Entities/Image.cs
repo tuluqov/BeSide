@@ -13,6 +13,9 @@ namespace BeSide.Common.Entities
 
         public byte[] Content { get; set; }
 
+        public int? OrderId { get; set; }
+        public virtual Order Order { get; set; }
+
         public FileType FileType { get; set; }
     }
 }

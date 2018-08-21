@@ -99,7 +99,7 @@
                         <div class="form-group">
                             <label for="Image" class="col-md-2">Фото</label>
                             <div class="col-md-10">
-                                <input type="file" name="upload" id="Image" accept="image/*" multiple/>
+                                <input type="file" name="upload" id="Image" accept="image/*" onclick="findSize()"/>
                             </div>
                         </div>
 
@@ -110,6 +110,10 @@
                                 @Html.HiddenFor(m => m.OrderStatus)
                                 @Html.HiddenFor(m => m.ProviderProfileId)
                                 @Html.HiddenFor(m => m.Id)
+                                @Html.HiddenFor(m => m.Images.First().Content)
+                                @Html.HiddenFor(m => m.Images.First().ContentType)
+                                @Html.HiddenFor(m => m.Images.First().FileName)
+                                @Html.HiddenFor(m => m.Images.First().FileType)
                                 <input type="submit" value="Изменить" class="btn btn-primary" />
                                 @Html.RouteLink("Отменить",
                                     new {controller = "Account", action = "UserOrders"},

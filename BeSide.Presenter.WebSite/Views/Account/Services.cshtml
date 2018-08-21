@@ -1,0 +1,34 @@
+﻿@using BeSide.Common.Entities
+@model IEnumerable<Service>
+
+@{
+    ViewBag.Title = "Services";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="site-section bg-light element-animate fadeInUp element-animated">
+    <div class="container">
+        @if (!Model.Any())
+        {
+            <div class="col-md-8">
+                <h3>У вас нет cервисов. Сервисы можно добавить в личом кабинете.</h3>
+            </div>
+        }
+        else
+        {
+            <h2>Сервисы</h2>
+
+            foreach (Service service in Model)
+            {
+                <div class="row ml-1">
+                    <p class="col-9 text-left">@service.Name</p>
+                    <div class="form-check-inline">
+                        @Html.Hidden("id", service.Id)
+                        @Html.ActionLink("Удалить", "DeleteService", "Account", new { id = service.Id }, new { @class = "btn btn-primary ml-1" })
+                    </div>
+                </div>
+                <hr />
+            }
+        }
+    </div>
+</section>

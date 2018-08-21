@@ -71,7 +71,11 @@
                             <div class="form-group">
                                 <div class="col-md-10 mt-4">
                                     @Html.HiddenFor(m => m.Id)
-                                    <input type="submit" value="Сохранить" class="btn btn-primary px-5" />
+                                    @Html.HiddenFor(m => m.FileType)
+                                    @Html.HiddenFor(m => m.Content)
+                                    @Html.HiddenFor(m => m.ContentType)
+                                    @Html.HiddenFor(m => m.FileName)
+                                    <input type="submit" value="Сохранить" class="btn btn-primary px-5" onclick="findSize()" />
                                 </div>
                             </div>
                         </div>
@@ -84,8 +88,7 @@
 <head>
     <script>
         window.onbeforeunload = confirmExit;
-        function confirmExit()
-        {
+        function confirmExit() {
             return "You have attempted to leave this page.  If you have made any changes to the fields without clicking the Save button, your changes will be lost.  Are you sure you want to exit this page?";
         }
     </script>

@@ -1,0 +1,189 @@
+﻿<error errorId="40234313-e41e-4788-a5bf-f52fe030a39d" application="/LM/W3SVC/2/ROOT" host="DESKTOP-8T3R9H9" type="System.Web.HttpParseException" message="После ключевого слова &quot;model&quot; должно следовать имя типа в той же строке.&#xD;&#xA;" source="System.Web.WebPages.Razor" detail="System.Web.HttpParseException (0x80004005): После ключевого слова &quot;model&quot; должно следовать имя типа в той же строке.&#xD;&#xA;&#xD;&#xA;   в System.Web.WebPages.Razor.RazorBuildProvider.EnsureGeneratedCode()&#xD;&#xA;   в System.Web.WebPages.Razor.RazorBuildProvider.get_CodeCompilerType()&#xD;&#xA;   в System.Web.Compilation.BuildProvider.GetCompilerTypeFromBuildProvider(BuildProvider buildProvider)&#xD;&#xA;   в System.Web.Compilation.BuildProvidersCompiler.ProcessBuildProviders()&#xD;&#xA;   в System.Web.Compilation.BuildProvidersCompiler.PerformBuild()&#xD;&#xA;   в System.Web.Compilation.BuildManager.CompileWebFile(VirtualPath virtualPath)&#xD;&#xA;   в System.Web.Compilation.BuildManager.GetVPathBuildResultInternal(VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)&#xD;&#xA;   в System.Web.Compilation.BuildManager.GetVPathBuildResultWithNoAssert(HttpContext context, VirtualPath virtualPath, Boolean noBuild, Boolean allowCrossApp, Boolean allowBuildInPrecompile, Boolean throwIfNotFound, Boolean ensureIsUpToDate)&#xD;&#xA;   в System.Web.Compilation.BuildManager.GetVirtualPathObjectFactory(VirtualPath virtualPath, HttpContext context, Boolean allowCrossApp, Boolean throwIfNotFound)&#xD;&#xA;   в System.Web.Compilation.BuildManager.GetCompiledType(VirtualPath virtualPath)&#xD;&#xA;   в System.Web.Compilation.BuildManager.GetCompiledType(String virtualPath)&#xD;&#xA;   в System.Web.Mvc.BuildManagerWrapper.System.Web.Mvc.IBuildManager.GetCompiledType(String virtualPath)&#xD;&#xA;   в System.Web.Mvc.BuildManagerCompiledView.Render(ViewContext viewContext, TextWriter writer)&#xD;&#xA;   в System.Web.Mvc.ViewResultBase.ExecuteResult(ControllerContext context)&#xD;&#xA;   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResult(ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResultFilterRecursive(IList`1 filters, Int32 filterIndex, ResultExecutingContext preContext, ControllerContext controllerContext, ActionResult actionResult)&#xD;&#xA;   в System.Web.Mvc.ControllerActionInvoker.InvokeActionResultWithFilters(ControllerContext controllerContext, IList`1 filters, ActionResult actionResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_6.&lt;BeginInvokeAction&gt;b__3()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.&lt;&gt;c__DisplayClass3_1.&lt;BeginInvokeAction&gt;b__5(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResult`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Async.AsyncControllerActionInvoker.EndInvokeAction(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecuteCore&gt;b__152_1(IAsyncResult asyncResult, ExecuteCoreState innerState)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Controller.EndExecuteCore(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Controller.&lt;&gt;c.&lt;BeginExecute&gt;b__151_2(IAsyncResult asyncResult, Controller controller)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.Controller.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Controller.System.Web.Mvc.Async.IAsyncController.EndExecute(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.&lt;&gt;c.&lt;BeginProcessRequest&gt;b__20_1(IAsyncResult asyncResult, ProcessRequestState innerState)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncVoid`1.CallEndDelegate(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.Async.AsyncResultWrapper.WrappedAsyncResultBase`1.End()&#xD;&#xA;   в System.Web.Mvc.MvcHandler.EndProcessRequest(IAsyncResult asyncResult)&#xD;&#xA;   в System.Web.Mvc.MvcHandler.System.Web.IHttpAsyncHandler.EndProcessRequest(IAsyncResult result)&#xD;&#xA;   в System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()&#xD;&#xA;   в System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)&#xD;&#xA;   в System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean&amp; completedSynchronously)" user="provider@gmail.com" time="2018-08-20T09:55:59.1871198Z" statusCode="500" webHostHtmlMessage="&lt;!DOCTYPE html&gt;&#xD;&#xA;&lt;html&gt;&#xD;&#xA;    &lt;head&gt;&#xD;&#xA;        &lt;title&gt;Ошибка синтаксического анализатора&lt;/title&gt;&#xD;&#xA;        &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot; /&gt;&#xD;&#xA;        &lt;style&gt;&#xD;&#xA;         body {font-family:&quot;Verdana&quot;;font-weight:normal;font-size: .7em;color:black;} &#xD;&#xA;         p {font-family:&quot;Verdana&quot;;font-weight:normal;color:black;margin-top: -5px}&#xD;&#xA;         b {font-family:&quot;Verdana&quot;;font-weight:bold;color:black;margin-top: -5px}&#xD;&#xA;         H1 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:18pt;color:red }&#xD;&#xA;         H2 { font-family:&quot;Verdana&quot;;font-weight:normal;font-size:14pt;color:maroon }&#xD;&#xA;         pre {font-family:&quot;Consolas&quot;,&quot;Lucida Console&quot;,Monospace;font-size:11pt;margin:0;padding:0.5em;line-height:14pt}&#xD;&#xA;         .marker {font-weight: bold; color: black;text-decoration: none;}&#xD;&#xA;         .version {color: gray;}&#xD;&#xA;         .error {margin-bottom: 10px;}&#xD;&#xA;         .expandable { text-decoration:underline; font-weight:bold; color:navy; cursor:hand; }&#xD;&#xA;         @media screen and (max-width: 639px) {&#xD;&#xA;          pre { width: 440px; overflow: auto; white-space: pre-wrap; word-wrap: break-word; }&#xD;&#xA;         }&#xD;&#xA;         @media screen and (max-width: 479px) {&#xD;&#xA;          pre { width: 280px; }&#xD;&#xA;         }&#xD;&#xA;        &lt;/style&gt;&#xD;&#xA;    &lt;/head&gt;&#xD;&#xA;&#xD;&#xA;    &lt;body bgcolor=&quot;white&quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;span&gt;&lt;H1&gt;Ошибка сервера в приложении '/'.&lt;hr width=100% size=1 color=silver&gt;&lt;/H1&gt;&#xD;&#xA;&#xD;&#xA;            &lt;h2&gt; &lt;i&gt;Ошибка синтаксического анализатора&lt;/i&gt; &lt;/h2&gt;&lt;/span&gt;&#xD;&#xA;&#xD;&#xA;            &lt;font face=&quot;Arial, Helvetica, Geneva, SunSans-Regular, sans-serif &quot;&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Описание: &lt;/b&gt;Ошибка при разборе ресурса, требуемого для обслуживания этого запроса.   Изучите следующие подробные сведения о данной ошибке разбора и измените исходный файл.&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Сообщение об ошибке синтаксического анализатора: &lt;/b&gt;После ключевого слова &amp;quot;model&amp;quot; должно следовать имя типа в той же строке.&lt;br&gt;&lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt;Ошибка источника:&lt;/b&gt; &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;table width=100% bgcolor=&quot;#ffffcc&quot;&gt;&#xD;&#xA;               &lt;tr&gt;&#xD;&#xA;                  &lt;td&gt;&#xD;&#xA;                      &lt;code&gt;&lt;pre&gt;&#xD;&#xA;&#xD;&#xA;Строка 1:  @using BeSide.Common.Entities&#xD;&#xA;Строка 2:  @using BeSide.Presenter.WebSite.Models&#xD;&#xA;&lt;font color=red&gt;Строка 3:  @model &#xD;&#xA;&lt;/font&gt;Строка 4:  &#xD;&#xA;Строка 5:  @{&lt;/pre&gt;&lt;/code&gt;&#xD;&#xA;&#xD;&#xA;                  &lt;/td&gt;&#xD;&#xA;               &lt;/tr&gt;&#xD;&#xA;            &lt;/table&gt;&#xD;&#xA;&#xD;&#xA;            &lt;br&gt;&#xD;&#xA;&#xD;&#xA;            &lt;b&gt; Исходный файл: &lt;/b&gt; /Views/Account/AddService.cshtml&lt;b&gt; &amp;nbsp;&amp;nbsp; Строка: &lt;/b&gt; 3&#xD;&#xA;            &lt;br&gt;&lt;br&gt;&#xD;&#xA;&#xD;&#xA;    &lt;/body&gt;&#xD;&#xA;&lt;/html&gt;&#xD;&#xA;">
+  <serverVariables>
+    <item name="ALL_HTTP">
+      <value string="HTTP_CONNECTION:close&#xD;&#xA;HTTP_ACCEPT:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;HTTP_ACCEPT_ENCODING:gzip, deflate, br&#xD;&#xA;HTTP_ACCEPT_LANGUAGE:ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;HTTP_COOKIE:__RequestVerificationToken=XkZC6YS-iCJm61nxmDjwhB6593X5YnqhD9Za2oy6jm136Q_B5XbikrVk3SA7Ek-E3JU0z9h_f9JjXeRJ1ULtERPYL4qFhLnX3PsHAtpbiU81; jv_enter_ts_E4Zap53i23=1534756651924; jv_visits_count_E4Zap53i23=1; jv_refer_E4Zap53i23=https%3A%2F%2Flocalhost%3A44365%2FOrder; jv_utm_E4Zap53i23=; jv_close_time_E4Zap53i23=1534756669471; .AspNet.ApplicationCookie=tEOfzddWmZUJUyuHEsnYek9dYeoW5cxUCAKmo56fl_JvADVbM7iDYmxhzT3IAhDTCnQl-Ab9zD21MCfwHjql0ecsgXkmyjwMbtjXSGmESGKP_S3gnvaXit0-xPcGiqnYPFuK4n6BPrzNQDkGkZlpxOIzd1MSyjIv0ya1j2E0cnMigoKUSN8axnQzpuq7RV2sPri7ldiWkwwxQEaAxSBTtCVbfg6ugCk5fST5NeV-3HaKRcRuNFLLoS2sh0o8o1TBnU9OoqG2a9xFyGuluqlj-w-kaiSN7lOEh_EMJL3W-cPC80MunMBccMCrl4WET9uptPYZb3unB9dPkjqbgNLEaV1vLQEPUQ-ivcbMHmk7_c72XM7akXvbY-FA9iXKSuLtisceummVc5PKyS3r1CmCNlZxWcfkal0ZWEr801v_Jdy1pQDVfqx7Vo9q5XplUMtYbvloppKxvWMte-sasRpr-CKDySSXRnjA9Qf6vd7wUbI_nt-UTD9LbZNOxRwOw0hj9s7wSWi_8WtEYHPnRtreXA; jv_pages_count_E4Zap53i23=11; jv_invitation_time_E4Zap53i23=1534758777903&#xD;&#xA;HTTP_HOST:localhost:44365&#xD;&#xA;HTTP_USER_AGENT:Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&#xD;&#xA;HTTP_UPGRADE_INSECURE_REQUESTS:1&#xD;&#xA;" />
+    </item>
+    <item name="ALL_RAW">
+      <value string="Connection: close&#xD;&#xA;Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8&#xD;&#xA;Accept-Encoding: gzip, deflate, br&#xD;&#xA;Accept-Language: ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7&#xD;&#xA;Cookie: __RequestVerificationToken=XkZC6YS-iCJm61nxmDjwhB6593X5YnqhD9Za2oy6jm136Q_B5XbikrVk3SA7Ek-E3JU0z9h_f9JjXeRJ1ULtERPYL4qFhLnX3PsHAtpbiU81; jv_enter_ts_E4Zap53i23=1534756651924; jv_visits_count_E4Zap53i23=1; jv_refer_E4Zap53i23=https%3A%2F%2Flocalhost%3A44365%2FOrder; jv_utm_E4Zap53i23=; jv_close_time_E4Zap53i23=1534756669471; .AspNet.ApplicationCookie=tEOfzddWmZUJUyuHEsnYek9dYeoW5cxUCAKmo56fl_JvADVbM7iDYmxhzT3IAhDTCnQl-Ab9zD21MCfwHjql0ecsgXkmyjwMbtjXSGmESGKP_S3gnvaXit0-xPcGiqnYPFuK4n6BPrzNQDkGkZlpxOIzd1MSyjIv0ya1j2E0cnMigoKUSN8axnQzpuq7RV2sPri7ldiWkwwxQEaAxSBTtCVbfg6ugCk5fST5NeV-3HaKRcRuNFLLoS2sh0o8o1TBnU9OoqG2a9xFyGuluqlj-w-kaiSN7lOEh_EMJL3W-cPC80MunMBccMCrl4WET9uptPYZb3unB9dPkjqbgNLEaV1vLQEPUQ-ivcbMHmk7_c72XM7akXvbY-FA9iXKSuLtisceummVc5PKyS3r1CmCNlZxWcfkal0ZWEr801v_Jdy1pQDVfqx7Vo9q5XplUMtYbvloppKxvWMte-sasRpr-CKDySSXRnjA9Qf6vd7wUbI_nt-UTD9LbZNOxRwOw0hj9s7wSWi_8WtEYHPnRtreXA; jv_pages_count_E4Zap53i23=11; jv_invitation_time_E4Zap53i23=1534758777903&#xD;&#xA;Host: localhost:44365&#xD;&#xA;User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36&#xD;&#xA;upgrade-insecure-requests: 1&#xD;&#xA;" />
+    </item>
+    <item name="APPL_MD_PATH">
+      <value string="/LM/W3SVC/2/ROOT" />
+    </item>
+    <item name="APPL_PHYSICAL_PATH">
+      <value string="F:\C#\BeSide\BeSide.Presenter.WebSite\" />
+    </item>
+    <item name="AUTH_TYPE">
+      <value string="ApplicationCookie" />
+    </item>
+    <item name="AUTH_USER">
+      <value string="provider@gmail.com" />
+    </item>
+    <item name="AUTH_PASSWORD">
+      <value string="*****" />
+    </item>
+    <item name="LOGON_USER">
+      <value string="" />
+    </item>
+    <item name="REMOTE_USER">
+      <value string="provider@gmail.com" />
+    </item>
+    <item name="CERT_COOKIE">
+      <value string="" />
+    </item>
+    <item name="CERT_FLAGS">
+      <value string="" />
+    </item>
+    <item name="CERT_ISSUER">
+      <value string="" />
+    </item>
+    <item name="CERT_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="CERT_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="CERT_SERIALNUMBER">
+      <value string="" />
+    </item>
+    <item name="CERT_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="CERT_SUBJECT">
+      <value string="" />
+    </item>
+    <item name="CONTENT_LENGTH">
+      <value string="0" />
+    </item>
+    <item name="CONTENT_TYPE">
+      <value string="" />
+    </item>
+    <item name="GATEWAY_INTERFACE">
+      <value string="CGI/1.1" />
+    </item>
+    <item name="HTTPS">
+      <value string="on" />
+    </item>
+    <item name="HTTPS_KEYSIZE">
+      <value string="256" />
+    </item>
+    <item name="HTTPS_SECRETKEYSIZE">
+      <value string="2048" />
+    </item>
+    <item name="HTTPS_SERVER_ISSUER">
+      <value string="CN=localhost" />
+    </item>
+    <item name="HTTPS_SERVER_SUBJECT">
+      <value string="CN=localhost" />
+    </item>
+    <item name="INSTANCE_ID">
+      <value string="2" />
+    </item>
+    <item name="INSTANCE_META_PATH">
+      <value string="/LM/W3SVC/2" />
+    </item>
+    <item name="LOCAL_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="PATH_INFO">
+      <value string="/Account/AddService" />
+    </item>
+    <item name="PATH_TRANSLATED">
+      <value string="F:\C#\BeSide\BeSide.Presenter.WebSite\Account\AddService" />
+    </item>
+    <item name="QUERY_STRING">
+      <value string="" />
+    </item>
+    <item name="REMOTE_ADDR">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_HOST">
+      <value string="::1" />
+    </item>
+    <item name="REMOTE_PORT">
+      <value string="56848" />
+    </item>
+    <item name="REQUEST_METHOD">
+      <value string="GET" />
+    </item>
+    <item name="SCRIPT_NAME">
+      <value string="/Account/AddService" />
+    </item>
+    <item name="SERVER_NAME">
+      <value string="localhost" />
+    </item>
+    <item name="SERVER_PORT">
+      <value string="44365" />
+    </item>
+    <item name="SERVER_PORT_SECURE">
+      <value string="1" />
+    </item>
+    <item name="SERVER_PROTOCOL">
+      <value string="HTTP/1.1" />
+    </item>
+    <item name="SERVER_SOFTWARE">
+      <value string="Microsoft-IIS/10.0" />
+    </item>
+    <item name="URL">
+      <value string="/Account/AddService" />
+    </item>
+    <item name="HTTP_CONNECTION">
+      <value string="close" />
+    </item>
+    <item name="HTTP_ACCEPT">
+      <value string="text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" />
+    </item>
+    <item name="HTTP_ACCEPT_ENCODING">
+      <value string="gzip, deflate, br" />
+    </item>
+    <item name="HTTP_ACCEPT_LANGUAGE">
+      <value string="ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7" />
+    </item>
+    <item name="HTTP_COOKIE">
+      <value string="__RequestVerificationToken=XkZC6YS-iCJm61nxmDjwhB6593X5YnqhD9Za2oy6jm136Q_B5XbikrVk3SA7Ek-E3JU0z9h_f9JjXeRJ1ULtERPYL4qFhLnX3PsHAtpbiU81; jv_enter_ts_E4Zap53i23=1534756651924; jv_visits_count_E4Zap53i23=1; jv_refer_E4Zap53i23=https%3A%2F%2Flocalhost%3A44365%2FOrder; jv_utm_E4Zap53i23=; jv_close_time_E4Zap53i23=1534756669471; .AspNet.ApplicationCookie=tEOfzddWmZUJUyuHEsnYek9dYeoW5cxUCAKmo56fl_JvADVbM7iDYmxhzT3IAhDTCnQl-Ab9zD21MCfwHjql0ecsgXkmyjwMbtjXSGmESGKP_S3gnvaXit0-xPcGiqnYPFuK4n6BPrzNQDkGkZlpxOIzd1MSyjIv0ya1j2E0cnMigoKUSN8axnQzpuq7RV2sPri7ldiWkwwxQEaAxSBTtCVbfg6ugCk5fST5NeV-3HaKRcRuNFLLoS2sh0o8o1TBnU9OoqG2a9xFyGuluqlj-w-kaiSN7lOEh_EMJL3W-cPC80MunMBccMCrl4WET9uptPYZb3unB9dPkjqbgNLEaV1vLQEPUQ-ivcbMHmk7_c72XM7akXvbY-FA9iXKSuLtisceummVc5PKyS3r1CmCNlZxWcfkal0ZWEr801v_Jdy1pQDVfqx7Vo9q5XplUMtYbvloppKxvWMte-sasRpr-CKDySSXRnjA9Qf6vd7wUbI_nt-UTD9LbZNOxRwOw0hj9s7wSWi_8WtEYHPnRtreXA; jv_pages_count_E4Zap53i23=11; jv_invitation_time_E4Zap53i23=1534758777903" />
+    </item>
+    <item name="HTTP_HOST">
+      <value string="localhost:44365" />
+    </item>
+    <item name="HTTP_USER_AGENT">
+      <value string="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36" />
+    </item>
+    <item name="HTTP_UPGRADE_INSECURE_REQUESTS">
+      <value string="1" />
+    </item>
+    <item name="HTTP_APPLICATIONINSIGHTS_REQUESTTRACKINGTELEMETRYMODULE_ROOTREQUEST_ID">
+      <value string="64b1ef31-1bea-4061-b23e-e37493e7281b" />
+    </item>
+  </serverVariables>
+  <cookies>
+    <item name="__RequestVerificationToken">
+      <value string="XkZC6YS-iCJm61nxmDjwhB6593X5YnqhD9Za2oy6jm136Q_B5XbikrVk3SA7Ek-E3JU0z9h_f9JjXeRJ1ULtERPYL4qFhLnX3PsHAtpbiU81" />
+    </item>
+    <item name="jv_enter_ts_E4Zap53i23">
+      <value string="1534756651924" />
+    </item>
+    <item name="jv_visits_count_E4Zap53i23">
+      <value string="1" />
+    </item>
+    <item name="jv_refer_E4Zap53i23">
+      <value string="https%3A%2F%2Flocalhost%3A44365%2FOrder" />
+    </item>
+    <item name="jv_utm_E4Zap53i23">
+      <value string="" />
+    </item>
+    <item name="jv_close_time_E4Zap53i23">
+      <value string="1534756669471" />
+    </item>
+    <item name=".AspNet.ApplicationCookie">
+      <value string="tEOfzddWmZUJUyuHEsnYek9dYeoW5cxUCAKmo56fl_JvADVbM7iDYmxhzT3IAhDTCnQl-Ab9zD21MCfwHjql0ecsgXkmyjwMbtjXSGmESGKP_S3gnvaXit0-xPcGiqnYPFuK4n6BPrzNQDkGkZlpxOIzd1MSyjIv0ya1j2E0cnMigoKUSN8axnQzpuq7RV2sPri7ldiWkwwxQEaAxSBTtCVbfg6ugCk5fST5NeV-3HaKRcRuNFLLoS2sh0o8o1TBnU9OoqG2a9xFyGuluqlj-w-kaiSN7lOEh_EMJL3W-cPC80MunMBccMCrl4WET9uptPYZb3unB9dPkjqbgNLEaV1vLQEPUQ-ivcbMHmk7_c72XM7akXvbY-FA9iXKSuLtisceummVc5PKyS3r1CmCNlZxWcfkal0ZWEr801v_Jdy1pQDVfqx7Vo9q5XplUMtYbvloppKxvWMte-sasRpr-CKDySSXRnjA9Qf6vd7wUbI_nt-UTD9LbZNOxRwOw0hj9s7wSWi_8WtEYHPnRtreXA" />
+    </item>
+    <item name="jv_pages_count_E4Zap53i23">
+      <value string="11" />
+    </item>
+    <item name="jv_invitation_time_E4Zap53i23">
+      <value string="1534758777903" />
+    </item>
+  </cookies>
+</error>

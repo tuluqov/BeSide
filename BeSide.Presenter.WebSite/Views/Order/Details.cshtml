@@ -66,8 +66,12 @@
         <div class="row mt-2">
             @if (Model.Images.Any())
             {
-                <h3>Фотографии</h3>
-                <img src="~/Image?id=@Model.Images.First().Id" alt="avatar"  width="150" height="150"/>
+                <h3>Фотография</h3>
+                <div class="container row">
+                    <figure>
+                        <img src="~/Image?id=@Model.Images.First().Id" alt="avatar"  width="150" height="150"/>
+                    </figure>
+                </div>
             }
         </div>
 
@@ -87,7 +91,14 @@
                         {
                             <li class="comment row" style="width: 90%">
                                 <div class="vcard">
-                                    <img src="/Account/GetImage?id=@feedback.ProviderProfileId" alt="Image placeholder" />
+                                    @if (feedback.ProviderProfile.Content == null)
+                                    {
+                                        <img src="@Url.Content("~/img/no_avatar.png")" class="img-fluid" width="150" height="150" />
+                                    }
+                                    else
+                                    {
+                                        <img src="/Account/GetImage?id=@feedback.ProviderProfileId" alt="Image placeholder" />
+                                    }
                                 </div>
                                 <div class="comment-body col">
                                     <a href="~/Executor/Details/@feedback.ProviderProfile.Id">
@@ -106,12 +117,12 @@
                                     {
                                         @Html.RouteLink("Выбрать исполнителем",
                                             new {controller = "Order", action = "SelectPerfomer", orderId = Model.Id, userId = feedback.ProviderProfileId},
-                                            new {@class = "btn btn-primary float-right"})
+                                            new {@class = "btn btn-primary float-right", id= "select_executor" })
                                     }
                                     @if (Model.ProviderProfileId == feedback.ProviderProfileId && Model.OrderStatus == OrderStatus.Accepted)
                                     {
-                                        @Html.RouteLink("Выбранный исполнитель",
-                                            new {controller = "Executor", action = "Details", id = feedback.ProviderProfileId},
+                                        @Html.RouteLink("Закрыть заказ",
+                                            new {controller = "Order", action = "SelectDone", orderId = Model.Id},
                                             new {@class = "btn btn-primary float-right"})
                                     }
                                     @if (Model.ProviderProfileId == feedback.ProviderProfileId && Model.OrderStatus == OrderStatus.Complited)
@@ -122,7 +133,7 @@
                                     }
                                 </div>
                                 }
-                                else if (Model.Feedbacks.FirstOrDefault(m => m.ProviderProfileId == User.Identity.GetUserId()) != null)
+                                else if (Model.Feedbacks.FirstOrDefault(m => m.ProviderProfileId == User.Identity.GetUserId()) != null && feedback.ProviderProfileId == User.Identity.GetUserId())
                                 {
                                     <div class="col-md-5 float-right">
                                         @Html.RouteLink("Изменить отклик",

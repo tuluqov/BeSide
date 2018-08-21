@@ -1,4 +1,5 @@
-﻿@using BeSide.Presenter.WebSite.Models.Category
+﻿@using BeSide.Common.Entities
+@using BeSide.Presenter.WebSite.Models.Category
 @using BeSide.Presenter.WebSite.Models.Service
 @model BeSide.Presenter.WebSite.Models.User.ProviderViewModel
 
@@ -12,8 +13,15 @@
 
         <div class="row border-bottom">
             <div class="col-md-7">
-                <h3>@Model.CompanyName (@Model.LastName @Model.FirstName)</h3>
+                @if (Model.CompanyName == null)
+                {
+                <h3>@Model.LastName @Model.FirstName @Model.Patronymic</h3>
 
+                }
+                else
+                {
+                    <h3>@Model.CompanyName (@Model.LastName @Model.FirstName)</h3>
+                }
             </div>
         </div>
 
@@ -21,8 +29,22 @@
             <div class="row container ml-1">
                 <p>@Model.Discription</p>
             </div>
-            <!-- Feedbacks -->
-            <div class="row container">
+            
+            <div class="row">
+                    @if (Model.FileType == FileType.Avatar)
+                    {
+                        <figure>
+                            <img src="~/Account/GetImage?id=@Model.Id"
+                                 alt="avatar" class="img-fluid ml-4" width="150" height="150" />
+                        </figure>
+                    }
+                    else
+                    {
+                        <img src="@Url.Content("~/img/no_avatar.png")" class="img-fluid ml-4" width="200" height="150" />
+                    }
+            </div>
+
+            @*<div class="row container">
                 <div class="col-md-7">
                     @if (!Model.Services.Any())
                     {
@@ -31,7 +53,7 @@
                     else
                     {
                         <h3 class="mb-5">Оказываемы услуги</h3>
-                        <!-- Service list -->
+                        
                         <ul class="comment-list">
                             @foreach (CategoryViewModel category in Model.Categories)
                             {
@@ -54,7 +76,7 @@
                         </ul>
                     }
                 </div>
-            </div>
+            </div>*@
         </div>
     </div>
 </section>

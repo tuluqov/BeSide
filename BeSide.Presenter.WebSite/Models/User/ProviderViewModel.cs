@@ -31,9 +31,7 @@ namespace BeSide.Presenter.WebSite.Models.User
         public ApplicationUser ApplicationUser { get; set; }
 
         public ServiceCollectionViewModel Services { get; set; }
-
-        public CategoryCollectionViewModel Categories { get; set; }
-
+        
         public FeedbacksCollectionViewModel Feedbacks { get; set; }
 
         [StringLength(255)]
@@ -62,7 +60,6 @@ namespace BeSide.Presenter.WebSite.Models.User
             Discription = profile.Discription;
             Services = new ServiceCollectionViewModel(profile.Services);
             Feedbacks = new FeedbacksCollectionViewModel(profile.Feedbacks);
-            Categories = new CategoryCollectionViewModel(profile.Categories);
             ContentType = profile.ContentType;
             Content = profile.Content;
             FileName = profile.FileName;
